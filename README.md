@@ -1,4 +1,4 @@
-# Hello , I am AxelTWC. 
+# Hello , I am Axel Tang. 
 - You may view my Github Profile Here | [Click Here To Access Profile](https://github.com/AxelTWC)
 - You may view my Resume Here | [Click Here To Access Resume](https://axeltwc.github.io/AxelTang-Resume.pdf)
 - You may view my Linkedln Here | [Click Here To Access Linkedln](https://www.linkedin.com/in/axel-tang-2b22572b6/)
@@ -24,7 +24,7 @@
 - Linkedln: Axel Tang
 - Email: axel0328canada@outlook.com
 
-### Website
+### Why Such Website?
 - I believe my personal website should be straight forward.
 - No Complications or languages are used in this website (Only Github README)
 - Feel free to reach out! And Thank You For Visiting my Website
