@@ -1,6 +1,6 @@
 # Hello , I am AxelTWC. 
 - You may view my Github Profile Here | [Click Here To Access Profile](https://github.com/AxelTWC)
-- You may view my Resume Here | [Click Here To Access Resume](https://github.com/AxelTWC)
+- You may view my Resume Here | [Click Here To Access Resume](https://github.com/AxelTWC/AxelTang-Resume.pdf)
 - You may view my Linkedln Here | [Click Here To Access Linkedln](https://www.linkedin.com/in/axel-tang-2b22572b6/)
 
 ## Who am I 
