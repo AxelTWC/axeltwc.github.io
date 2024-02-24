@@ -18,6 +18,12 @@
   - Participated in co-worker's bug.
   - Created Batch Scripts for future Windows Developer for Umple.
   - [UmpleOnline Link](https://cruise.umple.org/umpleonline/)
+- Having coding experiences by working in 25-30+ different projects in different scales
+  - Using Python To Create Information Retrieval (Page Rank) Solutions/Algorithms and create Artificial Intellgience Related Projects/Assignments
+  - Using Kotlin/JavaScript(Angular,React,Express..etc) + Databases(MongoDB,PostgresSQL...etc) to create small scale applications such as Mobile Applications or Web Applications
+  - Using Java for complex based assignments and projects
+  - Using C# To Create Games and Small Projects
+  - Using Go , Scheme , Prolog to learn the fundamentals of programming
     
 ## My Contacts
 - Discord: AxelTWC
