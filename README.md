@@ -8,6 +8,16 @@
 - A Proud 7 Years Game Server Owner Serving 25k-50k players.
 - A software developer/engineer looking for opportunities.
 
+## My Proud Contributions
+- Serving HumblexMC Game Community Server | [Click Here To Access Website](https://humblex.net)
+  - Coded Multiple LightWeight Java Plugins and Windows Batch Scripting
+  - Managed to serve 25k-50k players and ensure balancing in production
+  - Using SEO to make Humblex Website appear as 4th using keyword "Humblex" from 33rd at a certain point, using SEO to make HumblexMC as top result 
+- Worked for Umple Software | [Click Here To Access My Work](https://github.com/umple/umple/issues?q=involves%3AAxelTWC+sort%3Acreated-asc+)
+  - Resolving medium difficulty bug in large scale software from the start of my work
+  - Participated in co-worker's bug
+  - Created Batch Scripts for future Windows Developer for Umple
+  - [UmpleOnline Link](https://cruise.umple.org/umpleonline/)
 ## My Contacts
 - Discord: AxelTWC
 - Linkedln: Axel Tang
