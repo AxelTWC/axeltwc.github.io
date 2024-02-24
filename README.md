@@ -6,7 +6,7 @@
 ## Who am I 
 - A Early Graduated Student from University of Ottawa with Honours Specialist in Computer Science.
 - A Proud 7 Years Game Server Owner Serving 25k-50k players.
-- A software developer/engineer looking for opportunities.
+- A software developer/engineer looking for **job opportunities in any field**.
 
 ## My Proud Contributions
 - Serving HumblexMC Game Community Server | [Click Here To Access Website](https://humblex.net)
