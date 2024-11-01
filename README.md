@@ -4,7 +4,7 @@
 - You may view my Linkedln Here | [Click Here To Access Linkedln](https://www.linkedin.com/in/axel-tang-2b22572b6/)
 
 ## Who am I 
-- A software developer/engineer looking for **job opportunities in any field**.
+- A software developer/engineer looking for **job opportunities in field of SDE,QA,AI/ML,DS**.
 - A Early Graduated Student from University of Ottawa with Honours Specialist in Computer Science.
 - A Proud 7 Years Game Server Owner Serving 25k-50k players.
 
