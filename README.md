@@ -35,4 +35,4 @@
 - I believe my personal website should be straight forward.
 - No Complications or languages are used in this website (Only Github README)
 - Feel free to reach out! And Thank You For Visiting my Website
-- Hosting Resumes (Updated Date: 03/19/2024)
+- Hosting Resumes (Updated Date: 11/12/2024)
