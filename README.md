@@ -7,7 +7,7 @@
 ## Who am I 
 - A software developer/engineer looking for **job opportunities in field of SDE,QA,AI/ML,DS**.
 - A Early Graduated Student from University of Ottawa with Honours Specialist in Computer Science.
-- A Proud 7 Years Game Server Owner Serving 25k-50k players.
+- A Proud 8 Years Game Server Owner Serving 25k-50k players.
 
 
 ## My Proud Contributions
