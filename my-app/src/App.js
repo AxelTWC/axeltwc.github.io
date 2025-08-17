@@ -120,7 +120,7 @@ export default function App() {
           <div className="timeline-content">
             <Code size={28} className="timeline-icon"/>
             <h4>UMPLE</h4>
-            <p>Honors Project with top SWE minds</p>
+            <p>Honors Project with Timmothy Lethbridge</p>
           </div>
         </div>
         <div className="timeline-item">
@@ -128,7 +128,7 @@ export default function App() {
           <div className="timeline-content">
             <Laptop size={28} className="timeline-icon"/>
             <h4>HKGCC</h4>
-            <p>IT Internship including server side and internal tools</p>
+            <p>IT Internship including server side(HW) and internal tools(SW with py and OpenCV) </p>
           </div>
         </div>
         <div className="timeline-item">
@@ -157,7 +157,7 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="footer">© {new Date().getFullYear()} Axel Tang. All rights reserved.</footer>
+      <footer className="footer">© {new Date().getFullYear()} Axel Tang. All rights reserved. Credits to LLMs</footer>
     </div>
   );
 }
