@@ -96,7 +96,7 @@ export default function App() {
           <div className="timeline-content">
             <Briefcase size={28} className="timeline-icon"/>
             <h4>Top 5 HK Primary School</h4>
-            <p>Met great people , but somehow started to be really shy :P</p>
+            <p>Met great people , but somehow started to be really shy :P | Rankings were back then</p>
           </div>
         </div>
         <div className="timeline-item">
@@ -104,15 +104,15 @@ export default function App() {
           <div className="timeline-content">
             <Briefcase size={28} className="timeline-icon"/>
             <h4>HumblexMC</h4>
-            <p>Started from 2015-2016 when I saw an opportunity with a falling community</p>
+            <p>Started from 2015-2016 when I saw an opportunity with a falling community | Learnt how to business and develop on the way</p>
           </div>
         </div>
         <div className="timeline-item">
           <span className="timeline-dot purple"></span>
           <div className="timeline-content">
             <BookOpen size={28} className="timeline-icon"/>
-            <h4>Studying abroad, acquiring provincial merit certicates and more during last year in high school.</h4>
-            <p>2016-2017</p>
+            <h4>Studying abroad</h4>
+            <p>2017 onward | Acquiring provincial merit certicates and more during last year in high school</p>
           </div>
         </div>
         <div className="timeline-item">
@@ -120,7 +120,7 @@ export default function App() {
           <div className="timeline-content">
             <GraduationCap size={28} className="timeline-icon"/>
             <h4>Undergraduate</h4>
-            <p>Accepted to all top 8 universities | Risked choices and fast track my program.</p>
+            <p>Accepted to all top 8 universities | Risked choices and fast track my program</p>
           </div>
         </div>
         <div className="timeline-item">
@@ -136,7 +136,7 @@ export default function App() {
           <div className="timeline-content">
             <Laptop size={28} className="timeline-icon"/>
             <h4>HKGCC</h4>
-            <p>IT Internship including server side(HW) and internal tools(SW with Py and OpenCV) </p>
+            <p>IT Internship including server side(HW) and internal tools(SW with Py and OpenCV)</p>
           </div>
         </div>
         <div className="timeline-item">
