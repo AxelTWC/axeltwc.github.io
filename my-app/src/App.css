@@ -73,7 +73,7 @@ a, a:visited {
   align-items: center;
   text-align: center;
   padding: 0 2rem;
-  background: linear-gradient(135deg, #3b82f6, #a78bfa, #f472b6);
+  background: linear-gradient(135deg, #3b82f6, #633cd7, #f472b6);
   background-size: 200% 200%;
   animation: gradient-x 8s ease infinite;
   color: #fff;
