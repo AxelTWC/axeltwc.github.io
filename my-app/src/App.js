@@ -69,10 +69,12 @@ function App() {
       {/* About Section */}
       <motion.section className="about-section" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
         <h2>About Me</h2>
-        <p>From <span className="highlight gradient-text">8-9 years of studying in Canada</span>, I’ve taken financial responsibility for my family while pursuing my passion for technology.</p>
         <p>Starting my career at 14, I developed a strong foundation in <span className="highlight gradient-text">Software Engineering</span> and <span className="highlight gradient-text">Business Management</span>.</p>
-        <p>I fast-tracked my <span className="highlight gradient-text">Bachelor in Computer Science</span> and am now pursuing <span className="highlight gradient-text">Master of Engineering</span> in Data Analytics and Machine Learning at the <span className="highlight gradient-text">University of Toronto</span>.</p>
         <p>Experience with <span className="highlight gradient-text">UMPLE</span> prepared me to tackle large-scale projects and innovate in tech.</p>
+        <p>From <span className="highlight gradient-text">8-9 years of studying in Canada</span>, I’ve taken financial responsibility for my family while pursuing my passion for technology.</p>
+        <p>With crucial advises from top industrial leaders and having the privilege to be in the same school with AI pioneers such as Geoffrey Hinton and Ilya Sutskever...</p>
+        <p>I fast-tracked my <span className="highlight gradient-text">Bachelor in Computer Science</span> and am now pursuing <span className="highlight gradient-text">Master of Engineering</span> in Data Analytics and Machine Learning at the <span className="highlight gradient-text">University of Toronto</span>.</p>
+
       </motion.section>
 
       {/* Projects Section */}
