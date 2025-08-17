@@ -58,7 +58,8 @@ export default function App() {
               </br>I’ve contributed to projects like UMPLE serving millions of NA students 
               <br></br>and was the main force behind HumblexMC serving tens of thousands of players globally. 
               <br></br>I came from humble beginnings, supporting my family and striving for excellence in my studies. 
-              <br></br>Originally with a core foundation in computer science, and guided by industrial leaders, being in the same school with AI Pioneers such as Geoffrey Hinton and Ilya Sutskever, I am aiming to expand my knowledge into machine learning.
+              <br></br>Originally with a core foundation in computer science, and guided by industrial leaders, being privilleged to be in
+              <br></br>the same school with AI Pioneers such as Geoffrey Hinton and Ilya Sutskever, I am aiming to expand my knowledge into machine learning.
             </p>
           </div>
         </div>
