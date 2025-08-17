@@ -1,102 +1,108 @@
-import React from 'react';
-import './App.css';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { Mail, Github, Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
 
 function App() {
+  const [scrollY, setScrollY] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    const handleMouse = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouse);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouse);
+    };
+  }, []);
+
   const projects = [
-    {
-      title: 'HumblexMC',
-      description: 'Served Approximately 50k - 100k upward players globally for 7-8 years.',
-      link: 'https://humblex.net',
-    },
-    {
-      title: 'Coming ML Projects',
-      description: 'Resume for now.',
-      link: 'https://axeltwc.github.io/AxelTang-Resume.pdf',
-    },
+    { title: "HumblexMC", description: "Served 50k-100k players globally for 7-8 years.", link: "https://humblex.net" },
+    { title: "Coming ML Projects", description: "Resume for now.", link: "https://axeltwc.github.io/AxelTang-Resume.pdf" },
+    { title: "UMPLE", description: "Under Professor for his software teaching OOP concepts to millions of NA students.", link: "https://github.com/umple/umple/issues?q=involves%3AAxelTWC+sort%3Acreated-asc+" },
   ];
 
-  const skills = ['Java', 'Python', 'OpenCV', 'GitHub', 'TensorFlow', 'React', 'CI/CD'];
+  const skills = ["Java", "Python", "OpenCV", "GitHub","CI/CD"];
 
   return (
-    <div className="App min-h-screen bg-gradient-to-b from-black via-blue-950 to-black text-white font-sans">
-      
+    <div className="app">
+      {/* Floating ML Nodes */}
+      <div className="ml-floating-nodes">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div
+            key={i}
+            className="ml-node"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              transform: `translate(${mousePos.x * 0.002 * i}px, ${scrollY * 0.01 * i}px)`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Data Stream Lines */}
+      <div className="data-streams">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={i} className="data-line" style={{ left: `${i * 15 + 5}%`, animationDelay: `${i * 0.5}s` }}></div>
+        ))}
+      </div>
+
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center h-screen text-center bg-gradient-to-b from-blue-900 via-black to-blue-950 px-6">
-        <motion.h1
-          className="text-6xl font-extrabold mb-4 text-white drop-shadow-[0_0_20px_rgba(59,130,246,0.8)]"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
+      <motion.section className="hero-section" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.2 }}>
+        <motion.h1 initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5, delay: 0.2 }}>
           Hi, I'm Axel Tang 👋
         </motion.h1>
-        <motion.p
-          className="text-xl text-gray-200 max-w-2xl mb-6 drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          MEng Student @ UofT | Data Analytics & Machine Learning
+        <motion.p initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5, delay: 0.5 }}>
+          MEng Student @ <span className="gradient-text">UofT</span> | Data Analytics & Machine Learning
         </motion.p>
-        <div className="flex gap-6 text-white text-2xl">
-          <a href="mailto:axeltang@gmail.com" className="hover:text-blue-400 transition"><Mail /></a>
-          <a href="https://github.com/yourusername" className="hover:text-blue-400 transition"><Github /></a>
-          <a href="https://linkedin.com/in/yourusername" className="hover:text-blue-400 transition"><Linkedin /></a>
-        </div>
-      </section>
+        <motion.div className="hero-socials" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1 }}>
+          <a href="mailto:axel.tang@mail.utoronto.ca"><Mail /></a>
+          <a href="https://github.com/axeltwc"><Github /></a>
+          <a href="https://www.linkedin.com/in/axel-tang-2b22572b6/"><Linkedin /></a>
+        </motion.div>
+      </motion.section>
 
       {/* About Section */}
-      <section className="px-6 py-20 max-w-5xl mx-auto bg-gradient-to-r from-black via-blue-900 to-black rounded-3xl shadow-xl my-12">
-        <h2 className="text-4xl font-bold mb-6 text-white drop-shadow-[0_0_12px_rgba(59,130,246,0.8)]">About Me</h2>
-        <p className="text-gray-200 leading-relaxed text-lg space-y-4">
-          From 8-9 years of studying in Canada, with a background of taking financial responsibility for my family and aligning interests with technology. I have a fast-track record for Bachelor in Computer Science.<br /><br />
-          With guidance from top tech industry leaders and being privileged to share the same school with Geoffery Hinton and Ilya Sutskever, I am now pursuing a Master of Engineering in Data Analytics and Machine Learning at the University of Toronto.<br /><br />
-          Starting my career at the age of 14, I have learned to adapt to the fast-paced world of technology and developed a strong foundation in software development and business management.<br /><br />
-          My experiences with UMPLE serving millions of users have prepared me to elevate my career to the next level. I am excited to contribute to innovative projects that make a real difference.
-        </p>
-      </section>
+      <motion.section className="about-section" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <h2>About Me</h2>
+        <p>From <span className="highlight gradient-text">8-9 years of studying in Canada</span>, I’ve taken financial responsibility for my family while pursuing my passion for technology.</p>
+        <p>Starting my career at 14, I developed a strong foundation in <span className="highlight gradient-text">Software Engineering</span> and <span className="highlight gradient-text">Business Management</span>.</p>
+        <p>I fast-tracked my <span className="highlight gradient-text">Bachelor in Computer Science</span> and am now pursuing <span className="highlight gradient-text">Master of Engineering</span> in Data Analytics and Machine Learning at the <span className="highlight gradient-text">University of Toronto</span>.</p>
+        <p>Experience with <span className="highlight gradient-text">UMPLE</span> prepared me to tackle large-scale projects and innovate in tech.</p>
+      </motion.section>
 
       {/* Projects Section */}
-      <section className="px-6 py-20 bg-gradient-to-b from-black via-blue-950 to-black rounded-3xl shadow-xl my-12">
-        <h2 className="text-4xl font-bold mb-12 text-center text-white drop-shadow-[0_0_12px_rgba(59,130,246,0.8)]">Projects</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.section className="projects-section" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <h2>Projects</h2>
+        <div className="projects-list">
           {projects.map((p, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-gradient-to-br from-blue-900 to-blue-800 p-6 rounded-3xl shadow-2xl border border-blue-700 hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] transition-all duration-300"
-            >
-              <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-[0_0_8px_rgba(59,130,246,0.7)]">{p.title}</h3>
-              <p className="text-gray-300 mb-5">{p.description}</p>
-              <a href={p.link} target="_blank" rel="noopener noreferrer">
-                <button className="bg-blue-700 hover:bg-blue-600 text-white px-6 py-2 rounded-xl shadow-[0_0_15px_rgba(59,130,246,0.8)] font-semibold transition">View Project</button>
-              </a>
+            <motion.div key={i} className="project-item" whileHover={{ scale: 1.05 }}>
+              <h3>{p.title}</h3>
+              <p>{p.description}</p>
+              <a href={p.link} target="_blank" rel="noopener noreferrer"><button>View Project</button></a>
             </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* Skills Section */}
-      <section className="px-6 py-20 max-w-5xl mx-auto bg-gradient-to-r from-black via-blue-900 to-black rounded-3xl shadow-xl my-12">
-        <h2 className="text-4xl font-bold mb-8 text-white drop-shadow-[0_0_12px_rgba(59,130,246,0.8)]">Skills</h2>
-        <div className="flex flex-wrap gap-4">
-          {skills.map(skill => (
-            <span key={skill} className="px-5 py-2 bg-blue-800 rounded-full text-white font-medium border border-blue-700 shadow-[0_0_12px_rgba(59,130,246,0.6)] text-lg">{skill}</span>
-          ))}
+      <motion.section className="skills-section" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <h2>Skills</h2>
+        <div className="skills-list">
+          {skills.map((skill) => <span key={skill} className="skill">{skill}</span>)}
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Section */}
-      <section className="px-6 py-20 text-center bg-gradient-to-t from-black via-blue-950 to-black rounded-3xl shadow-xl my-12">
-        <h2 className="text-4xl font-bold mb-6 text-white drop-shadow-[0_0_12px_rgba(59,130,246,0.8)]">Get in Touch</h2>
-        <p className="text-gray-200 mb-8 text-lg">
-          Looking for Winter 2026 Internship opportunities in Machine Learning.
-        </p>
-        <a href="mailto:axeltang@gmail.com">
-          <button className="bg-blue-700 hover:bg-blue-600 text-white px-8 py-3 rounded-2xl shadow-[0_0_20px_rgba(59,130,246,0.9)] text-xl font-semibold transition-all">Contact Me</button>
-        </a>
-      </section>
-
+      <motion.section className="contact-section" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <h2>Get in Touch</h2>
+        <p>Looking for Winter 2026 Internship opportunities in Machine Learning.</p>
+        <a href="mailto:axeltang@gmail.com"><button className="contact-button">Contact Me</button></a>
+      </motion.section>
     </div>
   );
 }
