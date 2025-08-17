@@ -103,7 +103,7 @@ function App() {
       <motion.section className="contact-section" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
         <h2>Get in Touch</h2>
         <p>Looking for Winter 2026 Internship opportunities in Machine Learning.</p>
-        <a href="mailto:axeltang@gmail.com"><button className="contact-button">Contact Me</button></a>
+        <a href="mailto:axel.tang@mail.utoronto.ca"><button className="contact-button">Contact Me</button></a>
       </motion.section>
     </div>
   );
