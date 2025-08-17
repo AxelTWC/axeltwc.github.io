@@ -95,15 +95,23 @@ export default function App() {
           <span className="timeline-dot blue"></span>
           <div className="timeline-content">
             <Briefcase size={28} className="timeline-icon"/>
+            <h4>Top 5 HK Primary School</h4>
+            <p>Met great people , but somehow started to be really shy :P</p>
+          </div>
+        </div>
+        <div className="timeline-item">
+          <span className="timeline-dot blue"></span>
+          <div className="timeline-content">
+            <Briefcase size={28} className="timeline-icon"/>
             <h4>HumblexMC</h4>
-            <p>2015-2016</p>
+            <p>Started from 2015-2016 when I saw an opportunity with a falling community</p>
           </div>
         </div>
         <div className="timeline-item">
           <span className="timeline-dot purple"></span>
           <div className="timeline-content">
             <BookOpen size={28} className="timeline-icon"/>
-            <h4>Studying abroad</h4>
+            <h4>Studying abroad, acquiring provincial merit certicates and more during last year in high school.</h4>
             <p>2016-2017</p>
           </div>
         </div>
@@ -112,7 +120,7 @@ export default function App() {
           <div className="timeline-content">
             <GraduationCap size={28} className="timeline-icon"/>
             <h4>Undergraduate</h4>
-            <p>Accepted to 8 universities</p>
+            <p>Accepted to all top 8 universities | Risked choices and fast track my program.</p>
           </div>
         </div>
         <div className="timeline-item">
@@ -120,7 +128,7 @@ export default function App() {
           <div className="timeline-content">
             <Code size={28} className="timeline-icon"/>
             <h4>UMPLE</h4>
-            <p>Honors Project with Timmothy Lethbridge</p>
+            <p>Honors Project with Dr.Lethbridge | Well known SWE OOP Modelling Professor</p>
           </div>
         </div>
         <div className="timeline-item">
@@ -128,7 +136,7 @@ export default function App() {
           <div className="timeline-content">
             <Laptop size={28} className="timeline-icon"/>
             <h4>HKGCC</h4>
-            <p>IT Internship including server side(HW) and internal tools(SW with py and OpenCV) </p>
+            <p>IT Internship including server side(HW) and internal tools(SW with Py and OpenCV) </p>
           </div>
         </div>
         <div className="timeline-item">
@@ -136,7 +144,7 @@ export default function App() {
           <div className="timeline-content">
             <User size={28} className="timeline-icon"/>
             <h4>Student at UofT</h4>
-            <p>Currently ongoing</p>
+            <p>Took a long break from graduation , fixed myself and move on. Got lucky to be admitted and currently ongoing</p>
           </div>
         </div>
       </div>
