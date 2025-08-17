@@ -1,112 +1,163 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
+import React, { useEffect } from "react";
 import { Mail, Github, Linkedin } from "lucide-react";
-import { motion } from "framer-motion";
+import './App.css';
+import { Briefcase, BookOpen, GraduationCap, Code, Laptop, User } from "lucide-react";
 
-function App() {
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
+export default function App() {
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    const handleMouse = (e) => setMousePos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("mousemove", handleMouse);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("mousemove", handleMouse);
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in-up");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
   }, []);
 
-  const projects = [
-    { title: "HumblexMC", description: "Served 50k-100k players globally for 7-8 years.", link: "https://humblex.net" },
-    { title: "Coming ML Projects", description: "Resume for now.", link: "https://axeltwc.github.io/AxelTang-Resume.pdf" },
-    { title: "UMPLE", description: "Under Professor for his software teaching OOP concepts to millions of NA students.", link: "https://github.com/umple/umple/issues?q=involves%3AAxelTWC+sort%3Acreated-asc+" },
-  ];
-
-  const skills = ["Java", "Python", "OpenCV", "GitHub","CI/CD"];
-
   return (
-    <div className="app">
-      {/* Floating ML Nodes */}
-      <div className="ml-floating-nodes">
-        {Array.from({ length: 15 }).map((_, i) => (
-          <div
-            key={i}
-            className="ml-node"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              transform: `translate(${mousePos.x * 0.002 * i}px, ${scrollY * 0.01 * i}px)`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Data Stream Lines */}
-      <div className="data-streams">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="data-line" style={{ left: `${i * 15 + 5}%`, animationDelay: `${i * 0.5}s` }}></div>
-        ))}
-      </div>
+    <div className="app-container">
+      {/* Header */}
+      <header className="header">
+        <nav className="nav-container">
+          <h1 className="logo">Axel Tang</h1>
+          <div className="nav-links">
+            <a href="#about" className="nav-link">About</a>
+            <a href="#projects" className="nav-link">Projects</a>
+            <a href="#experience" className="nav-link">Experience</a>
+            <a href="#contact" className="nav-link">Contact</a>
+          </div>
+        </nav>
+      </header>
 
       {/* Hero Section */}
-      <motion.section className="hero-section" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.2 }}>
-        <motion.h1 initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5, delay: 0.2 }}>
-          Hi, I'm Axel Tang 👋
-        </motion.h1>
-        <motion.p initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5, delay: 0.5 }}>
-          MEng Student @ <span className="gradient-text">UofT</span> | Data Analytics & Machine Learning
-        </motion.p>
-        <motion.div className="hero-socials" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1 }}>
-          <a href="mailto:axel.tang@mail.utoronto.ca"><Mail /></a>
-          <a href="https://github.com/axeltwc"><Github /></a>
-          <a href="https://www.linkedin.com/in/axel-tang-2b22572b6/"><Linkedin /></a>
-        </motion.div>
-      </motion.section>
+      <section className="hero">
+        <h2 className="hero-title">Hi, I’m Axel 👋</h2>
+        <p className="hero-text">
+          Master of Engineering in Data Analytics and Machine Learning at <span className="highlight">University of Toronto</span>.
+          <br></br>
+          - Confidence | Resilience | Persistence -
+          <br></br> Allow Real Eyes To Realize The Paradise
+        </p>
+      </section>
 
       {/* About Section */}
-      <motion.section className="about-section" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-        <h2>About Me</h2>
-        <p>Starting my career at 14, I developed a strong foundation in <span className="highlight gradient-text">Software Engineering</span> and <span className="highlight gradient-text">Business Management</span>.</p>
-        <p>Experience with <span className="highlight gradient-text">UMPLE</span> prepared me to tackle large-scale projects and innovate in tech.</p>
-        <p>From <span className="highlight gradient-text">8-9 years of studying in Canada</span>, I’ve taken financial responsibility for my family while pursuing my passion for technology.</p>
-        <p>With crucial advises from top industrial leaders and having the privilege to be in the same school with AI pioneers such as Geoffrey Hinton and Ilya Sutskever...</p>
-        <p>I fast-tracked my <span className="highlight gradient-text">Bachelor in Computer Science</span> and am now pursuing <span className="highlight gradient-text">Master of Engineering</span> in Data Analytics and Machine Learning at the <span className="highlight gradient-text">University of Toronto</span>.</p>
-
-      </motion.section>
+      <section id="about" className="about reveal">
+        <div className="about-card">
+          <div className="about-text">
+            <h3>About Me</h3>
+            <p>
+              I’m Axel Tang, building business and projects since 14. 
+              <br>
+              </br>I’ve contributed to projects like UMPLE serving millions of NA students 
+              <br></br>and was the main force behind HumblexMC serving tens of thousands of players globally. 
+              <br></br>I came from humble beginnings, supporting my family and striving for excellence in my studies. 
+              <br></br>Originally with a core foundation in computer science, and guided by industrial leaders, being in the same school with AI Pioneers such as Geoffrey Hinton and Ilya Sutskever, I am aiming to expand my knowledge into machine learning.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Projects Section */}
-      <motion.section className="projects-section" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-        <h2>Projects</h2>
-        <div className="projects-list">
-          {projects.map((p, i) => (
-            <motion.div key={i} className="project-item" whileHover={{ scale: 1.05 }}>
-              <h3>{p.title}</h3>
-              <p>{p.description}</p>
-              <a href={p.link} target="_blank" rel="noopener noreferrer"><button>View Project</button></a>
-            </motion.div>
-          ))}
+      <section id="projects" className="projects reveal">
+        <h3>Projects</h3>
+        <div className="projects-grid">
+          <div className="card">
+            <h4>HumblexMC</h4>
+            <p>Serving 25k+ players, developed a community with focus on quality and performance.</p>
+          </div>
+          <div className="card">
+            <h4>UMPLE Contributions</h4>
+            <p>Resolved Java issues, implemented new features, and maintained CI/CD pipelines.</p>
+          </div>
+          <div className="card">
+            <h4>ML Project Coming Soon</h4>
+            <p>Coming Soon.</p>
+          </div>
+          <div className="card">
+            <h4>ML Project Coming Soon 2</h4>
+            <p>Waiting for a new GPU to run this project.</p>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Skills Section */}
-      <motion.section className="skills-section" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-        <h2>Skills</h2>
-        <div className="skills-list">
-          {skills.map((skill) => <span key={skill} className="skill">{skill}</span>)}
+      {/* Experience Section */}
+      <section id="experience" className="experience reveal">
+      <h3>Experience and Timeline</h3>
+      <div className="timeline">
+        <div className="timeline-item">
+          <span className="timeline-dot blue"></span>
+          <div className="timeline-content">
+            <Briefcase size={28} className="timeline-icon"/>
+            <h4>HumblexMC</h4>
+            <p>2015-2016</p>
+          </div>
         </div>
-      </motion.section>
+        <div className="timeline-item">
+          <span className="timeline-dot purple"></span>
+          <div className="timeline-content">
+            <BookOpen size={28} className="timeline-icon"/>
+            <h4>Studying abroad</h4>
+            <p>2016-2017</p>
+          </div>
+        </div>
+        <div className="timeline-item">
+          <span className="timeline-dot purple"></span>
+          <div className="timeline-content">
+            <GraduationCap size={28} className="timeline-icon"/>
+            <h4>Undergraduate</h4>
+            <p>Accepted to 8 universities</p>
+          </div>
+        </div>
+        <div className="timeline-item">
+          <span className="timeline-dot purple"></span>
+          <div className="timeline-content">
+            <Code size={28} className="timeline-icon"/>
+            <h4>UMPLE</h4>
+            <p>Honors Project with top SWE minds</p>
+          </div>
+        </div>
+        <div className="timeline-item">
+          <span className="timeline-dot pink"></span>
+          <div className="timeline-content">
+            <Laptop size={28} className="timeline-icon"/>
+            <h4>HKGCC</h4>
+            <p>IT Internship including server side and internal tools</p>
+          </div>
+        </div>
+        <div className="timeline-item">
+          <span className="timeline-dot green"></span>
+          <div className="timeline-content">
+            <User size={28} className="timeline-icon"/>
+            <h4>Student at UofT</h4>
+            <p>Currently ongoing</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
 
       {/* Contact Section */}
-      <motion.section className="contact-section" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-        <h2>Get in Touch</h2>
-        <p>Looking for Winter 2026 Internship opportunities in Machine Learning.</p>
-        <a href="mailto:axel.tang@mail.utoronto.ca"><button className="contact-button">Contact Me</button></a>
-      </motion.section>
+      <section id="contact" className="contact reveal">
+        <h3>Let’s Connect</h3>
+        <p>Interested in collaborating or just want to say hi? Reach out below:</p>
+        <div className="contact-links">
+          <a href="mailto:axel.tang@mail.utoronto.ca" className="contact-icon"><Mail /></a>
+          <a href="https://github.com/axeltwc" target="_blank" rel="noreferrer" className="contact-icon"><Github /></a>
+          <a href="https://www.linkedin.com/in/axel-tang-2b22572b6/" target="_blank" rel="noreferrer" className="contact-icon"><Linkedin /></a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">© {new Date().getFullYear()} Axel Tang. All rights reserved.</footer>
     </div>
   );
 }
-
-export default App;
