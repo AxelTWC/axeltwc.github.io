@@ -49,6 +49,9 @@ export default function App() {
           - Confidence | Persistence | Resilience -
           <br></br> It Takes Time For Your Real Eyes To Realize The Paradise
         </p>
+        <div className="hero-buttons">
+          <a href="#contact" className="hero-btn slide-in">Drop A Message</a>
+        </div>
       </section>
 
       {/* About Section */}
@@ -99,7 +102,7 @@ export default function App() {
         <div className="timeline-item">
           <span className="timeline-dot blue"></span>
           <div className="timeline-content">
-            <Briefcase size={28} className="timeline-icon"/>
+            <BookOpen size={28} className="timeline-icon"/>
             <h4>Top 5 HK Primary School</h4>
             <p>Met great people , but somehow started to be really shy :P | Rankings were back then</p>
           </div>
@@ -161,11 +164,12 @@ export default function App() {
       {/* Contact Section */}
       <section id="contact" className="contact reveal">
         <h3>Let’s Connect</h3>
-        <p>Interested in collaborating or just want to say hi? Reach out below:</p>
+        <p>General enquires or interested in my projects?<br>
+        </br>Email below or message on LinkedIn :) | Come along and say hi! I like talking... xD</p>
         <div className="contact-links">
           <a href="mailto:axel.tang@mail.utoronto.ca" className="contact-icon"><Mail /></a>
-          <a href="https://github.com/axeltwc" target="_blank" rel="noreferrer" className="contact-icon"><Github /></a>
           <a href="https://www.linkedin.com/in/axel-tang-2b22572b6/" target="_blank" rel="noreferrer" className="contact-icon"><Linkedin /></a>
+          <a href="https://github.com/axeltwc" target="_blank" rel="noreferrer" className="contact-icon"><Github /></a>
         </div>
       </section>
 

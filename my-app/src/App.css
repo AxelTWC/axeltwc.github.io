@@ -315,6 +315,7 @@ a, a:visited {
     margin-left: 0;
     margin-bottom: 3rem;
     position: relative;
+    max-width: 70%;
   }
 
   .timeline-content {
@@ -483,6 +484,44 @@ a, a:visited {
 .hero-buttons {
   animation: slideUpFade 1s forwards;
   animation-delay: 1.2s;
+  margin-top: 2rem;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #8b5cf6, #de6da6);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  animation: slideUpFade 1s forwards;
+  animation-delay: 1.2s;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  background: linear-gradient(90deg, #7c3aed, #db2777);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-btn.slide-in {
+  opacity: 0;
+  animation: slideInUp 1s ease forwards;
+  animation-delay: 1.0s; /* delay after hero text */
 }
 
 .wave {
