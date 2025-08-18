@@ -455,12 +455,6 @@ a, a:visited {
   }
 }
 
-
-.hero-title {
-  animation: slideUpFade 1s forwards;
-  animation-delay: 0.2s;
-}
-
 .hero-text {
   animation: slideUpFade 1s forwards;
   animation-delay: 0.7s;
