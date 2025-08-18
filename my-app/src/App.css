@@ -439,3 +439,34 @@ a, a:visited {
     gap: 1rem;
   }
 }
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUpFade 1s forwards; /* play animation */
+  animation-delay: 0.5s; /* delay after title */
+}
+
+/* Keyframes */
+@keyframes slideUpFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.hero-title {
+  animation: slideUpFade 1s forwards;
+  animation-delay: 0.2s;
+}
+
+.hero-text {
+  animation: slideUpFade 1s forwards;
+  animation-delay: 0.7s;
+}
+
+.hero-buttons {
+  animation: slideUpFade 1s forwards;
+  animation-delay: 1.2s;
+}

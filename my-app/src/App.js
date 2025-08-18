@@ -39,7 +39,7 @@ export default function App() {
       {/* Hero Section */}
       <section className="hero">
         <h2 className="hero-title">Hi, I’m Axel 👋</h2>
-        <p className="hero-text">
+        <p className="hero-text slide-up">
           Master of Engineering in Data Analytics and Machine Learning at <span className="highlight">University of Toronto</span>.
           <br></br>
           - Confidence | Resilience | Persistence -
