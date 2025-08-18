@@ -303,17 +303,12 @@ a, a:visited {
 }
 
 @media(max-width: 768px) {
-  .timeline {
-    position: relative;
-    padding-left: 0;
-    margin: 0 auto;
-  }
-
-  /* Hide the vertical line */
-  .timeline::before {
+  /* Hide the timeline dots */
+  .timeline-dot {
     display: none;
   }
 
+  /* Center timeline content */
   .timeline-item {
     align-items: center;
     text-align: center;
@@ -322,17 +317,19 @@ a, a:visited {
     position: relative;
   }
 
-  .timeline-dot {
-    display: none;
-  }
-
   .timeline-content {
     margin-left: 0;
     width: 100%;
-    max-width: 90%;       /* keeps content neat on small screens */
+    max-width: 90%; /* fit nicely on screen */
     margin-top: 0;
   }
+
+  /* Hide vertical line */
+  .timeline::before {
+    display: none;
+  }
 }
+
 
 
 .timeline {
