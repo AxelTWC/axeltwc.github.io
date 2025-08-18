@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-
-const symbols = ["🤖", "🧠", "📊", "💻", "📈", "🔍", "0", "1"];
+import React, { useEffect, useRef } from "react";
 
 export default function ClickMatrixRain() {
   const canvasRef = useRef(null);
-  const [streams, setStreams] = useState([]);
+  const streamsRef = useRef([]);
+
+  // matrix-like symbols
+  const symbols =
+    "アカサタナハマヤラワ0123456789αβΓΔπΣΩЖБДΨψ";
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,39 +15,35 @@ export default function ClickMatrixRain() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const fontSize = 24;
+    const fontSize = 20;
 
     function draw() {
+      // clear with transparency, not black
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      streams.forEach((stream) => {
+      streamsRef.current.forEach((stream) => {
         stream.chars.forEach((char, i) => {
-          if (i === 0) {
-            // glowing head (white)
-            ctx.fillStyle = "rgba(255, 255, 255, 1)";
-          } else {
-            // fading tail (green w/ opacity)
-            const opacity = 1 - i / stream.chars.length;
-            ctx.fillStyle = `rgba(0, 255, 157, ${opacity})`;
-          }
-
+          const opacity = 1 - i / stream.chars.length;
+          ctx.fillStyle =
+            i === 0
+              ? "rgba(140, 255, 170, 1)" // head glow
+              : `rgba(0, 255, 70, ${opacity})`;
           ctx.font = `${fontSize}px monospace`;
           ctx.fillText(char, stream.x, stream.y + i * fontSize);
         });
 
         stream.y += stream.speed;
-
-        // remove if off screen
-        if (stream.y > canvas.height + stream.chars.length * fontSize) {
-          stream.dead = true;
-        }
       });
 
-      // clean up finished streams
-      setStreams((prev) => prev.filter((s) => !s.dead));
+      // cleanup old streams
+      streamsRef.current = streamsRef.current.filter(
+        (s) => s.y < canvas.height + s.chars.length * fontSize * 2
+      );
+
+      requestAnimationFrame(draw);
     }
 
-    const interval = setInterval(draw, 50);
+    draw();
 
     const handleResize = () => {
       canvas.width = window.innerWidth;
@@ -53,21 +51,23 @@ export default function ClickMatrixRain() {
     };
     window.addEventListener("resize", handleResize);
 
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [streams]);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleClick = (e) => {
-      const newStream = {
-        x: e.clientX,
-        y: e.clientY,
-        chars: Array.from({ length: 15 }, () => symbols[Math.floor(Math.random() * symbols.length)]),
-        speed: 5 + Math.random() * 3,
-      };
-      setStreams((prev) => [...prev, newStream]);
+      // spawn multiple streams near the click
+      for (let j = 0; j < 5; j++) {
+        const newStream = {
+          x: e.clientX + (Math.random() * 40 - 20), // spread horizontally
+          y: e.clientY,
+          chars: Array.from({ length: 25 }, () =>
+            symbols.charAt(Math.floor(Math.random() * symbols.length))
+          ),
+          speed: 2 + Math.random() * 0.7,
+        };
+        streamsRef.current.push(newStream);
+      }
     };
 
     document.addEventListener("click", handleClick);
