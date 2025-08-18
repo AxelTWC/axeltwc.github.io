@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import { Mail, Github, Linkedin } from "lucide-react";
 import './App.css';
 import { Briefcase, BookOpen, GraduationCap, Code, Laptop, User } from "lucide-react";
-import ClickFallingEffect from "./ClickFallingEffect";
+import ClickMatrixRain from "./ClickMatrixRain";
 
 export default function App() {
+  
   useEffect(() => {
-    <ClickFallingEffect />
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -25,6 +26,7 @@ export default function App() {
 
   return (
     <div className="app-container">
+      <ClickMatrixRain />
       {/* Header */}
       <header className="header">
         <nav className="nav-container">
