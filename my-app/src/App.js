@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { Mail, Github, Linkedin } from "lucide-react";
 import './App.css';
 import { Briefcase, BookOpen, GraduationCap, Code, Laptop, User } from "lucide-react";
+import ClickFallingEffect from "./ClickFallingEffect";
 
 export default function App() {
   useEffect(() => {
+    <ClickFallingEffect />
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
