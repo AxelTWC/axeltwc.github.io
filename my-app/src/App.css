@@ -303,26 +303,41 @@ a, a:visited {
 }
 
 @media(max-width: 768px) {
+  .timeline {
+    position: relative;
+    padding-left: 0;
+    margin: 0 auto;
+  }
+
+  /* Hide the vertical line */
   .timeline::before {
-    left: 50%; /* vertical line centered */
+    display: none;
   }
 
   .timeline-item {
-    margin-left: 0;
     align-items: center;
     text-align: center;
+    margin-left: 0;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .timeline-dot {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    margin-bottom: 1rem; /* space between dot and card */
   }
 
   .timeline-content {
     margin-left: 0;
-    width: 90%;
-  }
-
-  .timeline-dot {
-    left: 50%; /* center dot */
-    transform: translateX(-50%);
+    width: 100%;
+    max-width: 90%;       /* keeps content neat on small screens */
+    margin-top: 0;
   }
 }
+
 
 .timeline {
   position: relative;
