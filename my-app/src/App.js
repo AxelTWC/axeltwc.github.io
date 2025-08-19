@@ -42,7 +42,7 @@ export default function App() {
 
       {/* Hero Section */}
       <section className="hero">
-        <h2 className="hero-title">Hi, I’m Axel <span className="wave">🤗</span></h2>
+        <h2 className="hero-title">Hi, I’m Axel <span className="wave">👋🏻</span></h2>
         <p className="hero-text slide-up">
           Master of Engineering in Data Analytics and Machine Learning at <span className="highlight">University of Toronto</span>.
           <br></br>
@@ -165,7 +165,7 @@ export default function App() {
       <section id="contact" className="contact reveal">
         <h3>Let’s Connect</h3>
         <p>General enquires or interested in my projects?<br>
-        </br>Email below or message on LinkedIn :) | Come along and say hi! I like talking... xD</p>
+        </br>Email below or message on LinkedIn :) | Come along and say hi <span className="face-wave">🤗</span>!!!</p>
         <div className="contact-links">
           <a href="mailto:axel.tang@mail.utoronto.ca" className="contact-icon"><Mail /></a>
           <a href="https://www.linkedin.com/in/axel-tang-2b22572b6/" target="_blank" rel="noreferrer" className="contact-icon"><Linkedin /></a>
