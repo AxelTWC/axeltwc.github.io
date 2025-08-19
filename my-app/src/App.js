@@ -65,8 +65,8 @@ export default function App() {
               </br>I’ve contributed to projects like UMPLE serving millions of NA students 
               <br></br>and was the main force behind HumblexMC serving tens of thousands of players globally. 
               <br></br>I came from humble beginnings, supporting my family and striving for excellence in my studies. 
-              <br></br>Originally with a core foundation in computer science, and guided by industrial leaders, being privilleged to be in
-              <br></br>the same school with AI Pioneers such as Geoffrey Hinton and Ilya Sutskever, I am aiming to expand my knowledge into machine learning.
+              <br></br><br></br>Originally with a core foundation in computer science and a focus of software engineering, lucky to be guided by industrial leaders about the next generation technology, being privilleged to be in
+              <br></br>the same school with AI Pioneers such as Geoffrey Hinton and Ilya Sutskever, I am aiming to expand and hone my knowledge in machine learning.
             </p>
           </div>
         </div>
@@ -78,15 +78,15 @@ export default function App() {
         <div className="projects-grid">
           <div className="card">
             <h4>HumblexMC</h4>
-            <p>Serving 25k+ players, developed a community with focus on quality and performance.</p>
+            <p>Serving 25k+ players, developed a community with focus on quality and performance. Learnt business and management along the way.</p>
           </div>
           <div className="card">
             <h4>UMPLE Contributions</h4>
-            <p>Resolved Java issues, implemented new features, and maintained CI/CD pipelines.</p>
+            <p>Resolved UML language issues with Java, implemented new features, and maintained CI/CD pipelines.</p>
           </div>
           <div className="card">
             <h4>ML Project Coming Soon</h4>
-            <p>Coming Soon.</p>
+            <p>Coming Soon. Need GPU</p>
           </div>
           <div className="card">
             <h4>ML Project Coming Soon 2</h4>
@@ -120,7 +120,7 @@ export default function App() {
           <div className="timeline-content">
             <BookOpen size={28} className="timeline-icon"/>
             <h4>Studying abroad</h4>
-            <p>2017 onward | Acquiring provincial merit certicates and more during last year in high school</p>
+            <p>2017 Onward | Manitoba and Ontario | Acquiring provincial merit certicates and more during last year in high school</p>
           </div>
         </div>
         <div className="timeline-item">
@@ -128,7 +128,7 @@ export default function App() {
           <div className="timeline-content">
             <GraduationCap size={28} className="timeline-icon"/>
             <h4>Undergraduate</h4>
-            <p>Accepted to all top 8 universities | Risked choices and fast track my program</p>
+            <p>Admitted to all top 8 universities of Canada, Ontario | Risked choices for family and fast track my program</p>
           </div>
         </div>
         <div className="timeline-item">
@@ -152,7 +152,7 @@ export default function App() {
           <div className="timeline-content">
             <User size={28} className="timeline-icon"/>
             <h4>Student at UofT</h4>
-            <p>Took a long break from graduation , fixed myself and move on. Got lucky to be admitted and currently ongoing</p>
+            <p>Took a long break from graduation , privileged to meet industrial leaders of big tech , fixed myself and move on. Got lucky to be admitted and currently ongoing | Also loves to chit talk :P </p>
           </div>
         </div>
       </div>
@@ -165,7 +165,7 @@ export default function App() {
       <section id="contact" className="contact reveal">
         <h3>Let’s Connect</h3>
         <p>General enquires or interested in my projects?<br>
-        </br>Email below or message on LinkedIn :) | Come along and say hi <span className="face-wave">🤗</span> !!!</p>
+        </br>Email below or message on LinkedIn | Come along and say hi <span className="face-wave">🤗</span> !!!</p>
         <div className="contact-links">
           <a href="mailto:axel.tang@mail.utoronto.ca" className="contact-icon"><Mail /></a>
           <a href="https://www.linkedin.com/in/axel-tang-2b22572b6/" target="_blank" rel="noreferrer" className="contact-icon"><Linkedin /></a>
