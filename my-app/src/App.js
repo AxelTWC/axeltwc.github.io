@@ -165,7 +165,7 @@ export default function App() {
       <section id="contact" className="contact reveal">
         <h3>Let’s Connect</h3>
         <p>General enquires or interested in my projects?<br>
-        </br>Email below or message on LinkedIn :) | Come along and say hi <span className="face-wave">🤗</span>!!!</p>
+        </br>Email below or message on LinkedIn :) | Come along and say hi <span className="face-wave">🤗</span> !!!</p>
         <div className="contact-links">
           <a href="mailto:axel.tang@mail.utoronto.ca" className="contact-icon"><Mail /></a>
           <a href="https://www.linkedin.com/in/axel-tang-2b22572b6/" target="_blank" rel="noreferrer" className="contact-icon"><Linkedin /></a>
