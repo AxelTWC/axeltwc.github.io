@@ -527,7 +527,7 @@ a, a:visited {
 .wave {
   display: inline-block;
   animation: wave 1.2s infinite;
-  transform-origin: 70% 70%; /* pivot point of hand */
+  transform-origin: bottom center; /* pivot point */
 }
 
 @keyframes wave {
