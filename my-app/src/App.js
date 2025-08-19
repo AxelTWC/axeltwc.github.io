@@ -42,7 +42,7 @@ export default function App() {
 
       {/* Hero Section */}
       <section className="hero">
-        <h2 className="hero-title">Hi, I’m Axel <span className="wave">👋</span></h2>
+        <h2 className="hero-title">Hi, I’m Axel <span className="wave">🤗</span></h2>
         <p className="hero-text slide-up">
           Master of Engineering in Data Analytics and Machine Learning at <span className="highlight">University of Toronto</span>.
           <br></br>
