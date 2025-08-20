@@ -61,12 +61,10 @@ export default function App() {
             <h3>About Me</h3>
             <p>
               I’m Axel Tang, building business and projects since 14. 
-              <br>
-              </br>I’ve contributed to projects like UMPLE serving millions of NA students 
-              <br></br>and was the main force behind HumblexMC serving tens of thousands of players globally. 
-              <br></br>I came from humble beginnings, supporting my family and striving for excellence in my studies. 
-              <br></br><br></br>Originally with a core foundation in computer science and a focus of software engineering, lucky to be guided by industrial leaders about the next generation technology, being privilleged to be in
-              <br></br>the same school with AI Pioneers such as Geoffrey Hinton and Ilya Sutskever, I am aiming to expand and hone my knowledge in machine learning.
+              <br></br><br></br>I’ve contributed to projects like UMPLE serving millions of NA students and was the main force behind <br></br>HumblexMC serving tens of thousands of players globally meanwhile tried to sustain a 4 year eco-system. 
+              <br></br><br></br>I came from humble beginnings, supporting my family by being selfless from a young age <br></br>such as saving up and disconnect from the norm then striving for excellence in my studies. 
+              <br></br><br></br>Originally with a core foundation in computer science and a focus of software engineering, <br></br>I was also lucky enough to be guided by industrial leaders about next generation technology.
+              <br></br><br></br>Being privilleged to be in the same school with AI Pioneers such as Geoffrey Hinton and Ilya Sutskever. <br></br>I am aiming to expand while honing my knowledge of big data, artifical intelligence and machine learning.<br></br>Needless to say, I foresee myself contributing to the rapid growth of the next state-of-the-art tech revolution.
             </p>
           </div>
         </div>
@@ -86,11 +84,11 @@ export default function App() {
           </div>
           <div className="card">
             <h4>ML Project Coming Soon</h4>
-            <p>Coming Soon. Need GPU</p>
+            <p>Coming Soon, probably about fingers. Need GPU</p>
           </div>
           <div className="card">
             <h4>ML Project Coming Soon 2</h4>
-            <p>Waiting for a new GPU to run this project.</p>
+            <p>Waiting for a new GPU to run this project. Hopefully about face recognition related or healthcare related</p>
           </div>
         </div>
       </section>
@@ -112,7 +110,7 @@ export default function App() {
           <div className="timeline-content">
             <Briefcase size={28} className="timeline-icon"/>
             <h4>HumblexMC</h4>
-            <p>Started from 2015-2016 when I saw an opportunity with a falling community | Learnt how to business and develop on the way</p>
+            <p>Started from 2015-2016 when I saw an opportunity with a falling community | Learnt how to business and develop on the way | Sustained from 2016-2024 ish </p>
           </div>
         </div>
         <div className="timeline-item">
