@@ -47,7 +47,7 @@ export default function App() {
           Master of Engineering in Data Analytics and Machine Learning at <span className="highlight">University of Toronto</span>.
           <br></br>
           - Confidence | Persistence | Resilience -
-          <br></br> It Takes Time For Your Real Eyes To Realize The Paradise
+          <br></br> Rise And Shine For Your Real Eyes To Realize The Paradise
         </p>
         <div className="hero-buttons">
           <a href="#contact" className="hero-btn slide-in">Drop A Message</a>
