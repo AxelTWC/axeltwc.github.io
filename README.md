@@ -1,11 +1,11 @@
 # Hello , I am Axel Tang. 
-# Currently In School.
+Currently In Grad School.
 - You may view my Github Profile Here | [Click Here To Access Profile](https://github.com/AxelTWC)
 - You may view my Resume Here | [Click Here To Access Resume](https://axeltwc.github.io/AxelTang-Resume.pdf)
 - You may view my Linkedln Here | [Click Here To Access Linkedln](https://www.linkedin.com/in/axel-tang-2b22572b6/)
 
 ## Who am I 
-- A software developer/engineer looking for **job opportunities in field of SDE,QA,AI/ML,DS**.
+- A software developer/engineer looking for **job opportunities in field of SDE,AI/ML,DS**.
 - A Early Graduated Student from University of Ottawa with Honours Specialist in Computer Science.
 - A Proud 8 Years Game Server Owner Serving 25k-50k players.
 
@@ -30,10 +30,5 @@
 ## My Contacts
 - Discord: AxelTWC
 - Linkedln: Axel Tang
-- Email: axel0328canada@outlook.com
+- Email: axel.tang@mail.utoronto.ca
 
-### Why Such Website?
-- I believe my personal website should be straight forward.
-- No Complications or languages are used in this website (Only Github README)
-- Feel free to reach out! And Thank You For Visiting my Website
-- Hosting Resumes (Updated Date: 2/26/2025)
