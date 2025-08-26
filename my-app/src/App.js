@@ -161,7 +161,7 @@ export default function App() {
       <section id="statement" className="statement reveal">
         <h3>Personal Statement</h3>
         <p>
-          I am born with no technological background, only a PC and a game which led me to open a “studio/service” running for 8 years for my childhood, through it, <b>I learnt that technology is the key to improve the world in a vast ways unimaginable.</b> On top of that, with my medical/nursing background from my parents, I always strive to take care and be concerned about others over myself. 
+          I am born with no technological background, only a PC and a game which led me to open a “studio/service” running for 8 years during my childhood, through it, <b>I learnt that technology is the key to improve the world in a vast ways unimaginable.</b> On top of that, with my medical/nursing background from my parents, I always strive to take care and be concerned about others over myself. 
           <br></br><br></br>
           During my Bachelors Years, I got introduced to AI chatbots, the year which OpenAI publicly released their first model. At that time, I did not have a clue about <b>the topics of artificial intelligence</b> as I was focusing on how to get my family out of financial pressure and doing the "right" thing. Therefore, I wanted to build a career through software, I wasn’t particularly interested in developing websites or front-end related but rather liked working on lower levels such as the source to make a programming language work (Honors Project) or something exciting which could be also seen out of the software spectrum such as robotics or other sorts of engineering tied to SWE (internal tools and much more).
           <br></br><br></br>
