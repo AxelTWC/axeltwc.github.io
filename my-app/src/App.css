@@ -638,6 +638,13 @@ a, a:visited {
   
 }
 
+@media (max-width: 768px) {
+  .statement p {
+    text-align: left;
+    text-justify: auto;
+  }
+}
+
 /* Animated Gradient Border for statement */
 .statement p::before {
   content: "";
