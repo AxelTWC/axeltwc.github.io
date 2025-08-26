@@ -151,7 +151,7 @@ export default function App() {
           <div className="timeline-content">
             <User size={28} className="timeline-icon"/>
             <h4>Student at UofT</h4>
-            <p>Took a long break from graduation , privileged to meet industrial leaders of big tech , fixed myself and move on. Got lucky to be admitted and currently ongoing | Also loves to chit talk :P </p>
+            <p>Took a long break from graduation , privileged to meet industrial leaders of big tech , fixed myself and move on. Got lucky to be admitted and currently ongoing | Also loves to chit chat :P </p>
           </div>
         </div>
       </div>
