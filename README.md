@@ -28,7 +28,6 @@ Currently In Grad School.
   - Using Go , Scheme , Prolog to learn the fundamentals of programming
     
 ## My Contacts
-- Discord: AxelTWC
 - Linkedln: Axel Tang
 - Email: axel.tang@mail.utoronto.ca
 
