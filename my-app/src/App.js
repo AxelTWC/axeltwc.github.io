@@ -3,6 +3,8 @@ import { Mail, Github, Linkedin } from "lucide-react";
 import './App.css';
 import { Briefcase, BookOpen, GraduationCap, Code, Laptop, User } from "lucide-react";
 import ClickMatrixRain from "./ClickMatrixRain";
+import { Brain, Activity, Shield } from "lucide-react";
+import ResumeSection from "./ResumeSection";
 
 export default function App() {
   
@@ -32,12 +34,14 @@ export default function App() {
         <nav className="nav-container">
           <h1 className="logo">Axel Tang</h1>
           <div className="nav-links">
-            <a href="#about" className="nav-link">About</a>
-            <a href="#projects" className="nav-link">Projects</a>
-            <a href="#experience" className="nav-link">Experience</a>
-            <a href="#statement" className="nav-link">Statement</a>
-            <a href="#contact" className="nav-link">Contact</a>
-          </div>
+  <a href="#about" className="nav-link">About</a>
+  <a href="#projects" className="nav-link">Projects</a>
+  <a href="#experience" className="nav-link">Experience</a>
+  <a href="#statement" className="nav-link">Statement</a>
+  <a href="#resume" className="nav-link">Resume</a>   
+  <a href="#ai-insight" className="nav-link">AI Insight</a> 
+  <a href="#contact" className="nav-link">Contact</a>
+</div>
         </nav>
       </header>
 
@@ -62,7 +66,7 @@ export default function App() {
             <h3>About Me</h3>
             <p>
               I’m Axel Tang, building business and projects since 14. 
-              <br></br><br></br>I’ve contributed to projects like UMPLE serving millions of NA students and was the main force behind <br></br>HumblexMC serving tens of thousands of players globally meanwhile tried to sustain a 4 year eco-system. 
+              <br></br><br></br>I’ve contributed to projects like UMPLE serving millions of NA students and was the main force behind <br></br>HumblexMC serving tens of thousands of players globally meanwhile tried to sustain a 8 year eco-system. 
               <br></br><br></br>I came from humble beginnings, supporting my family by being selfless from a young age <br></br>such as saving up and disconnect from the norm then striving for excellence in my studies. 
               <br></br><br></br>Originally with a core foundation in computer science and a focus of software engineering, <br></br>I was also lucky enough to be guided by industrial leaders about next generation technology.
               <br></br><br></br>Being privilleged to be in the same school with AI Pioneers such as Geoffrey Hinton and Ilya Sutskever. <br></br>I am aiming to expand while honing my knowledge of big data, artifical intelligence and machine learning.<br></br>Needless to say, I foresee myself contributing to the rapid growth of the next state-of-the-art tech revolution.
@@ -85,11 +89,11 @@ export default function App() {
           </div>
           <div className="card">
             <h4>ML Project Coming Soon</h4>
-            <p>Coming Soon, probably about fingers. Need GPU</p>
+            <p>Waiting for a new GPU to run this project. Hopefully about face recognition related or healthcare related</p>
           </div>
           <div className="card">
-            <h4>ML Project Coming Soon 2</h4>
-            <p>Waiting for a new GPU to run this project. Hopefully about face recognition related or healthcare related</p>
+            <h4>Others</h4>
+            <p>All my previous software background projects are viewable in my github.</p>
           </div>
         </div>
       </section>
@@ -172,6 +176,44 @@ export default function App() {
         </p>
       </section>
 
+      {/* Resume Section */}
+        <ResumeSection />
+
+
+      {/* AI Insight Section */}
+      <section id="ai-insight" className="ai-insight reveal">
+        <h3>AI Insight</h3>
+        <p>
+          Artificial Intelligence is the next frontier of technology, same as the invention of the internet, smartphone and vehicles. It is transforming industries, enhancing productivity, and reshaping the way we live and work.
+          <br></br><br></br>
+          Here are some areas I find particularly that I like to discuss on:
+          <br></br><br></br>
+          (**Also I love you AI companions..hope we can work together xD, yall are my teachers**)
+        </p>
+        <div className="insight-grid">
+          <div className="card">
+            <Brain size={40} className="insight-icon" />
+            <h4>Healthcare AI</h4>
+            <p>
+              Coming with a family medical background, although I am not a medical professional, I see the potential of AI in revolutionizing healthcare. From diagnostics to personalized treatment, AI can enhance patient care and outcomes.
+            </p>
+          </div>
+          <div className="card">
+            <Activity size={40} className="insight-icon" />
+            <h4>AGI & Robotics</h4>
+            <p>
+              The topic of AGI and Robotics is similar to how cars, internet and smartphones revolutionized the world. It is true that AI adoption could take time, however the current pace of AI is exponentially increasing unlike the development of others; With how it shaped the software industry, I expect that over short periods of time, it will affect other industires too.
+              </p>
+          </div>
+          <div className="card">
+            <Shield size={40} className="insight-icon" />
+            <h4>Responsible AI</h4>
+            <p>
+              Although inevitable, ethical implications cannot be ignored. Through attending live talks from Geoffrey Hinton in Toronto, I see the importance of responsible AI development to ensure safety and fairness.
+            </p>
+          </div>
+        </div>
+      </section>
 
     {/* Contact Section */}
       <section id="contact" className="contact reveal">
