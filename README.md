@@ -6,7 +6,7 @@ Currently In Grad School.
 
 ## Who am I 
 - A software developer/engineer looking for **job opportunities in field of SDE,AI/ML,DS**.
-- A Early Graduated Student from University of Ottawa with Honours Specialist in Computer Science.
+- A Early Graduated Student from University of Ottawa with Honours Specialist in Computer Science. On paper it is 2024 , actual date was Dec 2023.
 - A Proud 8 Years Game Server Owner Serving 25k-50k players.
 
 
