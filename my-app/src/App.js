@@ -1,13 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Mail, Github, Linkedin } from "lucide-react";
 import './App.css';
 import { Briefcase, BookOpen, GraduationCap, Code, Laptop, User } from "lucide-react";
 import ClickMatrixRain from "./ClickMatrixRain";
 import { Brain, Activity, Shield } from "lucide-react";
 import ResumeSection from "./ResumeSection";
+import Lottie from "lottie-react";
+import robotAnim from "./assests/robot.json";
 
 export default function App() {
-  
+   const [isBouncing, setIsBouncing] = useState(false);
+
+  useEffect(() => {
+    const bounceLoop = () => {
+      const delay = Math.random() * 5000 + 2000; // 2–7s random
+      setTimeout(() => {
+        setIsBouncing(true);
+
+        setTimeout(() => {
+          setIsBouncing(false);
+          bounceLoop(); // repeat
+        }, 800); // bounce duration
+      }, delay);
+    };
+
+    bounceLoop();
+  }, []);
+
   useEffect(() => {
     
     const observer = new IntersectionObserver(
@@ -34,14 +53,14 @@ export default function App() {
         <nav className="nav-container">
           <h1 className="logo">Axel Tang</h1>
           <div className="nav-links">
-  <a href="#about" className="nav-link">About</a>
-  <a href="#projects" className="nav-link">Projects</a>
-  <a href="#experience" className="nav-link">Experience</a>
-  <a href="#statement" className="nav-link">Statement</a>
-  <a href="#resume" className="nav-link">Resume</a>   
-  <a href="#ai-insight" className="nav-link">AI Insight</a> 
-  <a href="#contact" className="nav-link">Contact</a>
-</div>
+        <a href="#about" className="nav-link">About</a>
+        <a href="#projects" className="nav-link">Projects</a>
+        <a href="#experience" className="nav-link">Experience</a>
+        <a href="#statement" className="nav-link">Statement</a>
+        <a href="#resume" className="nav-link">Resume</a>   
+        <a href="#ai-insight" className="nav-link">AI Insight</a> 
+        <a href="#contact" className="nav-link">Contact</a>
+      </div>
         </nav>
       </header>
 
@@ -57,6 +76,12 @@ export default function App() {
         <div className="hero-buttons">
           <a href="#contact" className="hero-btn slide-in">Drop A Message</a>
         </div>
+      <div className={`robot-container ${isBouncing ? "bouncing" : ""}`}>
+        <div className="robot">
+          <Lottie animationData={robotAnim} loop={true} />
+        </div>
+        <div className="robot-shadow"></div>
+      </div>
       </section>
 
       {/* About Section */}
