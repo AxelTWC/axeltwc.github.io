@@ -6,7 +6,7 @@ export default function ResumeSection() {
   const [visible, setVisible] = useState(false);
 
   const handleUnlock = () => {
-    if (password === "AxelTangResume_ForEmployersOnly") {
+    if (password === "ResumeAxel") {
       setUnlocked(true);
     } else {
       alert("❌ Incorrect password");

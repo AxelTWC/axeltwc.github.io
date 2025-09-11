@@ -402,6 +402,10 @@ a, a:visited {
   padding: 6rem 2rem;
   background-color: #f3f4f6;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* <-- center children horizontally */
+  box-sizing: border-box;
 }
 
 .contact h3 {
@@ -421,8 +425,14 @@ a, a:visited {
 
 .contact-links {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* center icons horizontally */
+  align-items: center;
   gap: 1.5rem;
+  flex-wrap: nowrap;       /* do not wrap into multiple rows */
+  width: 100%;
+  max-width: 420px;        /* constrains row width so it centers nicely */
+  margin: 1rem auto 0;     /* centers the .contact-links container */
+  padding: 0 0.5rem;       /* slight side padding so icons never touch screen edge */
 }
 
 .contact-icon {
@@ -440,6 +450,19 @@ a, a:visited {
 .contact-icon:hover {
   transform: scale(1.15);
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* slightly smaller icons on tiny screens so they fit better */
+@media (max-width: 480px) {
+  .contact-links {
+    max-width: 320px;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 /* Footer */
@@ -773,4 +796,14 @@ a, a:visited {
   30% { transform: translateY(-14px); }
 }
 
+@media (max-width: 768px) {
+  .hero {
+    padding-bottom: 140px; 
+  }
+
+  .robot-container {
+    bottom: -50; 
+    transform: translateX(-50%) translateY(20px); 
+  }
+}
 
