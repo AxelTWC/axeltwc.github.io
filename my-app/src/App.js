@@ -80,7 +80,6 @@ export default function App() {
         <div className="robot">
           <Lottie animationData={robotAnim} loop={true} />
         </div>
-        <div className="robot-shadow"></div>
       </div>
       </section>
 
