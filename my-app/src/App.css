@@ -774,12 +774,11 @@ a, a:visited {
 .insight-grid .card {
   text-align: center;
 }
+
 .robot-container {
-  position: absolute;
-  bottom: -150px; /* Adjust this to move robot up/down */
-  left: 50%;    /* Center horizontally */
-  transform: translateX(-50%);
-  text-align: center;
+  margin-top: 2rem;         /* space below the button */
+  display: flex;
+  justify-content: center;  /* center horizontally */
 }
 
 .robot {
@@ -787,6 +786,7 @@ a, a:visited {
   pointer-events: none;
 }
 
+/* Bounce effect */
 .bouncing .robot {
   animation: bounce 0.8s ease;
 }
@@ -795,15 +795,14 @@ a, a:visited {
   0%, 100% { transform: translateY(0); }
   30% { transform: translateY(-14px); }
 }
-
+/*  Mobile adjustments */
 @media (max-width: 768px) {
-  .hero {
-    padding-bottom: 200px; 
+  .robot {
+    width: 80px; /* smaller size on mobile */
   }
 
   .robot-container {
-    bottom: -50; 
-    transform: translateX(-50%) translateY(20px); 
+    margin-top: 1.5rem; /* tighter spacing under button */
   }
 }
 
