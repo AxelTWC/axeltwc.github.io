@@ -254,6 +254,14 @@ a, a:visited {
   gap: 2rem;
 }
 
+.project-link {
+  display: inline-block;
+  position: relative;
+  z-index: 10;
+  color: #2563eb; /* optional: make it look like a link */
+  text-decoration: underline;
+}
+
 @media(min-width: 768px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);

@@ -72,6 +72,8 @@ export default function App() {
           <br></br>
           - Confidence | Persistence | Resilience -
           <br></br> Rise And Shine For Your Real Eyes To Realize The Paradise
+          <br></br>--------------------------------------------------
+          <br></br><b> To employers: I am currently looking for ML/DL internships. <br></br>Projects will for now be lightweight and limited on this field as I am switching fields. This is why I am willing to take on challenges, I'ma be honest and blunt, I may apply for roles without prior knowledge but would love to use an opportunity to grow with the team too.</b>
         </p>
         <div className="hero-buttons">
           <a href="#contact" className="hero-btn slide-in">Drop A Message</a>
@@ -106,18 +108,58 @@ export default function App() {
           <div className="card">
             <h4>HumblexMC</h4>
             <p>Serving 25k+ players, developed a community with focus on quality and performance. Learnt business and management along the way.</p>
+            <p>
+            <a 
+              href="https://humblex.net" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="project-link"
+            >
+              Visit HumblexMC
+            </a>
+          </p>
           </div>
           <div className="card">
             <h4>UMPLE Contributions</h4>
             <p>Resolved UML language issues with Java, implemented new features, and maintained CI/CD pipelines.</p>
+            <p>
+            <a 
+              href="https://github.com/umple/umple/issues?q=involves%3AAxelTWC+sort%3Acreated-asc+" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="project-link"
+            >
+              Visit My UMPLE Contributions
+            </a>
+          </p>
           </div>
           <div className="card">
-            <h4>ML Project Coming Soon</h4>
-            <p>Waiting for a new GPU to run this project. Hopefully about face recognition related or healthcare related</p>
+            <h4>ML/DL Project Coming Soon</h4>
+            <p>Waiting for a new GPU to run this project and hopefully can create my own dataset from scratch. For now , trying to create a RPS project while applying for internships. Final Project should be able to fight the computer's RPS.</p>
+          <p>
+            <a 
+              href="https://github.com/AxelTWC/RPS-PJ" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="project-link"
+            >
+              Visit RPS Project
+            </a>
+          </p>
           </div>
           <div className="card">
             <h4>Others</h4>
             <p>All my previous software background projects are viewable in my github.</p>
+            <p>
+            <a 
+              href="https://github.com/AxelTWC" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="project-link"
+            >
+              Visit My Github
+            </a>
+          </p>
           </div>
         </div>
       </section>
