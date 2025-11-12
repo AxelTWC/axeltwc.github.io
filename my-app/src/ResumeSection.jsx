@@ -4,6 +4,7 @@ export default function ResumeSection() {
   const [unlocked, setUnlocked] = useState(false);
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
+  const [selectedResume, setSelectedResume] = useState("ml"); // "ml" or "sw"
 
   const handleUnlock = () => {
     if (password === "ResumeAxel") {
@@ -28,6 +29,8 @@ export default function ResumeSection() {
     return () => observer.disconnect();
   }, []);
 
+  const pdfPath = selectedResume === "ml" ? "/ML_Intern_Resume.pdf" : "/SW_Intern_Resume.pdf";
+
   return (
     <section
       id="resume"
@@ -37,7 +40,7 @@ export default function ResumeSection() {
 
       {!unlocked ? (
         <div className="password-container" style={{ maxWidth: "500px", margin: "0 auto", textAlign: "center" }}>
-          <p style={{ marginBottom: "1rem" }}>Enter password to view/download my resume:</p>
+          <p style={{ marginBottom: "1rem" }}>Enter password to view/download my resume: (ResumeAxel)</p>
           <input
             type="password"
             value={password}
@@ -65,22 +68,41 @@ export default function ResumeSection() {
           </button>
         </div>
       ) : (
-        <div className="resume-buttons" style={{ display: "flex", justifyContent: "center", gap: "1.5rem", marginTop: "2rem" }}>
-          <a
-            href="/ML_Intern_Resume.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="hero-btn slide-in"
-          >
-            📄 View Resume
-          </a>
-          <a
-            href="/ML_Intern_Resume.pdf"
-            download
-            className="hero-btn slide-in"
-          >
-            ⬇️ Download Resume
-          </a>
+        <div>
+          <div className="resume-toggle" style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1rem" }}>
+            <button
+              onClick={() => setSelectedResume("ml")}
+              className={`hero-btn ${selectedResume === "ml" ? "active" : ""}`}
+              style={{ padding: "0.8rem 1.25rem" }}
+            >
+              AI Specific
+            </button>
+            <button
+              onClick={() => setSelectedResume("sw")}
+              className={`hero-btn ${selectedResume === "sw" ? "active" : ""}`}
+              style={{ padding: "0.8rem 1.25rem" }}
+            >
+              SW Specific
+            </button>
+          </div>
+
+          <div className="resume-buttons" style={{ display: "flex", justifyContent: "center", gap: "1.5rem", marginTop: "2rem" }}>
+            <a
+              href={pdfPath}
+              target="_blank"
+              rel="noreferrer"
+              className="hero-btn slide-in"
+            >
+              📄 View {selectedResume === "ml" ? "ML" : "SW"} Resume
+            </a>
+            <a
+              href={pdfPath}
+              download={selectedResume === "ml" ? "ML_Intern_Resume.pdf" : "SW_Intern_Resume.pdf"}
+              className="hero-btn slide-in"
+            >
+              ⬇️ Download {selectedResume === "ml" ? "ML" : "SW"} Resume
+            </a>
+          </div>
         </div>
       )}
     </section>
