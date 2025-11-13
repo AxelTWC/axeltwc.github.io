@@ -6,22 +6,24 @@ export default function ResumeSection() {
   const [visible, setVisible] = useState(false);
   const [selectedResume, setSelectedResume] = useState("ml"); // "ml" or "sw"
 
-  const handleUnlock = () => {
+  function handleUnlock() {
     if (password === "ResumeAxel") {
       setUnlocked(true);
     } else {
       alert("❌ Incorrect password");
     }
-  };
+  }
 
   // IntersectionObserver for fade-in animation
   useEffect(() => {
     const section = document.getElementById("resume");
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setVisible(true);
-        });
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setVisible(true);
+          }
+        }
       },
       { threshold: 0.1 }
     );
@@ -29,17 +31,14 @@ export default function ResumeSection() {
     return () => observer.disconnect();
   }, []);
 
-  const pdfPath = selectedResume === "ml" ? "/ML_Intern_Resume.pdf" : "/SW_Intern_Resume.pdf";
+  // Root-relative path to public/resumes PDFs
+  const pdfPath = `/resumes/${selectedResume === "ml" ? "ML_Intern_Resume.pdf" : "SW_Intern_Resume.pdf"}`;
 
   return (
-    <section
-      id="resume"
-      className={`resume reveal ${visible ? "fade-in-up" : ""}`}
-    >
+    <section id="resume" className={`resume reveal ${visible ? "fade-in-up" : ""}`}>
       <h3>Resume</h3>
-
       {!unlocked ? (
-        <div className="password-container" style={{ maxWidth: "500px", margin: "0 auto", textAlign: "center" }}>
+        <div className="password-container" style={{ maxWidth: 500, margin: "0 auto", textAlign: "center" }}>
           <p style={{ marginBottom: "1rem" }}>Enter password to view/download my resume: (ResumeAxel)</p>
           <input
             type="password"
@@ -50,7 +49,7 @@ export default function ResumeSection() {
             style={{
               padding: "0.9rem 1rem",
               fontSize: "1rem",
-              borderRadius: "50px",
+              borderRadius: 50,
               border: "2px solid #8b5cf6",
               outline: "none",
               width: "80%",
@@ -59,11 +58,7 @@ export default function ResumeSection() {
               transition: "all 0.3s ease",
             }}
           />
-          <button
-            onClick={handleUnlock}
-            className="hero-btn slide-in"
-            style={{ marginTop: "0" }}
-          >
+          <button onClick={handleUnlock} className="hero-btn slide-in" style={{ marginTop: 0 }}>
             Unlock
           </button>
         </div>
@@ -85,14 +80,8 @@ export default function ResumeSection() {
               SW Specific
             </button>
           </div>
-
           <div className="resume-buttons" style={{ display: "flex", justifyContent: "center", gap: "1.5rem", marginTop: "2rem" }}>
-            <a
-              href={pdfPath}
-              target="_blank"
-              rel="noreferrer"
-              className="hero-btn slide-in"
-            >
+            <a href={pdfPath} target="_blank" rel="noreferrer" className="hero-btn slide-in">
               📄 View {selectedResume === "ml" ? "ML" : "SW"} Resume
             </a>
             <a
