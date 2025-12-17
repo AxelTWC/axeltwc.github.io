@@ -104,9 +104,11 @@ export default function App() {
       {/* Projects Section */}
       <section id="projects" className="projects reveal">
         <h3>Projects</h3>
+        <h5>Some of my notable projects and contributions - Others Via github.com/axeltwc</h5>
         <div className="projects-grid">
           <div className="card">
             <h4>HumblexMC</h4>
+            <p>Started when I was 14 years old.</p>
             <p>Serving 25k+ players, developed a community with focus on quality and performance. Learnt business and management along the way.</p>
             <p>
             <a 
@@ -121,6 +123,7 @@ export default function App() {
           </div>
           <div className="card">
             <h4>UMPLE Contributions</h4>
+            <p>Honour Bachelor SWE Level Project.</p>
             <p>Resolved UML language issues with Java, implemented new features, and maintained CI/CD pipelines.</p>
             <p>
             <a 
@@ -145,8 +148,11 @@ export default function App() {
               className="project-link"
             >
               Visit RAG Project
-            </a>
 
+            </a>
+          </p>
+
+          <p>
               <a 
               href="https://github.com/AxelTWC/Applied_DeepLearning_Project" 
               target="_blank" 
@@ -155,8 +161,8 @@ export default function App() {
             >
               Research Paper Link
             </a>
-
           </p>
+          
           </div>
           <div className="card">
             <h4>Audit Agentic AI</h4>
