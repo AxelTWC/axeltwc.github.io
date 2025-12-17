@@ -245,7 +245,6 @@ a, a:visited {
   font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: 0.75px;
-  margin-bottom: 3rem;
 }
 
 .projects h5 {
@@ -254,7 +253,7 @@ a, a:visited {
   font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.5px;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .projects-grid {
   display: grid;
