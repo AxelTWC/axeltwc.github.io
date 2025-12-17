@@ -162,11 +162,12 @@ export default function App() {
               Research Paper Link
             </a>
           </p>
-          
+
           </div>
           <div className="card">
             <h4>Audit Agentic AI</h4>
             <p>AI Junior SWE Project</p>
+            <p>Building an AI Agent from Scatch.</p>
             <p>
             <a 
               href="https://github.com/AxelTWC/Audit-Agentic-AI" 
