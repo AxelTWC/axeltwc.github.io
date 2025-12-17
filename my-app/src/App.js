@@ -104,7 +104,7 @@ export default function App() {
       {/* Projects Section */}
       <section id="projects" className="projects reveal">
         <h3>Projects</h3>
-        <center><h5>Some of my notable projects and contributions - Others Via github.com/axeltwc</h5></center>
+        <h5>Some of my notable projects and contributions - Others Via github.com/axeltwc</h5>
         <div className="projects-grid">
           <div className="card">
             <h4>HumblexMC</h4>
