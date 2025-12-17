@@ -134,30 +134,30 @@ export default function App() {
           </p>
           </div>
           <div className="card">
-            <h4>ML/DL Project Coming Soon</h4>
-            <p>Waiting for a new GPU to run this project and hopefully can create my own dataset from scratch. For now , trying to create a RPS project while applying for internships. Final Project should be able to fight the computer's RPS.</p>
+            <h4>Enhancing Retrieval-Augmented Generation with Adaptive Chunking</h4>
+            <p>University Research Graded Project On Retrieval-Augmented Generation. Focused on implementing the baseline of the RAG system | Course - Applied Deep Learning</p>
           <p>
             <a 
-              href="https://github.com/AxelTWC/RPS-PJ" 
+              href="https://github.com/AxelTWC/Applied_DeepLearning_Project" 
               target="_blank" 
               rel="noreferrer" 
               className="project-link"
             >
-              Visit RPS Project
+              Visit RAG Project
             </a>
           </p>
           </div>
           <div className="card">
-            <h4>Others</h4>
-            <p>All my previous software background projects are viewable in my github.</p>
+            <h4>Audit Agentic AI</h4>
+            <p>AI Junior SWE Project</p>
             <p>
             <a 
-              href="https://github.com/AxelTWC" 
+              href="https://github.com/AxelTWC/Audit-Agentic-AI" 
               target="_blank" 
               rel="noreferrer" 
               className="project-link"
             >
-              Visit My Github
+              Visit AI Audit Agentic Project
             </a>
           </p>
           </div>
