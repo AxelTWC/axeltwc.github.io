@@ -135,7 +135,8 @@ export default function App() {
           </div>
           <div className="card">
             <h4>Enhancing Retrieval-Augmented Generation with Adaptive Chunking</h4>
-            <p>University Research Graded Project On Retrieval-Augmented Generation. Focused on implementing the baseline of the RAG system | Course - Applied Deep Learning</p>
+            <p>University Research Graded Project On Retrieval-Augmented Generation. 
+              Focused on implementing the baseline of the RAG system | Course - Applied Deep Learning</p>
           <p>
             <a 
               href="https://github.com/AxelTWC/Applied_DeepLearning_Project" 
