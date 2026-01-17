@@ -153,7 +153,7 @@ export default function App() {
 
           <p>
               <a 
-              href="https://github.com/AxelTWC/Applied_DeepLearning_Project" 
+              href="https://github.com/AxelTWC/Applied_DeepLearning_Project/blob/main/Group%201%20Final%20Report.pdf" 
               target="_blank" 
               rel="noreferrer" 
               className="project-link"
