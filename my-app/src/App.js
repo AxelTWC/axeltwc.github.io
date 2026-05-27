@@ -73,7 +73,7 @@ export default function App() {
           - Confidence | Persistence | Resilience -
           <br></br> Rise And Shine For Your Real Eyes To Realize The Paradise
           <br></br>--------------------------------------------------
-          <br></br><b> To employers: I am currently looking for ML/DL internships. <br></br>Projects will for now be lightweight and limited on this field as I am switching fields. This is why I am willing to take on challenges, I'ma be honest and blunt, I may apply for roles without prior knowledge but would love to use an opportunity to grow with the team too.</b>
+          <br></br><b>Current AI Engineering Intern in Fujifilm APAC.</b>
         </p>
         <div className="hero-buttons">
           <a href="#contact" className="hero-btn slide-in">Drop A Message</a>
