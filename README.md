@@ -1,34 +1,62 @@
-# Hello , I am Axel Tang. 
-Currently In Grad School , Master of Engineering in University of Toronto ( AI Stream ) and doing AI engineering internships.
+## 👋 Welcome! I'm Axel (@AxelTWC)
+> 🤖 *I have a strong passion for robotics, and complex AI architecture & engineering.*
 
-- You may view my Github Profile Here | [Click Here To Access Profile](https://github.com/AxelTWC)
-- You may view my Resume Here | [Click Here To Access Resume](https://axeltwc.github.io/AxelTang-Resume.pdf)
-- You may view my Linkedln Here | [Click Here To Access Linkedln](https://www.linkedin.com/in/axel-tang-2b22572b6/)
+---
 
-## Who am I 
-- A Master Student and AI intern
-- A Early Graduated Student from University of Ottawa with Honours Specialist in Computer Science. On paper it is 2024 , actual date was Dec 2023.
-- A Proud 8 Years Game Server Owner Serving 25k-50k players.
+## 🧠 Core Focus 
+* **Machine Learning & Deep Learning:** Building scalable AI solutions, Info Retrieval, and PageRank algorithms.
+* **Robotics:** Exploring the intersection of software, hardware, and physical intelligence (Upcoming).
+* **Enterprise Software:** Java application development, lightweight plugin design, and large-scale system performance.
 
+---
 
-## My Proud Contributions
-- Serving HumblexMC Game Community Server | [Click Here To Access Website](https://humblex.net)
-  - Coded Multiple LightWeight Java Plugins and Windows Batch Scripting.
-  - Managed to serve 25k-50k players, ensure balancing server load in production and enable a healthy business revenue model.
-  - Using SEO to make Humblex Website appear as 4th using keyword "Humblex" from 33rd at a certain point, using SEO to make HumblexMC as top result.
-- Worked for Umple Software | [Click Here To Access My Work](https://github.com/umple/umple/issues?q=involves%3AAxelTWC+sort%3Acreated-asc+)
-  - Resolving medium difficulty bug in large scale software from the start of my work.
-  - Participated in co-worker's bug.
-  - Created Batch Scripts for future Windows Developer for Umple.
-  - [UmpleOnline Link](https://cruise.umple.org/umpleonline/)
-- Having coding experiences by working in 25-30+ different projects in different scales
-  - Using Python To Create Information Retrieval (Page Rank) Solutions/Algorithms and create Artificial Intellgience Related Projects/Assignments
-  - Using Kotlin/JavaScript(Angular,React,Express..etc) + Databases(MongoDB,PostgresSQL...etc) to create small scale applications such as Mobile Applications or Web Applications
-  - Using Java for complex based assignments and projects
-  - Using C# To Create Games and Small Projects
-  - Using Go , Scheme , Prolog to learn the fundamentals of programming
-    
-## My Contacts
-- Linkedln: Axel Tang
-- Email: axel.tang@mail.utoronto.ca
+## 🎓 Education
+* **Master of Engineering (MEng)** — AI Stream | *University of Toronto*
+* **Honours Bachelor of Science (HBSc)** — Computer Science (Fast-Track Graduate) | *University of Ottawa* — Fast-track graduate (Finished Dec 2023, Conferred 2024)
+
+---
+
+## 🧑‍💼 AI Internship Experience
+### Artificial Intelligence Intern — Research & Discovery Team
+* **RAG Systems:** Benchmarked Retrieval-Augmented Generation solutions using standard industrialized metrics.
+* **Custom Implementations:** Developed and deployed customized, domain-specific RAG pipelines to optimize data retrieval.
+
+---
+
+## 🚀 Key Open Source & Production Contributions
+
+### 🎮 HumblexMC Game Community Server | [Website](https://humblex.net)
+* **Scale & Infra:** Founded and managed a high-traffic server network at age 14, ultimately serving **25k–50k players**.
+* **Backend Dev:** Programmed custom, lightweight Java plugins and Windows/Bash automation scripts to balance heavy production server loads.
+* **SEO & Growth:** Optimized web presence via SEO, driving the site from 33rd to **4th place** for the keyword "Humblex", and securing the **#1 top result** for "HumblexMC".
+
+### 🛠 Umple Software | [View My Contributions](https://github.com/umple/umple/issues?q=involves%3AAxelTWC+sort%3Acreated-asc+)
+* **Core Development:** Resolved medium-to-high difficulty bugs in a massive, large-scale software ecosystem from day one.
+* **Collaboration:** Actively reviewed and assisted in resolving system bugs alongside co-workers.
+* **DevOps:** Authored core batch scripting infrastructure to streamline the onboarding environment for future Windows developers.
+* **Project Link:** [UmpleOnline](https://cruise.umple.org/umpleonline/)
+
+### 💻 Diversified Project Portfolio (25–30+ Completed Projects)
+* **AI & Search:** Engineered Python-based Information Retrieval solutions, ranking algorithms, and deep learning assignments.
+* **Full-Stack & Mobile:** Built agile web and mobile applications using Kotlin, JavaScript (Angular, React, Express), MongoDB, and PostgreSQL.
+* **Core & Fundamentals:** Utilized Java for complex architectural projects, C# for game engines, and explored Go, Scheme, and Prolog to master language design paradigms.
+
+---
+
+## 🛠 Tech Stack Summary
+```js
+Languages: Python, Java, C#, JavaScript, SQL, Bash/Batch, Go, Kotlin
+ML/AI:     PyTorch, TensorFlow, scikit-learn, NumPy, RAG Evaluation, Info Retrieval
+Tools:     Git, GitHub Actions, MongoDB, PostgreSQL, Windows/Linux Administration
+```
+
+## 💼 Let's Connect!
+
+🌐 Personal Website: [axeltang.me](axeltang.me)
+
+🐙 GitHub: [Github](github.com/AxelTWC)
+
+🔗 LinkedIn: [Linkedin](linkedin.com/in/axel-tang-2b22572b6/)
+
+📧 Email: axel.tang@mail.utoronto.ca
 
