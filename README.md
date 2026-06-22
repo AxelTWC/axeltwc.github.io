@@ -1,11 +1,12 @@
 # Hello , I am Axel Tang. 
-Currently In Grad School.
+Currently In Grad School , Master of Engineering in University of Toronto ( AI Stream ) and doing AI engineering internships.
+
 - You may view my Github Profile Here | [Click Here To Access Profile](https://github.com/AxelTWC)
 - You may view my Resume Here | [Click Here To Access Resume](https://axeltwc.github.io/AxelTang-Resume.pdf)
 - You may view my Linkedln Here | [Click Here To Access Linkedln](https://www.linkedin.com/in/axel-tang-2b22572b6/)
 
 ## Who am I 
-- A Master Student **job opportunities in field of SDE,AI/ML,DS**.
+- A Master Student and AI intern
 - A Early Graduated Student from University of Ottawa with Honours Specialist in Computer Science. On paper it is 2024 , actual date was Dec 2023.
 - A Proud 8 Years Game Server Owner Serving 25k-50k players.
 
