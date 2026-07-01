@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+jest.mock("lottie-react", () => () => <div data-testid="lottie-mock" />);
+
+test("renders portfolio hero and research section", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  expect(screen.getByRole("heading", { name: /hi, i’m axel/i })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { level: 2, name: /^new horizons$/i })).toBeInTheDocument();
 });

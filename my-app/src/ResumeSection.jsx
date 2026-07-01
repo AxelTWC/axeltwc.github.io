@@ -4,96 +4,93 @@ export default function ResumeSection() {
   const [unlocked, setUnlocked] = useState(false);
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
-  const [selectedResume, setSelectedResume] = useState("ml"); // "ml" or "sw"
+  const [selectedResume, setSelectedResume] = useState("ml");
 
   function handleUnlock() {
     if (password === "ResumeAxel") {
       setUnlocked(true);
     } else {
-      alert("❌ Incorrect password");
+      alert("Incorrect password");
     }
   }
 
-  // IntersectionObserver for fade-in animation
   useEffect(() => {
     const section = document.getElementById("resume");
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisible(true);
+            observer.unobserve(entry.target);
           }
-        }
+        });
       },
-      { threshold: 0.1 }
+      { threshold: 0.12 }
     );
-    if (section) observer.observe(section);
+
+    if (section) {
+      observer.observe(section);
+    }
+
     return () => observer.disconnect();
   }, []);
 
-  // Root-relative path to public/resumes PDFs
   const pdfPath = `/resumes/${selectedResume === "ml" ? "ML_Intern_Resume.pdf" : "SW_Intern_Resume.pdf"}`;
 
   return (
-    <section id="resume" className={`resume reveal ${visible ? "fade-in-up" : ""}`}>
-      <h3>Resume</h3>
-      {!unlocked ? (
-        <div className="password-container" style={{ maxWidth: 500, margin: "0 auto", textAlign: "center" }}>
-          <p style={{ marginBottom: "1rem" }}>Enter password to view/download my resume: (ResumeAxel)</p>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter password"
-            className="password-input"
-            style={{
-              padding: "0.9rem 1rem",
-              fontSize: "1rem",
-              borderRadius: 50,
-              border: "2px solid #8b5cf6",
-              outline: "none",
-              width: "80%",
-              marginBottom: "1rem",
-              boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-              transition: "all 0.3s ease",
-            }}
-          />
-          <button onClick={handleUnlock} className="hero-btn slide-in" style={{ marginTop: 0 }}>
-            Unlock
-          </button>
-        </div>
-      ) : (
-        <div>
-          <div className="resume-toggle" style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1rem" }}>
-            <button
-              onClick={() => setSelectedResume("ml")}
-              className={`hero-btn ${selectedResume === "ml" ? "active" : ""}`}
-              style={{ padding: "0.8rem 1.25rem" }}
-            >
-              AI Specific
-            </button>
-            <button
-              onClick={() => setSelectedResume("sw")}
-              className={`hero-btn ${selectedResume === "sw" ? "active" : ""}`}
-              style={{ padding: "0.8rem 1.25rem" }}
-            >
-              SW Specific
+    <section id="resume" className={`section-shell reveal ${visible ? "fade-in-up" : ""}`}>
+      <div className="section-heading">
+        <p className="eyebrow">Credentials</p>
+        <h2>Resume</h2>
+      </div>
+      <div className="resume-card">
+        {!unlocked ? (
+          <div className="resume-lock">
+            <p>Enter password to view/download my resume: (ResumeAxel)</p>
+            <input
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              placeholder="Enter password"
+              className="password-input"
+            />
+            <button type="button" onClick={handleUnlock} className="button button-primary">
+              Unlock
             </button>
           </div>
-          <div className="resume-buttons" style={{ display: "flex", justifyContent: "center", gap: "1.5rem", marginTop: "2rem" }}>
-            <a href={pdfPath} target="_blank" rel="noreferrer" className="hero-btn slide-in">
-              📄 View {selectedResume === "ml" ? "ML" : "SW"} Resume
-            </a>
-            <a
-              href={pdfPath}
-              download={selectedResume === "ml" ? "ML_Intern_Resume.pdf" : "SW_Intern_Resume.pdf"}
-              className="hero-btn slide-in"
-            >
-              ⬇️ Download {selectedResume === "ml" ? "ML" : "SW"} Resume
-            </a>
+        ) : (
+          <div className="resume-content">
+            <div className="resume-toggle">
+              <button
+                type="button"
+                onClick={() => setSelectedResume("ml")}
+                className={`resume-toggle-button${selectedResume === "ml" ? " active" : ""}`}
+              >
+                AI Specific
+              </button>
+              <button
+                type="button"
+                onClick={() => setSelectedResume("sw")}
+                className={`resume-toggle-button${selectedResume === "sw" ? " active" : ""}`}
+              >
+                SW Specific
+              </button>
+            </div>
+            <div className="resume-actions">
+              <a href={pdfPath} target="_blank" rel="noreferrer" className="button button-primary">
+                View {selectedResume === "ml" ? "ML" : "SW"} Resume
+              </a>
+              <a
+                href={pdfPath}
+                download={selectedResume === "ml" ? "ML_Intern_Resume.pdf" : "SW_Intern_Resume.pdf"}
+                className="button button-secondary"
+              >
+                Download {selectedResume === "ml" ? "ML" : "SW"} Resume
+              </a>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 }
