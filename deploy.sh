@@ -34,7 +34,8 @@ if [ -d "$RESEARCH_PATH/public/Reports" ]; then
 fi
 
 echo "Deploying to gh-pages..."
-git checkout --orphan gh-pages-temp 2>/dev/null
+git branch -D gh-pages-temp >/dev/null 2>&1 || true
+git checkout --orphan gh-pages-temp
 git rm -rf . >/dev/null 2>&1 || true
 cp -r my-app/build/* .
 touch .nojekyll
