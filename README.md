@@ -10,6 +10,21 @@
 
 ---
 
+## 🚀 Deploy
+
+After making changes, deploy both sites with:
+
+```bash
+cd ~/Desktop/PersonalWebsite/axeltwc.github.io
+bash deploy.sh
+```
+
+This builds the main portfolio + research hub, combines them, and deploys to `axeltang.me`.
+
+Or push to `main` — the GitHub Action auto-deploys the main portfolio.
+
+---
+
 ## 🎓 Education
 * **Master of Engineering (MEng)** — AI Stream | *University of Toronto*
 * **Honours Bachelor of Science (HBSc)** — Computer Science (Fast-Track Graduate) | *University of Ottawa* — Fast-track graduate (Finished Dec 2023, Conferred 2024)
