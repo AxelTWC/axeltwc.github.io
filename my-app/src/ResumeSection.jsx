@@ -34,7 +34,7 @@ export default function ResumeSection() {
     return () => observer.disconnect();
   }, []);
 
-  const pdfPath = `/resumes/SW_Intern_Resume.pdf`;
+  const pdfPath = "/resumes/SW_Intern_Resume.pdf";
 
   return (
     <section id="resume" className={`section-shell reveal ${visible ? "fade-in-up" : ""}`}>
@@ -45,7 +45,7 @@ export default function ResumeSection() {
       <div className="resume-card">
         {!unlocked ? (
           <div className="resume-lock">
-            <p>Enter password to view/download my resume: (ResumeAxel)</p>
+            <p>Enter password to view or download my resume. Hint: ResumeAxel</p>
             <input
               type="password"
               value={password}
@@ -59,22 +59,20 @@ export default function ResumeSection() {
           </div>
         ) : (
           <div className="resume-content">
-            <div className="resume-ml-message" style={{ textAlign: "center", marginBottom: "1.5rem", padding: "1rem", borderRadius: "10px", background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.2)" }}>
-              <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: "1.6" }}>
-                📋 <strong style={{ color: "var(--text-primary)" }}>AI/ML Resume:</strong> I'd love to share my AI-specific resume in person — feel free to ask me directly!
+            <div className="resume-note">
+              <p>
+                AI/ML resume is shared directly in conversation. Feel free to ask me for
+                it when we connect.
               </p>
             </div>
-            <div className="resume-actions" style={{ flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
-              <p style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>⬇️ SW Resume (2023)</p>
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
+
+            <div className="resume-actions">
+              <p className="resume-hint">Software Resume (2023)</p>
+              <div className="resume-buttons">
                 <a href={pdfPath} target="_blank" rel="noreferrer" className="button button-primary">
                   View SW Resume
                 </a>
-                <a
-                  href={pdfPath}
-                  download="SW_Intern_Resume.pdf"
-                  className="button button-secondary"
-                >
+                <a href={pdfPath} download="SW_Intern_Resume.pdf" className="button button-secondary">
                   Download SW Resume
                 </a>
               </div>

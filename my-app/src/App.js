@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import {
   Mail,
   Github,
   Linkedin,
+  Search,
+  ChevronRight,
   Briefcase,
   BookOpen,
   GraduationCap,
@@ -12,52 +14,98 @@ import {
   Brain,
   Activity,
   Shield,
-  ArrowUpRight,
   Sparkles,
-  FileText,
+  ExternalLink,
+  Zap,
 } from "lucide-react";
 import "./App.css";
-import ClickMatrixRain from "./ClickMatrixRain";
 import ResumeSection from "./ResumeSection";
-import Lottie from "lottie-react";
-import robotAnim from "./assests/robot.json";
 
-const navigationItems = [
+const navItems = [
   ["About", "about"],
   ["Projects", "projects"],
-  ["Research", "research"],
   ["Experience", "experience"],
   ["Statement", "statement"],
   ["Resume", "resume"],
   ["AI Insight", "ai-insight"],
+  ["Research", "/research/"],
   ["Contact", "contact"],
+];
+
+const searchIndex = [
+  {
+    id: "about",
+    title: "About Me",
+    keywords:
+      "background journey bio story UMPLE HumblexMC Geoffrey Hinton Ilya Sutskever UofT university",
+  },
+  {
+    id: "projects",
+    title: "Projects",
+    keywords:
+      "HumblexMC Minecraft server UMPLE umple RAG retrieval augmented generation adaptive chunking deep learning",
+  },
+  {
+    id: "experience",
+    title: "Experience & Timeline",
+    keywords:
+      "school primary UofT university HKGCC internship Fujifilm APAC internship undergraduate Manitoba Ontario high school",
+  },
+  {
+    id: "statement",
+    title: "Personal Statement",
+    keywords:
+      "philosophy background vision story nursing medical AI AGI robotics engineer doctor nurse",
+  },
+  {
+    id: "resume",
+    title: "Resume",
+    keywords: "download view ML SW resume CV password protected",
+  },
+  {
+    id: "ai-insight",
+    title: "AI Insight",
+    keywords:
+      "healthcare AI AGI robotics responsible ethics Geoffrey Hinton",
+  },
+  {
+    id: "contact",
+    title: "Contact",
+    keywords:
+      "email LinkedIn GitHub message connect axel.tang@mail.utoronto.ca",
+  },
+  {
+    id: "research",
+    title: "Research Hub",
+    keywords: "papers research publications technical essays deep dives",
+    href: "/research",
+  },
 ];
 
 const projectCards = [
   {
     title: "HumblexMC",
-    copy: [
-      "Started when I was 14 years old.",
-      "Serving 25k+ players, developed a community with focus on quality and performance. Learnt business and management along the way.",
-    ],
+    desc: "Started when I was 14 years old. Serving 25k+ players, developed a community with focus on quality and performance. Learnt business and management along the way.",
     links: [["Visit HumblexMC", "https://humblex.net"]],
   },
   {
     title: "UMPLE Contributions",
-    copy: [
-      "Honour Bachelor SWE Level Project.",
-      "Resolved UML language issues with Java, implemented new features, and maintained CI/CD pipelines.",
+    desc: "Honour Bachelor SWE Level Project. Resolved UML language issues with Java, implemented new features, and maintained CI/CD pipelines.",
+    links: [
+      [
+        "Visit My UMPLE Contributions",
+        "https://github.com/umple/umple/issues?q=involves%3AAxelTWC+sort%3Acreated-asc+",
+      ],
     ],
-    links: [["Visit My UMPLE Contributions", "https://github.com/umple/umple/issues?q=involves%3AAxelTWC+sort%3Acreated-asc+"]],
   },
   {
     title: "Enhancing Retrieval-Augmented Generation with Adaptive Chunking",
-    copy: [
-      "University Graded Research Project On Retrieval-Augmented Generation.",
-      "Focused on implementing the baseline of the RAG system | Course - Applied Deep Learning",
-    ],
+    desc: "University graded research project on retrieval-augmented generation. Focused on implementing the baseline of the RAG system. Course: Applied Deep Learning.",
     links: [
-      ["Visit RAG Project", "https://github.com/AxelTWC/Applied_DeepLearning_Project"],
+      [
+        "Visit RAG Project",
+        "https://github.com/AxelTWC/Applied_DeepLearning_Project",
+      ],
       [
         "Research Paper Link",
         "https://github.com/AxelTWC/Applied_DeepLearning_Project/blob/main/Group%201%20Final%20Report.pdf",
@@ -65,78 +113,69 @@ const projectCards = [
     ],
   },
   {
-    title: "Coming Soon",
-    copy: ["Coming Soon", "Coming Soon"],
-    links: [["Coming Soon", "https://comingsoon.com"]],
+    title: "More Projects Coming Soon",
+    desc: "Stay tuned for more projects and contributions.",
+    links: [],
   },
 ];
 
 const timelineItems = [
   {
     icon: BookOpen,
-    accent: "blue",
     title: "Top 5 HK Primary School",
     period: "Primary Years",
     status: "Foundation",
-    text: "Met great people , but somehow started to be really shy :P | Rankings were back then",
+    text: "Met great people, then became very shy. Rankings were back then.",
   },
   {
     icon: Briefcase,
-    accent: "blue",
     title: "HumblexMC",
     period: "2015-2024",
     status: "Builder",
-    text: "Started from 2015-2016 when I saw an opportunity with a falling community | Learnt how to business and develop on the way | Sustained from 2016-2024 ish ",
+    text: "Built and sustained an ecosystem over multiple years while learning product, operations, and technical ownership.",
   },
   {
     icon: BookOpen,
-    accent: "violet",
-    title: "Studying abroad",
+    title: "Studying Abroad",
     period: "2017 onward",
     status: "Transition",
-    text: "2017 Onward | Manitoba and Ontario | Acquiring provincial merit certicates and more during last year in high school",
+    text: "Moved through Manitoba and Ontario, earning provincial merit certificates in high school.",
   },
   {
     icon: GraduationCap,
-    accent: "violet",
     title: "Undergraduate",
     period: "Bachelor Phase",
     status: "Milestone",
-    text: "Admitted to all top 8 universities of Canada, Ontario | Risked choices for family and fast track my program",
+    text: "Admitted to top Canadian universities and chose a path that balanced family priorities and progression.",
   },
   {
     icon: Code,
-    accent: "violet",
     title: "UMPLE",
     period: "Honors Project",
     status: "Engineering",
-    text: "Honors Project with Dr.Lethbridge | Well known SWE OOP Modelling Professor",
+    text: "Worked on honors SWE modeling initiatives with Dr. Lethbridge, improving language and tooling quality.",
   },
   {
     icon: Laptop,
-    accent: "rose",
     title: "HKGCC",
     period: "Internship Phase",
     status: "IT",
-    text: "IT Internship including server side(HW) and internal tools(SW with Py and OpenCV)",
-  },
-  {
-    icon: User,
-    accent: "gold",
-    title: "Student at UofT",
-    period: "Current chapter",
-    status: "Graduate School",
-    isActive: true,
-    text: "Took a long break from graduation , privileged to meet industrial leaders of big tech , fixed myself and move on. Got lucky to be admitted and currently ongoing | Also loves to chit chat :P ",
+    text: "Supported server-side infrastructure and internal software tooling using Python and OpenCV.",
   },
   {
     icon: Briefcase,
-    accent: "rose",
-    title: "Fujifilm APAC",
-    period: "Current role",
+    title: "Fujifilm BI",
+    period: "Current",
     status: "AI Internship",
     isActive: true,
-    text: "Current AI Engineering Internship | Working on AI initiatives while contributing to applied research and engineering efforts.",
+    text: "Currently doing AI Internship at Fujifilm BI, building practical AI solutions and research-driven workflows.",
+  },
+  {
+    icon: User,
+    title: "Student at UofT",
+    period: "Current chapter",
+    status: "Graduate School",
+    text: "After a long break from graduation, rebuilt momentum and moved forward with clearer goals.",
   },
 ];
 
@@ -144,55 +183,117 @@ const insightCards = [
   {
     icon: Brain,
     title: "Healthcare AI",
-    text: "Coming with a family medical background, although I am not a medical professional, I see the potential of AI in revolutionizing healthcare. From diagnostics to personalized treatment, AI can enhance patient care and outcomes.",
+    text: "With a family medical background, I see AI as a multiplier for diagnostics, triage, and personalized care at scale.",
   },
   {
     icon: Activity,
     title: "AGI & Robotics",
-    text: "The topic of AGI and Robotics is similar to how cars, internet and smartphones revolutionized the world. It is true that AI adoption could take time, however the current pace of AI is exponentially increasing unlike the development of others; With how it shaped the software industry, I expect that over short periods of time, it will affect other industires too.",
+    text: "AGI and robotics feel like foundational shifts, similar to the arrival of the internet and smartphones.",
   },
   {
     icon: Shield,
     title: "Responsible AI",
-    text: "Although inevitable, ethical implications cannot be ignored. Through attending live talks from Geoffrey Hinton in Toronto, I see the importance of responsible AI development to ensure safety and fairness.",
+    text: "Ethics, safety, and fairness are first-order concerns, not afterthoughts, in practical AI deployment.",
   },
   {
     icon: Sparkles,
     title: "AI Productization",
-    text: "Beyond capability alone, I am interested in how AI becomes dependable, usable, and truly valuable in real environments. The bridge between research, iteration, and production delivery is where a lot of meaningful engineering happens.",
+    text: "Meaningful impact comes from bridging research ideas into dependable, usable products in real environments.",
   },
 ];
 
-const researchCards = [
+const exploreCards = [
   {
-    icon: FileText,
-    badge: "Featured Paper",
-    title: "Enhancing Retrieval-Augmented Generation with Adaptive Chunking",
-    text: "A premium spotlight for your graded research work, implementation notes, and future paper releases.",
-    links: [
-      ["Enter Research Studio", "/research/"],
-      ["Open Research Paper", "https://github.com/AxelTWC/Applied_DeepLearning_Project/blob/main/Group%201%20Final%20Report.pdf"],
-      ["View Project Repo", "https://github.com/AxelTWC/Applied_DeepLearning_Project"],
-    ],
-    featured: true,
+    icon: User,
+    label: "About Me",
+    description: "Learn about my background, journey, and what drives me.",
+    href: "#about",
+  },
+  {
+    icon: Code,
+    label: "Projects",
+    description: "Explore HumblexMC, UMPLE, RAG research, and current work.",
+    href: "#projects",
   },
   {
     icon: Briefcase,
-    badge: "Internship Track",
-    title: "Fujifilm APAC Research Notes",
-    text: "Reserved for internship research papers, deep-dives, and polished technical findings as they become shareable.",
-    links: [["Open Internship Track", "/research/#track"]],
-  },
-  {
-    icon: Sparkles,
-    badge: "Editorial Space",
-    title: "New Horizons Essays",
-    text: "A long-form shelf for technical blog posts, experiments, and reflective essays across AI engineering, data systems, and responsible innovation.",
-    links: [["Browse Field Journal", "/research/#journal"]],
+    label: "Experience & Timeline",
+    description: "From early school years to UofT and AI internships.",
+    href: "#experience",
   },
 ];
 
+const toneCycle = ["blue", "purple", "cyan", "emerald", "amber", "pink"];
+
 export default function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+  const searchRef = useRef(null);
+  const inputRef = useRef(null);
+
+  const performSearch = useCallback((query) => {
+    const q = query.toLowerCase().trim();
+    if (!q) {
+      setSearchResults([]);
+      setShowResults(false);
+      return;
+    }
+
+    const results = searchIndex
+      .filter(
+        (item) =>
+          item.title.toLowerCase().includes(q) ||
+          item.keywords.toLowerCase().includes(q)
+      )
+      .slice(0, 6);
+
+    setSearchResults(results);
+    setShowResults(results.length > 0);
+  }, []);
+
+  useEffect(() => {
+    performSearch(searchQuery);
+  }, [searchQuery, performSearch]);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setShowResults(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const handleSelect = (result) => {
+    setShowResults(false);
+    setSearchQuery("");
+
+    if (result.href) {
+      window.location.href = result.href;
+      return;
+    }
+
+    const element = document.getElementById(result.id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -207,28 +308,21 @@ export default function App() {
     );
 
     document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
-
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="app-container">
-      <ClickMatrixRain />
-      <div className="ambient ambient-sun" aria-hidden="true" />
-      <div className="ambient ambient-glow" aria-hidden="true" />
-
+    <div className="app" id="top">
       <header className="site-header">
-        <nav className="nav-container">
-          <a href="#top" className="brand-mark" aria-label="Axel Tang home">
-            <span className="brand-monogram">AT</span>
-            <span className="brand-copy">
-              <strong>Axel Tang</strong>
-              <span>Master @ University of Toronto </span>
-            </span>
-          </a>
-          <div className="nav-links">
-            {navigationItems.map(([label, target]) => (
-              <a key={target} href={`#${target}`} className="nav-link">
+        <nav className="site-nav">
+          <a href="#top" className="brand">Axel Tang</a>
+          <div className="site-nav-links">
+            {navItems.map(([label, target]) => (
+              <a
+                key={label}
+                href={target.startsWith("/") ? target : `#${target}`}
+                className="site-nav-link"
+              >
                 {label}
               </a>
             ))}
@@ -236,166 +330,189 @@ export default function App() {
         </nav>
       </header>
 
-      <main id="top" className="page-shell">
-        <section className="hero-section">
-          <div className="hero-copy-panel reveal fade-in-up">
-            <p className="eyebrow">Personal Site</p>
-            <h1 className="hero-title">
-              Hi, I’m Axel <span className="wave">👋🏻</span>
-            </h1>
-            <div className="hero-text">
-              <p>
-                Master of Engineering in Data Analytics and Machine Learning at <span className="highlight">University of Toronto</span>.
-                <br />
-                --------------------------------------------------
-                <br />
-                <b>Current AI Engineering Intern in Fujifilm APAC.</b>
-              </p>
+      <main className="page">
+        <section className="hero-panel reveal">
+          <div className="hero-aura" aria-hidden="true">
+            <div className="hero-orb hero-orb-1" />
+            <div className="hero-orb hero-orb-2" />
+            <div className="hero-orb hero-orb-3" />
+            <div className="hero-grid" />
+          </div>
+          <div className="hero-content">
+          <p className="hero-eyebrow">Axel Tang Knowledge Base</p>
+          <h1>Learn about Axel</h1>
+          <p className="hero-copy">
+            MEng in Data Analytics and Machine Learning at University of Toronto.
+            Building durable systems, practical AI products, and research-backed workflows.
+          </p>
+
+          <div className="search-section" ref={searchRef}>
+            <div className="search-bar">
+              <Search size={18} className="search-icon" />
+              <input
+                ref={inputRef}
+                type="text"
+                className="search-input"
+                placeholder="Search this portfolio knowledge base"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <kbd className="search-kbd">Cmd K</kbd>
             </div>
-            <div className="hero-actions">
-              <a href="#contact" className="button button-primary">
-                Drop A Message
-              </a>
-              <a href="/research/" className="button button-secondary">
-                Explore New Horizons
-              </a>
-            </div>
+            {showResults && (
+              <div className="search-dropdown">
+                {searchResults.map((result) => (
+                  <button
+                    key={result.id}
+                    className="search-result"
+                    onClick={() => handleSelect(result)}
+                  >
+                    <span>{result.title}</span>
+                    <ChevronRight size={14} />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
-          <aside className="hero-presence-card reveal">
-            <div className="presence-badge">
-              <span className="presence-dot" />
-              Building across AI, research, and software systems
-            </div>
-            <div className="robot-stage">
-              <Lottie animationData={robotAnim} loop />
-            </div>
-            <div className="presence-notes">
-              <div className="presence-note">
-                <span>Current Focus</span>
-                <strong>AI Engineering + Applied Research</strong>
-              </div>
-            </div>
-          </aside>
+          <div className="hero-meta">
+            <span>Confidence</span>
+            <span>Persistence</span>
+            <span>Resilience</span>
+          </div>
+          </div>
         </section>
 
-        <section id="about" className="section-shell reveal">
-          <div className="section-heading">
-            <p className="eyebrow">Profile</p>
+        <section className="help-grid reveal" aria-label="How can I help">
+          <div className="section-head">
+            <h2>How can I help?</h2>
+          </div>
+          <div className="card-grid three-up">
+            {exploreCards.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <a key={item.label} href={item.href} className={`doc-card quick-link tone-${toneCycle[index % toneCycle.length]}`}>
+                  <span className="icon-pill">
+                    <Icon size={20} />
+                  </span>
+                  <h3>{item.label}</h3>
+                  <p>{item.description}</p>
+                  <span className="inline-link">Open section <ChevronRight size={14} /></span>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="update-banner reveal" aria-label="Current status">
+          <p>
+            <Zap size={16} /> Current: AI Engineering Intern at Fujifilm APAC.
+            Building the next generation of AI solutions.
+          </p>
+          <a href="#experience">View timeline</a>
+        </section>
+
+        <section id="about" className="content-section reveal">
+          <div className="section-head">
+            <p className="kicker">Profile</p>
             <h2>About Me</h2>
           </div>
-          <div className="statement-card about-card">
+          <article className="doc-card prose-card">
+            <p>I'm Axel Tang, building business and technical projects since age 14.</p>
             <p>
-              I’m Axel Tang, building business and projects since 14.
-              <br />
-              <br />I’ve contributed to projects like UMPLE serving millions of NA students and was the main force behind <br />HumblexMC serving tens of thousands of players globally meanwhile tried to sustain a 8 year eco-system.
-              <br />
-              <br />I came from humble beginnings, supporting my family by being selfless from a young age <br />such as saving up and disconnect from the norm then striving for excellence in my studies.
-              <br />
-              <br />Originally with a core foundation in computer science and a focus of software engineering, <br />I was also lucky enough to be guided by industrial leaders about next generation technology.
-              <br />
-              <br />Being privilleged to be in the same school with AI Pioneers such as Geoffrey Hinton and Ilya Sutskever. <br />I am aiming to expand while honing my knowledge of big data, artifical intelligence and machine learning.<br />Needless to say, I foresee myself contributing to the rapid growth of the next state-of-the-art tech revolution.
+              I contributed to UMPLE and led HumblexMC, serving large communities while
+              balancing quality, performance, and sustainability over years.
             </p>
-          </div>
+            <p>
+              I came from humble beginnings and learned early to be disciplined,
+              self-directed, and focused on long-term impact.
+            </p>
+            <p>
+              With a software engineering foundation and guidance from industry leaders,
+              I now focus on data, AI, and machine learning systems.
+            </p>
+            <p>
+              Studying in the same ecosystem as AI pioneers such as Geoffrey Hinton and
+              Ilya Sutskever strengthened my conviction to contribute to the next wave of
+              practical intelligent systems.
+            </p>
+          </article>
         </section>
 
-        <section id="projects" className="section-shell reveal">
-          <div className="section-heading split-heading">
-            <div>
-              <p className="eyebrow">Selected Work</p>
-              <h2>Projects</h2>
-            </div>
-            <p className="section-caption">Major Contributed Projects.</p>
+        <section id="research" className="content-section reveal">
+          <div className="section-head">
+            <p className="kicker">Research</p>
+            <h2>Research and Internship Work</h2>
           </div>
-          <div className="projects-grid">
-            {projectCards.map((project) => (
-              <article key={project.title} className="content-card project-card">
+          <article className="doc-card highlight-card tone-blue">
+            <p className="research-badge">Featured Spotlight</p>
+            <h3>Custom RAG Pipeline at Fujifilm APAC</h3>
+            <p>
+              Built a Haystack-based pipeline with parent-child chunking, adaptive
+              chunking, metadata, and hybrid reranking to outperform an internal Dify
+              baseline while preserving retrieval quality.
+            </p>
+            <p className="research-stat">
+              Matching BGE reranker quality while running up to 25x faster on GPU.
+            </p>
+            <a href="/research/" className="inline-link">
+              Visit research hub <ChevronRight size={14} />
+            </a>
+          </article>
+        </section>
+
+        <section id="projects" className="content-section reveal">
+          <div className="section-head">
+            <p className="kicker">Documentation</p>
+            <h2>Projects</h2>
+          </div>
+          <div className="card-grid two-up">
+            {projectCards.map((project, index) => (
+              <article key={project.title} className={`doc-card tone-${toneCycle[index % toneCycle.length]}`}>
                 <h3>{project.title}</h3>
-                {project.copy.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-                <div className="card-links">
-                  {project.links.map(([label, href]) => (
-                    <a key={label} href={href} target="_blank" rel="noreferrer" className="text-link">
-                      <span>{label}</span>
-                      <ArrowUpRight size={16} />
-                    </a>
-                  ))}
-                </div>
+                <p>{project.desc}</p>
+                {project.links.length > 0 && (
+                  <div className="link-list">
+                    {project.links.map(([label, href]) => (
+                      <a
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-link"
+                      >
+                        {label} <ExternalLink size={13} />
+                      </a>
+                    ))}
+                  </div>
+                )}
               </article>
             ))}
           </div>
         </section>
 
-        <section id="research" className="section-shell reveal research-shell">
-          <div className="section-heading split-heading">
-            <div>
-              <p className="eyebrow">Research & Insights</p>
-              <h2>New Horizons</h2>
-            </div>
-            <p className="section-caption">A dedicated spotlight for research papers, internship deep-dives, and technical writing.</p>
+        <section id="experience" className="content-section reveal">
+          <div className="section-head">
+            <p className="kicker">History</p>
+            <h2>Experience Timeline</h2>
           </div>
-          <div className="research-grid">
-            {researchCards.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <article key={item.title} className={`content-card research-card${item.featured ? " featured" : ""}`}>
-                  <div className="card-badge-row">
-                    <span className="card-badge">{item.badge}</span>
-                    <Icon size={20} className="card-symbol" />
-                  </div>
-                  {item.featured ? <p className="research-feature-kicker">Lead Spotlight</p> : null}
-                  {item.featured ? (
-                    <div className="research-feature-metric" aria-label="Featured publication metric">
-                      <span className="research-feature-metric-label">Featured Publication</span>
-                      <strong className="research-feature-metric-value">1 flagship paper</strong>
-                    </div>
-                  ) : null}
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                  <div className="card-links">
-                    {item.links.map(([label, href]) => (
-                      <a
-                        key={label}
-                        href={href}
-                        target={href.startsWith("http") ? "_blank" : undefined}
-                        rel={href.startsWith("http") ? "noreferrer" : undefined}
-                        className="text-link"
-                      >
-                        <span>{label}</span>
-                        <ArrowUpRight size={16} />
-                      </a>
-                    ))}
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-
-        <section id="experience" className="section-shell reveal">
-          <div className="section-heading">
-            <p className="eyebrow">Timeline</p>
-            <h2>Experience and Timeline</h2>
-          </div>
-          <div className="timeline-grid">
+          <div className="timeline-list">
             {timelineItems.map((item, index) => {
               const Icon = item.icon;
-
               return (
                 <article
                   key={item.title}
-                  className={`timeline-card timeline-side-${index % 2 === 0 ? "left" : "right"} accent-${item.accent}${item.isActive ? " is-active" : ""}`}
+                  className={`doc-card timeline-entry tone-${toneCycle[index % toneCycle.length]}${item.isActive ? " active" : ""}`}
                 >
-                  <div className="timeline-card-top">
-                    <span className="timeline-accent" aria-hidden="true" />
-                    <Icon size={20} className="timeline-icon" />
-                  </div>
-                  <div className="timeline-meta-row">
-                    <span className="timeline-chip timeline-chip-period">{item.period}</span>
-                    <span className="timeline-chip timeline-chip-status">{item.status}</span>
-                    {item.isActive ? <span className="timeline-chip timeline-chip-active">Active now</span> : null}
+                  <div className="timeline-top">
+                    <span className="icon-pill">
+                      <Icon size={16} />
+                    </span>
+                    <div className="timeline-meta">
+                      <span>{item.period}</span>
+                      <span>{item.status}</span>
+                      {item.isActive && <span>Active now</span>}
+                    </div>
                   </div>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
@@ -405,52 +522,47 @@ export default function App() {
           </div>
         </section>
 
-        <section id="statement" className="section-shell reveal">
-          <div className="section-heading">
-            <p className="eyebrow">Editorial Note</p>
+        <section id="statement" className="content-section reveal">
+          <div className="section-head">
+            <p className="kicker">Personal</p>
             <h2>Personal Statement</h2>
           </div>
-          <div className="statement-card">
+          <article className="doc-card prose-card tone-purple">
             <p>
-              I am born with no technological background, only a PC and a game which led me to open a “studio/service” running for 8 years during my childhood, through it, <b>I learnt that technology is the key to improve the world in a vast ways unimaginable.</b> On top of that, with my medical/nursing background from my parents, I always strive to take care and be concerned about others over myself.
-              <br />
-              <br />
-              During my Bachelors Years, I got introduced to AI chatbots, the year which OpenAI publicly released their first model. <b>At that time, I did not have a clue about the topics of artificial intelligence as I was focusing on how to get my family out of financial pressure and doing the "right" thing</b>. Therefore, I wanted to build a career through software, I wasn’t particularly interested in developing websites or front-end related but rather liked working on lower levels such as the source to make a programming language work (Honors Project) or something exciting which could be also seen out of the software spectrum such as robotics or other sorts of engineering tied to SWE (internal tools and much more).
-              <br />
-              <br />
-              Over the years with one of my relatives working in cutting edge tech and after reading and watching the possibilities of where I could reach myself for, <b>I found out the excitement and imminent advancement of AI aiding the world</b>. Since my emphasis on my Master’s Degree is under Data Analyst and Machine Learning, I view myself as a <b>engineer-doctor-nurse for AI/Machines and hope to either take on roles in training (nurturing machines) or AGI robotics.</b>
-              <br />
-              <br />
-              My stance is that I love helping and seeing things work regardless of what they are or who they are. The thrill of success after a long run just excites me a lot. <b>I hope to see more nurses around the world taking care of people in need; and I want to do my part to leverage machines to be able to take care of people who may seem out of reach to me.</b>
-              <br />
+              I started with no technical family background, only curiosity, a computer,
+              and persistence. That path taught me technology can improve lives at scale.
             </p>
-          </div>
+            <p>
+              Early on, my focus was software engineering and practical systems. As AI
+              matured and became broadly available, I shifted toward data-driven machine
+              intelligence and deployment-focused engineering.
+            </p>
+            <p>
+              I see myself as an engineer supporting the health of machine systems,
+              interested in training, reliability, and real-world use.
+            </p>
+            <p>
+              The long-term goal is simple: build systems that can responsibly help people
+              who are otherwise hard to reach.
+            </p>
+          </article>
         </section>
 
         <ResumeSection />
 
-        <section id="ai-insight" className="section-shell reveal">
-          <div className="section-heading">
-            <p className="eyebrow">Perspective</p>
+        <section id="ai-insight" className="content-section reveal">
+          <div className="section-head">
+            <p className="kicker">Perspectives</p>
             <h2>AI Insight</h2>
           </div>
-          <div className="insight-intro content-card">
-            <p>
-              Artificial Intelligence is the next frontier of technology, same as the invention of the internet, smartphone and vehicles. It is transforming industries, enhancing productivity, and reshaping the way we live and work.
-              <br />
-              <br />
-              Here are some areas I find particularly that I like to discuss on:
-              <br />
-              <br />
-            </p>
-          </div>
-          <div className="insight-grid">
-            {insightCards.map((item) => {
+          <div className="card-grid two-up">
+            {insightCards.map((item, index) => {
               const Icon = item.icon;
-
               return (
-                <article key={item.title} className="content-card insight-card">
-                  <Icon size={28} className="insight-icon" />
+                <article key={item.title} className={`doc-card tone-${toneCycle[index % toneCycle.length]}`}>
+                  <span className="icon-pill">
+                    <Icon size={18} />
+                  </span>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                 </article>
@@ -459,45 +571,50 @@ export default function App() {
           </div>
         </section>
 
-        <section id="contact" className="section-shell reveal">
-          <div className="contact-card">
-            <div className="section-heading centered-heading">
-              <p className="eyebrow">Contact</p>
-              <h2>Let’s Connect</h2>
-            </div>
-            <p className="contact-copy">
-              General enquires or interested in my projects?
-              <br />
-              Email below or message on LinkedIn | Come along and say hi <span className="face-wave">🤗</span> !!!
+        <section id="contact" className="content-section reveal">
+          <div className="section-head">
+            <p className="kicker">Contact</p>
+            <h2>Let's Connect</h2>
+          </div>
+          <article className="doc-card contact-card tone-cyan">
+            <p>
+              General enquiries or collaboration ideas.
+              Reach out by email or connect on LinkedIn and GitHub.
             </p>
             <div className="contact-links">
-              <a href="mailto:axel.tang@mail.utoronto.ca" className="contact-icon" aria-label="Email Axel Tang">
-                <Mail />
+              <a
+                href="mailto:axel.tang@mail.utoronto.ca"
+                className="contact-link"
+                aria-label="Email"
+              >
+                <Mail size={20} />
               </a>
               <a
                 href="https://www.linkedin.com/in/axel-tang-2b22572b6/"
                 target="_blank"
                 rel="noreferrer"
-                className="contact-icon"
-                aria-label="Axel Tang LinkedIn"
+                className="contact-link"
+                aria-label="LinkedIn"
               >
-                <Linkedin />
+                <Linkedin size={20} />
               </a>
               <a
                 href="https://github.com/axeltwc"
                 target="_blank"
                 rel="noreferrer"
-                className="contact-icon"
-                aria-label="Axel Tang GitHub"
+                className="contact-link"
+                aria-label="GitHub"
               >
-                <Github />
+                <Github size={20} />
               </a>
             </div>
-          </div>
+          </article>
         </section>
       </main>
 
-      <footer className="footer">© {new Date().getFullYear()} Axel Tang. All rights reserved.</footer>
+      <footer className="site-footer">
+        <p>© {new Date().getFullYear()} Axel Tang. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
