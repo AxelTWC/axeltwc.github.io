@@ -24,12 +24,12 @@ import ResumeSection from "./ResumeSection";
 
 const navItems = [
   ["About", "about"],
+  ["Research", "research"],
   ["Projects", "projects"],
   ["Experience", "experience"],
   ["Statement", "statement"],
   ["Resume", "resume"],
   ["AI Insight", "ai-insight"],
-  ["Research", "https://axeltang.me/research"],
   ["Contact", "contact"],
 ];
 
@@ -387,7 +387,7 @@ export default function App() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <kbd className="search-kbd">Cmd K</kbd>
+              <kbd className="search-kbd">(Ctrl/⌘) + K</kbd>
             </div>
             {showResults &&
               createPortal(
