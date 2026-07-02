@@ -1,0 +1,11 @@
+# dependencies
+node_modules/
+my-app/node_modules/
+
+# production build
+my-app/build/
+
+# misc
+.DS_Store
+*.log
+.cache/
