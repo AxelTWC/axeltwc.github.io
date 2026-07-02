@@ -28,7 +28,7 @@ const navItems = [
   ["Statement", "statement"],
   ["Resume", "resume"],
   ["AI Insight", "ai-insight"],
-  ["Research", "/research/"],
+  ["Research", "https://axeltang.me/research"],
   ["Contact", "contact"],
 ];
 
@@ -78,7 +78,7 @@ const searchIndex = [
     id: "research",
     title: "Research Hub",
     keywords: "papers research publications technical essays deep dives",
-    href: "/research",
+    href: "https://axeltang.me/research",
   },
 ];
 
@@ -163,19 +163,19 @@ const timelineItems = [
     text: "Supported server-side infrastructure and internal software tooling using Python and OpenCV.",
   },
   {
+    icon: User,
+    title: "Student at UofT",
+    period: "Current chapter",
+    status: "Graduate School",
+    text: "After a long break from graduation, rebuilt momentum and moved forward with clearer goals.",
+  },
+  {
     icon: Briefcase,
     title: "Fujifilm BI",
     period: "Current",
     status: "AI Internship",
     isActive: true,
     text: "Currently doing AI Internship at Fujifilm BI, building practical AI solutions and research-driven workflows.",
-  },
-  {
-    icon: User,
-    title: "Student at UofT",
-    period: "Current chapter",
-    status: "Graduate School",
-    text: "After a long break from graduation, rebuilt momentum and moved forward with clearer goals.",
   },
 ];
 
@@ -342,7 +342,7 @@ export default function App() {
           <p className="hero-eyebrow">Axel Tang Knowledge Base</p>
           <h1>Learn about Axel</h1>
           <p className="hero-copy">
-            MEng in Data Analytics and Machine Learning at University of Toronto.
+            MEng in AI @University of Toronto.
             Building durable systems, practical AI products, and research-backed workflows.
           </p>
 
@@ -418,23 +418,25 @@ export default function App() {
             <h2>About Me</h2>
           </div>
           <article className="doc-card prose-card">
-            <p>I'm Axel Tang, building business and technical projects since age 14.</p>
             <p>
-              I contributed to UMPLE and led HumblexMC, serving large communities while
-              balancing quality, performance, and sustainability over years.
+              I'm Axel Tang, <strong>building business and projects since 14</strong>.
             </p>
             <p>
-              I came from humble beginnings and learned early to be disciplined,
-              self-directed, and focused on long-term impact.
+              I've contributed to projects like <strong>UMPLE serving millions of NA students</strong> and was the main force behind
+              <strong> HumblexMC serving tens of thousands of players globally</strong> while trying to sustain an <strong>8-year ecosystem</strong>.
             </p>
             <p>
-              With a software engineering foundation and guidance from industry leaders,
-              I now focus on data, AI, and machine learning systems.
+              I came from humble beginnings, supporting my family by being selfless from a young age,
+              such as saving up and disconnecting from the norm, then striving for excellence in my studies.
             </p>
             <p>
-              Studying in the same ecosystem as AI pioneers such as Geoffrey Hinton and
-              Ilya Sutskever strengthened my conviction to contribute to the next wave of
-              practical intelligent systems.
+              Originally with a core foundation in computer science and a focus on software engineering,
+              I was also lucky enough to be guided by industrial leaders about <strong>next-generation technology</strong>.
+            </p>
+            <p>
+              Being privileged to be in the same school with AI pioneers such as <strong>Geoffrey Hinton</strong> and <strong>Ilya Sutskever</strong>,
+              I am aiming to expand while honing my knowledge of <strong>big data, artificial intelligence, and machine learning</strong>.
+              Needless to say, I foresee myself contributing to the rapid growth of the <strong>next state-of-the-art tech revolution</strong>.
             </p>
           </article>
         </section>
@@ -455,7 +457,7 @@ export default function App() {
             <p className="research-stat">
               Matching BGE reranker quality while running up to 25x faster on GPU.
             </p>
-            <a href="/research/" className="inline-link">
+            <a href="https://axeltang.me/research" className="inline-link">
               Visit research hub <ChevronRight size={14} />
             </a>
           </article>
