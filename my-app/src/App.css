@@ -159,7 +159,7 @@ input {
 
 .hero-content {
   position: relative;
-  z-index: 4;
+  z-index: auto;
 }
 
 .hero-orb {
@@ -176,7 +176,7 @@ input {
   top: -20px;
   left: 12%;
   background: rgba(59, 130, 246, 0.55);
-  animation: hero-orb-1-move 6.5s ease-in-out infinite;
+  animation: hero-orb-1-move 3.5s ease-in-out infinite;
 }
 
 .hero-orb-2 {
@@ -185,7 +185,7 @@ input {
   top: 8%;
   right: 10%;
   background: rgba(168, 85, 247, 0.5);
-  animation: hero-orb-2-move 7.5s ease-in-out infinite;
+  animation: hero-orb-2-move 4s ease-in-out infinite;
 }
 
 .hero-orb-3 {
@@ -194,7 +194,7 @@ input {
   bottom: -30px;
   left: 42%;
   background: rgba(6, 182, 212, 0.46);
-  animation: hero-orb-3-move 5.8s ease-in-out infinite;
+  animation: hero-orb-3-move 3s ease-in-out infinite;
 }
 
 .hero-grid {
@@ -205,7 +205,7 @@ input {
     linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
   background-size: 62px 62px;
-  animation: grid-shift 8s linear infinite;
+  animation: grid-shift 4s linear infinite;
 }
 
 .hero-eyebrow,
@@ -236,7 +236,6 @@ input {
   margin-top: 24px;
   max-width: 760px;
   position: relative;
-  z-index: 30;
 }
 
 .search-bar {
@@ -285,16 +284,12 @@ input {
 }
 
 .search-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  right: 0;
   border: 1px solid var(--border-default);
   border-radius: 12px;
   background: #191a22;
   box-shadow: 0 14px 42px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  z-index: 60;
+  z-index: 999;
   animation: search-drop 0.16s ease-out;
 }
 
@@ -522,6 +517,11 @@ input {
   background: linear-gradient(180deg, rgba(21, 68, 53, 0.3), rgba(20, 31, 28, 0.8));
 }
 
+.timeline-entry.partial {
+  border-color: rgba(245, 158, 11, 0.46);
+  background: linear-gradient(180deg, rgba(68, 53, 21, 0.3), rgba(31, 28, 20, 0.8));
+}
+
 .timeline-top {
   display: flex;
   align-items: center;
@@ -560,6 +560,12 @@ input {
   border-color: rgba(16, 185, 129, 0.45);
   color: #66d4a3;
   background: rgba(16, 185, 129, 0.16);
+}
+
+.timeline-entry.partial .timeline-meta span:last-child {
+  border-color: rgba(245, 158, 11, 0.45);
+  color: #f5a623;
+  background: rgba(245, 158, 11, 0.16);
 }
 
 .contact-card {

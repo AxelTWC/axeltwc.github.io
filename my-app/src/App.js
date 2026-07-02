@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import {
   Mail,
   Github,
@@ -167,6 +168,7 @@ const timelineItems = [
     title: "Student at UofT",
     period: "Current chapter",
     status: "Graduate School",
+    isPartiallyActive: true,
     text: "After a long break from graduation, rebuilt momentum and moved forward with clearer goals.",
   },
   {
@@ -229,7 +231,9 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
+  const [dropdownStyle, setDropdownStyle] = useState({});
   const searchRef = useRef(null);
+  const searchBarRef = useRef(null);
   const inputRef = useRef(null);
 
   const performSearch = useCallback((query) => {
@@ -252,9 +256,24 @@ export default function App() {
     setShowResults(results.length > 0);
   }, []);
 
+  const updateDropdownPosition = useCallback(() => {
+    if (searchBarRef.current) {
+      const rect = searchBarRef.current.getBoundingClientRect();
+      setDropdownStyle({
+        position: "fixed",
+        top: rect.bottom + 8,
+        left: rect.left,
+        width: rect.width,
+      });
+    }
+  }, []);
+
   useEffect(() => {
     performSearch(searchQuery);
-  }, [searchQuery, performSearch]);
+    if (searchQuery.trim()) {
+      updateDropdownPosition();
+    }
+  }, [searchQuery, performSearch, updateDropdownPosition]);
 
   useEffect(() => {
     const handleClick = (e) => {
@@ -263,9 +282,20 @@ export default function App() {
       }
     };
 
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
   }, []);
+
+  useEffect(() => {
+    if (!showResults) return;
+    const handleMove = () => updateDropdownPosition();
+    window.addEventListener("scroll", handleMove, true);
+    window.addEventListener("resize", handleMove);
+    return () => {
+      window.removeEventListener("scroll", handleMove, true);
+      window.removeEventListener("resize", handleMove);
+    };
+  }, [showResults, updateDropdownPosition]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -339,15 +369,15 @@ export default function App() {
             <div className="hero-grid" />
           </div>
           <div className="hero-content">
-          <p className="hero-eyebrow">Axel Tang Knowledge Base</p>
+          <p className="hero-eyebrow">Building durable systems, practical AI products, and research-backed workflows.</p>
           <h1>Learn about Axel</h1>
           <p className="hero-copy">
-            MEng in AI @University of Toronto.
-            Building durable systems, practical AI products, and research-backed workflows.
+            MEng in AI <strong>@University of Toronto.</strong><br />
+            Rise And Shine For Your Real Eyes To Realize The Paradise
           </p>
 
           <div className="search-section" ref={searchRef}>
-            <div className="search-bar">
+            <div className="search-bar" ref={searchBarRef}>
               <Search size={18} className="search-icon" />
               <input
                 ref={inputRef}
@@ -359,20 +389,22 @@ export default function App() {
               />
               <kbd className="search-kbd">Cmd K</kbd>
             </div>
-            {showResults && (
-              <div className="search-dropdown">
-                {searchResults.map((result) => (
-                  <button
-                    key={result.id}
-                    className="search-result"
-                    onClick={() => handleSelect(result)}
-                  >
-                    <span>{result.title}</span>
-                    <ChevronRight size={14} />
-                  </button>
-                ))}
-              </div>
-            )}
+            {showResults &&
+              createPortal(
+                <div className="search-dropdown" style={dropdownStyle}>
+                  {searchResults.map((result) => (
+                    <button
+                      key={result.id}
+                      className="search-result"
+                      onClick={() => handleSelect(result)}
+                    >
+                      <span>{result.title}</span>
+                      <ChevronRight size={14} />
+                    </button>
+                  ))}
+                </div>,
+                document.body
+              )}
           </div>
 
           <div className="hero-meta">
@@ -504,7 +536,7 @@ export default function App() {
               return (
                 <article
                   key={item.title}
-                  className={`doc-card timeline-entry tone-${toneCycle[index % toneCycle.length]}${item.isActive ? " active" : ""}`}
+                  className={`doc-card timeline-entry tone-${toneCycle[index % toneCycle.length]}${item.isActive ? " active" : ""}${item.isPartiallyActive ? " partial" : ""}`}
                 >
                   <div className="timeline-top">
                     <span className="icon-pill">
@@ -514,6 +546,7 @@ export default function App() {
                       <span>{item.period}</span>
                       <span>{item.status}</span>
                       {item.isActive && <span>Active now</span>}
+                      {item.isPartiallyActive && <span>In Progress</span>}
                     </div>
                   </div>
                   <h3>{item.title}</h3>
