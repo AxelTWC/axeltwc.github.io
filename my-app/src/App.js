@@ -387,7 +387,7 @@ export default function App() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <kbd className="search-kbd">(Ctrl/⌘) + K</kbd>
+              <kbd className="search-kbd">Ctrl/⌘ + K</kbd>
             </div>
             {showResults &&
               createPortal(
