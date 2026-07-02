@@ -170,7 +170,7 @@ const researchCards = [
     title: "Enhancing Retrieval-Augmented Generation with Adaptive Chunking",
     text: "A premium spotlight for your graded research work, implementation notes, and future paper releases.",
     links: [
-      ["Enter Research Studio", "https://research.axeltang.me/"],
+      ["Enter Research Studio", "/research/"],
       ["Open Research Paper", "https://github.com/AxelTWC/Applied_DeepLearning_Project/blob/main/Group%201%20Final%20Report.pdf"],
       ["View Project Repo", "https://github.com/AxelTWC/Applied_DeepLearning_Project"],
     ],
@@ -181,14 +181,14 @@ const researchCards = [
     badge: "Internship Track",
     title: "Fujifilm APAC Research Notes",
     text: "Reserved for internship research papers, deep-dives, and polished technical findings as they become shareable.",
-    links: [["Open Internship Track", "https://research.axeltang.me/#track"]],
+    links: [["Open Internship Track", "/research/#track"]],
   },
   {
     icon: Sparkles,
     badge: "Editorial Space",
     title: "New Horizons Essays",
     text: "A long-form shelf for technical blog posts, experiments, and reflective essays across AI engineering, data systems, and responsible innovation.",
-    links: [["Browse Field Journal", "https://research.axeltang.me/#journal"]],
+    links: [["Browse Field Journal", "/research/#journal"]],
   },
 ];
 
@@ -256,7 +256,7 @@ export default function App() {
               <a href="#contact" className="button button-primary">
                 Drop A Message
               </a>
-              <a href="https://research.axeltang.me/" className="button button-secondary">
+              <a href="/research/" className="button button-secondary">
                 Explore New Horizons
               </a>
             </div>
