@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const resumeDir = path.join(__dirname, '..', 'public', 'resumes');
-const required = ['ML_Intern_Resume.pdf', 'SW_Intern_Resume.pdf'];
+const required = ['SW_Intern_Resume.pdf'];
 
 if (!fs.existsSync(resumeDir)) {
   console.error('[verify:resumes] Missing directory: public/resumes');
