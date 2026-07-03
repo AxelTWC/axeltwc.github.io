@@ -394,7 +394,7 @@ export default function App() {
           <p className="hero-eyebrow">Building durable systems, practical AI products, and research-backed workflows.</p>
           <h1>Learn about Axel</h1>
           <p className="hero-copy">
-            MEng in AI <strong>@University of Toronto.</strong><br />
+            Master in AI/ML/DA <strong>@University of Toronto.</strong><br />
             Rise And Shine For Your Real Eyes To Realize The Paradise
           </p>
 
