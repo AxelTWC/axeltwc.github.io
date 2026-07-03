@@ -564,21 +564,35 @@ export default function App() {
           </div>
           <article className="doc-card prose-card tone-purple">
             <p>
-              I started with no technical family background, only curiosity, a computer,
-              and persistence. That path taught me technology can improve lives at scale.
+              I am born with no technological background, only a PC and a game which led me to open a
+              "studio/service" running for 8 years during my childhood. Through it, <strong>I learnt that
+              technology is the key to improve the world in vast ways unimaginable.</strong> On top of that,
+              with my medical/nursing background from my parents, I always strive to take care and be
+              concerned about others over myself.
             </p>
             <p>
-              Early on, my focus was software engineering and practical systems. As AI
-              matured and became broadly available, I shifted toward data-driven machine
-              intelligence and deployment-focused engineering.
+              During my Bachelors Years, I got introduced to AI chatbots, the year which OpenAI publicly
+              released their first model. <strong>At that time, I did not have a clue about the topics of
+              artificial intelligence</strong> as I was focusing on how to get my family out of financial
+              pressure and doing the "right" thing. Therefore, I wanted to build a career through software;
+              I wasn't particularly interested in developing websites or front-end related but rather liked
+              working on lower levels such as the source to make a programming language work (Honors Project)
+              or something exciting which could be also seen out of the software spectrum such as robotics
+              or other sorts of engineering tied to SWE (internal tools and much more).
             </p>
             <p>
-              I see myself as an engineer supporting the health of machine systems,
-              interested in training, reliability, and real-world use.
+              Over the years with one of my relatives working in cutting edge tech and after reading and
+              watching the possibilities of where I could reach myself for, <strong>I found out the excitement
+              and imminent advancement of AI aiding the world.</strong> Since my emphasis on my Master's Degree
+              is under Data Analyst and Machine Learning, I view myself as an <strong>engineer-doctor-nurse
+              for AI/Machines</strong> and hope to either take on roles in training (nurturing machines)
+              or AGI robotics.
             </p>
             <p>
-              The long-term goal is simple: build systems that can responsibly help people
-              who are otherwise hard to reach.
+              My stance is that I love helping and seeing things work regardless of what they are or who they
+              are. The thrill of success after a long run just excites me a lot. <strong>I hope to see more
+              nurses around the world taking care of people in need; and I want to do my part to leverage
+              machines to be able to take care of people who may seem out of reach to me.</strong>
             </p>
           </article>
         </section>
