@@ -458,14 +458,6 @@ export default function App() {
           </div>
         </section>
 
-        <section className="update-banner reveal" aria-label="Current status">
-          <p>
-            <Zap size={16} /> Current: AI Engineering Intern at Fujifilm APAC.
-            Building the next generation of AI solutions.
-          </p>
-          <a href="#experience">View timeline</a>
-        </section>
-
         <section id="about" className="content-section reveal">
           <div className="section-head">
             <p className="kicker">Profile</p>
@@ -493,6 +485,14 @@ export default function App() {
               Needless to say, I foresee myself contributing to the rapid growth of the <strong>next state-of-the-art tech revolution</strong>.
             </p>
           </article>
+
+          <section className="update-banner reveal" aria-label="Current status" style={{ marginTop: '14px' }}>
+            <p>
+              <Zap size={16} /> Current: AI Engineering Intern at Fujifilm APAC.
+              Building the next generation of AI solutions.
+            </p>
+            <a href="#experience">View timeline</a>
+          </section>
         </section>
 
         <section id="research" className="content-section reveal">
