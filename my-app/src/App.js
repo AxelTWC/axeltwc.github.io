@@ -18,6 +18,8 @@ import {
   Sparkles,
   ExternalLink,
   Zap,
+  Sun,
+  Moon,
 } from "lucide-react";
 import "./App.css";
 import ResumeSection from "./ResumeSection";
@@ -232,9 +234,19 @@ export default function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [dropdownStyle, setDropdownStyle] = useState({});
+  const [lightMode, setLightMode] = useState(() => localStorage.getItem("theme") === "light");
   const searchRef = useRef(null);
   const searchBarRef = useRef(null);
   const inputRef = useRef(null);
+
+  const toggleTheme = useCallback(() => {
+    setLightMode((prev) => !prev);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("light-mode", lightMode);
+    localStorage.setItem("theme", lightMode ? "light" : "dark");
+  }, [lightMode]);
 
   const performSearch = useCallback((query) => {
     const q = query.toLowerCase().trim();
@@ -342,20 +354,30 @@ export default function App() {
   }, []);
 
   return (
-    <div className="app" id="top">
+    <div className={`app${lightMode ? " light-mode" : ""}`} id="top">
       <header className="site-header">
         <nav className="site-nav">
           <a href="#top" className="brand">Axel Tang</a>
-          <div className="site-nav-links">
-            {navItems.map(([label, target]) => (
-              <a
-                key={label}
-                href={target.startsWith("/") ? target : `#${target}`}
-                className="site-nav-link"
-              >
-                {label}
-              </a>
-            ))}
+          <div className="site-nav-actions">
+            <div className="site-nav-links">
+              {navItems.map(([label, target]) => (
+                <a
+                  key={label}
+                  href={target.startsWith("/") ? target : `#${target}`}
+                  className="site-nav-link"
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="theme-toggle"
+              aria-label={lightMode ? "Switch to dark mode" : "Switch to light mode"}
+            >
+              {lightMode ? <Moon size={16} /> : <Sun size={16} />}
+            </button>
           </div>
         </nav>
       </header>
@@ -478,20 +500,32 @@ export default function App() {
             <p className="kicker">Research</p>
             <h2>Research and Internship Work</h2>
           </div>
-          <article className="doc-card highlight-card tone-blue">
-            <p className="research-badge">Featured Spotlight</p>
-            <h3>Custom RAG Pipeline at Fujifilm APAC</h3>
-            <p>
-              Built a Haystack-based pipeline with parent-child chunking, adaptive
-              chunking, metadata, and hybrid reranking to outperform an internal Dify
-              baseline while preserving retrieval quality.
-            </p>
-            <p className="research-stat">
-              Matching BGE reranker quality while running up to 25x faster on GPU.
-            </p>
-            <a href="https://axeltang.me/research" className="inline-link">
-              Visit research hub <ChevronRight size={14} />
-            </a>
+          <article className="doc-card highlight-card tone-blue research-spotlight">
+            <div className="research-spotlight-grid">
+              <div className="research-main">
+                <p className="research-badge">Featured Spotlight</p>
+                <h3>Custom RAG Pipeline at Fujifilm APAC</h3>
+                <p>
+                  Built a Haystack-based pipeline with parent-child chunking, adaptive
+                  chunking, metadata, and hybrid reranking to outperform an internal Dify
+                  baseline while preserving retrieval quality.
+                </p>
+                <div className="research-tags" aria-label="Research stack">
+                  <span>Haystack</span>
+                  <span>Hybrid Reranking</span>
+                  <span>Parent-Child Chunking</span>
+                </div>
+                <a href="https://axeltang.me/research" className="research-link">
+                  Explore full research hub <ChevronRight size={16} />
+                </a>
+              </div>
+
+              <aside className="research-kpi" aria-label="Key impact">
+                <p className="research-kpi-label">Measured Gain</p>
+                <p className="research-kpi-value">25x</p>
+                <p className="research-kpi-note">faster on GPU with comparable BGE reranker quality</p>
+              </aside>
+            </div>
           </article>
         </section>
 
