@@ -8,7 +8,6 @@ import {
   ChevronRight,
   Briefcase,
   BookOpen,
-  GraduationCap,
   Code,
   Laptop,
   User,
@@ -124,62 +123,33 @@ const projectCards = [
 
 const timelineItems = [
   {
-    icon: BookOpen,
-    title: "Top 5 HK Primary School",
-    period: "Primary Years",
-    status: "Foundation",
-    text: "Met great people, then became very shy. Rankings were back then.",
-  },
-  {
     icon: Briefcase,
-    title: "HumblexMC",
-    period: "2015-2024",
-    status: "Builder",
-    text: "Built and sustained an ecosystem over multiple years while learning product, operations, and technical ownership.",
+    title: "Fujifilm BI",
+    period: "April 2026 – December 2026",
+    status: "AI Engineer (Previously Intern)",
+    isActive: true,
+    text: "Developed an interactive showroom kiosk for browsing product information and company services. Evaluated standard open-source language models for routine internal document search, tested Haystack and Dify search accuracy, and prepared progress reports and HTML dashboards. Assisted with moving the document retrieval pipeline for commercial printers to a Docker-based stack for scanned PDFs and company information.",
   },
   {
     icon: BookOpen,
-    title: "Studying Abroad",
-    period: "2017 onward",
-    status: "Transition",
-    text: "Moved through Manitoba and Ontario, earning provincial merit certificates in high school.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Undergraduate",
-    period: "Bachelor Phase",
-    status: "Milestone",
-    text: "Admitted to top Canadian universities and chose a path that balanced family priorities and progression.",
-  },
-  {
-    icon: Code,
-    title: "UMPLE",
-    period: "Honors Project",
-    status: "Engineering",
-    text: "Worked on honors SWE modeling initiatives with Dr. Lethbridge, improving language and tooling quality.",
+    title: "Sky Dream",
+    period: "March 2025 – May 2025",
+    status: "IT Instructor",
+    text: "Taught introductory computer science and programming to elementary and junior school students. Delivered foundational coding lessons at Diocesan Girls' Junior School, Queen Maud, and Wong Cho Bau Elementary.",
   },
   {
     icon: Laptop,
-    title: "HKGCC",
-    period: "Internship Phase",
-    status: "IT",
-    text: "Supported server-side infrastructure and internal software tooling using Python and OpenCV.",
-  },
-  {
-    icon: User,
-    title: "Student at UofT",
-    period: "Current chapter",
-    status: "Graduate School",
-    isPartiallyActive: true,
-    text: "After a long break from graduation, rebuilt momentum and moved forward with clearer goals.",
+    title: "Hong Kong General Chamber of Commerce",
+    period: "July 2024 – August 2024",
+    status: "Information Technology Intern – Software Development & Computer Vision",
+    text: "Restored Microsoft SQL Server databases and maintained virtual machines using ESXi Host Client. Used FuzzyWuzzy text matching to clean and organize business contact records, updated employee intranet pages with ASP.NET and CSS, and tested Python OpenCV scripts for routine contour-processing automation.",
   },
   {
     icon: Briefcase,
-    title: "Fujifilm BI",
-    period: "Current",
-    status: "AI Internship",
-    isActive: true,
-    text: "Currently doing AI Internship at Fujifilm BI, building practical AI solutions and research-driven workflows.",
+    title: "InteractHealthPro",
+    period: "March 2024 – June 2024",
+    status: "Software Developer Intern",
+    text: "Migrated a CRM platform and rebuilt customer data pipelines, reducing manual data-entry work for a healthcare provider.",
   },
 ];
 
@@ -488,8 +458,8 @@ export default function App() {
 
           <section className="update-banner reveal" aria-label="Current status" style={{ marginTop: '14px' }}>
             <p>
-              <Zap size={16} /> Current: AI Engineering Intern at Fujifilm APAC.
-              Building the next generation of AI solutions.
+              <Zap size={16} /> Current: AI Engineer (Previously Intern) at Fujifilm BI.
+              Working on showroom and routine corporate document-search projects.
             </p>
             <a href="#experience">View timeline</a>
           </section>
