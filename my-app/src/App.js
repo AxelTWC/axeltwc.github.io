@@ -11,10 +11,6 @@ import {
   Code,
   Laptop,
   User,
-  Brain,
-  Activity,
-  Shield,
-  Sparkles,
   ExternalLink,
   Zap,
   Sun,
@@ -25,12 +21,9 @@ import ResumeSection from "./ResumeSection";
 
 const navItems = [
   ["About", "about"],
-  ["Research", "research"],
   ["Projects", "projects"],
   ["Experience", "experience"],
-  ["Statement", "statement"],
   ["Resume", "resume"],
-  ["AI Insight", "ai-insight"],
   ["Contact", "contact"],
 ];
 
@@ -44,8 +37,7 @@ const searchIndex = [
   {
     id: "projects",
     title: "Projects",
-    keywords:
-      "HumblexMC Minecraft server UMPLE umple RAG retrieval augmented generation adaptive chunking deep learning",
+    keywords: "UMPLE contributions Java UML software engineering",
   },
   {
     id: "experience",
@@ -54,21 +46,9 @@ const searchIndex = [
       "school primary UofT university HKGCC internship Fujifilm APAC internship undergraduate Manitoba Ontario high school",
   },
   {
-    id: "statement",
-    title: "Personal Statement",
-    keywords:
-      "philosophy background vision story nursing medical AI AGI robotics engineer doctor nurse",
-  },
-  {
     id: "resume",
     title: "Resume",
     keywords: "download view ML SW resume CV password protected",
-  },
-  {
-    id: "ai-insight",
-    title: "AI Insight",
-    keywords:
-      "healthcare AI AGI robotics responsible ethics Geoffrey Hinton",
   },
   {
     id: "contact",
@@ -76,20 +56,9 @@ const searchIndex = [
     keywords:
       "email LinkedIn GitHub message connect axel.tang@mail.utoronto.ca",
   },
-  {
-    id: "research",
-    title: "Research Hub",
-    keywords: "papers research publications technical essays deep dives",
-    href: "https://axeltang.me/research",
-  },
 ];
 
 const projectCards = [
-  {
-    title: "HumblexMC",
-    desc: "Started when I was 14 years old. Serving 25k+ players, developed a community with focus on quality and performance. Learnt business and management along the way.",
-    links: [["Visit HumblexMC", "https://humblex.net"]],
-  },
   {
     title: "UMPLE Contributions",
     desc: "Honour Bachelor SWE Level Project. Resolved UML language issues with Java, implemented new features, and maintained CI/CD pipelines.",
@@ -99,25 +68,6 @@ const projectCards = [
         "https://github.com/umple/umple/issues?q=involves%3AAxelTWC+sort%3Acreated-asc+",
       ],
     ],
-  },
-  {
-    title: "Enhancing Retrieval-Augmented Generation with Adaptive Chunking",
-    desc: "University graded research project on retrieval-augmented generation. Focused on implementing the baseline of the RAG system. Course: Applied Deep Learning.",
-    links: [
-      [
-        "Visit RAG Project",
-        "https://github.com/AxelTWC/Applied_DeepLearning_Project",
-      ],
-      [
-        "Research Paper Link",
-        "https://github.com/AxelTWC/Applied_DeepLearning_Project/blob/main/Group%201%20Final%20Report.pdf",
-      ],
-    ],
-  },
-  {
-    title: "More Projects Coming Soon",
-    desc: "Stay tuned for more projects and contributions.",
-    links: [],
   },
 ];
 
@@ -153,29 +103,6 @@ const timelineItems = [
   },
 ];
 
-const insightCards = [
-  {
-    icon: Brain,
-    title: "Healthcare AI",
-    text: "With a family medical background, I see AI as a multiplier for diagnostics, triage, and personalized care at scale.",
-  },
-  {
-    icon: Activity,
-    title: "AGI & Robotics",
-    text: "AGI and robotics feel like foundational shifts, similar to the arrival of the internet and smartphones.",
-  },
-  {
-    icon: Shield,
-    title: "Responsible AI",
-    text: "Ethics, safety, and fairness are first-order concerns, not afterthoughts, in practical AI deployment.",
-  },
-  {
-    icon: Sparkles,
-    title: "AI Productization",
-    text: "Meaningful impact comes from bridging research ideas into dependable, usable products in real environments.",
-  },
-];
-
 const exploreCards = [
   {
     icon: User,
@@ -186,13 +113,13 @@ const exploreCards = [
   {
     icon: Code,
     label: "Projects",
-    description: "Explore HumblexMC, UMPLE, RAG research, and current work.",
+    description: "Explore UMPLE Contributions.",
     href: "#projects",
   },
   {
     icon: Briefcase,
     label: "Experience & Timeline",
-    description: "From early school years to UofT and AI internships.",
+    description: "View my education and work experience.",
     href: "#experience",
   },
 ];
@@ -361,11 +288,10 @@ export default function App() {
             <div className="hero-grid" />
           </div>
           <div className="hero-content">
-          <p className="hero-eyebrow">Building durable systems, practical AI products, and research-backed workflows.</p>
+          <p className="hero-eyebrow">Student at the University of Toronto</p>
           <h1>Learn about Axel</h1>
           <p className="hero-copy">
-            Master in AI/ML/DA <strong>@University of Toronto.</strong><br />
-            Rise And Shine For Your Real Eyes To Realize The Paradise
+            Master of Engineering student in Artificial Intelligence.
           </p>
 
           <div className="search-section" ref={searchRef}>
@@ -375,7 +301,7 @@ export default function App() {
                 ref={inputRef}
                 type="text"
                 className="search-input"
-                placeholder="Search this portfolio knowledge base"
+                placeholder="Search this site"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -435,68 +361,17 @@ export default function App() {
           </div>
           <article className="doc-card prose-card">
             <p>
-              I'm Axel Tang, <strong>building business and projects since 14</strong>.
-            </p>
-            <p>
-              I've contributed to projects like <strong>UMPLE serving millions of NA students</strong> and was the main force behind
-              <strong> HumblexMC serving tens of thousands of players globally</strong> while trying to sustain an <strong>8-year ecosystem</strong>.
-            </p>
-            <p>
-              I came from humble beginnings, supporting my family by being selfless from a young age,
-              such as saving up and disconnecting from the norm, then striving for excellence in my studies.
-            </p>
-            <p>
-              Originally with a core foundation in computer science and a focus on software engineering,
-              I was also lucky enough to be guided by industrial leaders about <strong>next-generation technology</strong>.
-            </p>
-            <p>
-              Being privileged to be in the same school with AI pioneers such as <strong>Geoffrey Hinton</strong> and <strong>Ilya Sutskever</strong>,
-              I am aiming to expand while honing my knowledge of <strong>big data, artificial intelligence, and machine learning</strong>.
-              Needless to say, I foresee myself contributing to the rapid growth of the <strong>next state-of-the-art tech revolution</strong>.
+              I'm currently a Master of Engineering student in Artificial Intelligence at the University of Toronto. I created a Minecraft community server at 14. I currently work as an AI Engineer (previously intern) at Fujifilm BI, where I'm developing an AI kiosk to answer customer questions.
             </p>
           </article>
 
           <section className="update-banner reveal" aria-label="Current status" style={{ marginTop: '14px' }}>
             <p>
               <Zap size={16} /> Current: AI Engineer (Previously Intern) at Fujifilm BI.
-              Working on showroom and routine corporate document-search projects.
+              Developing an AI kiosk to answer customer questions.
             </p>
             <a href="#experience">View timeline</a>
           </section>
-        </section>
-
-        <section id="research" className="content-section reveal">
-          <div className="section-head">
-            <p className="kicker">Research</p>
-            <h2>Research and Internship Work</h2>
-          </div>
-          <article className="doc-card highlight-card tone-blue research-spotlight">
-            <div className="research-spotlight-grid">
-              <div className="research-main">
-                <p className="research-badge">Featured Spotlight</p>
-                <h3>Custom RAG Pipeline at Fujifilm APAC</h3>
-                <p>
-                  Built a Haystack-based pipeline with parent-child chunking, adaptive
-                  chunking, metadata, and hybrid reranking to outperform an internal Dify
-                  baseline while preserving retrieval quality.
-                </p>
-                <div className="research-tags" aria-label="Research stack">
-                  <span>Haystack</span>
-                  <span>Hybrid Reranking</span>
-                  <span>Parent-Child Chunking</span>
-                </div>
-                <a href="https://axeltang.me/research" className="research-link">
-                  Explore full research hub <ChevronRight size={16} />
-                </a>
-              </div>
-
-              <aside className="research-kpi" aria-label="Key impact">
-                <p className="research-kpi-label">Measured Gain</p>
-                <p className="research-kpi-value">25x</p>
-                <p className="research-kpi-note">faster on GPU with comparable BGE reranker quality</p>
-              </aside>
-            </div>
-          </article>
         </section>
 
         <section id="projects" className="content-section reveal">
@@ -504,7 +379,7 @@ export default function App() {
             <p className="kicker">Documentation</p>
             <h2>Projects</h2>
           </div>
-          <div className="card-grid two-up">
+          <div className="card-grid">
             {projectCards.map((project, index) => (
               <article key={project.title} className={`doc-card tone-${toneCycle[index % toneCycle.length]}`}>
                 <h3>{project.title}</h3>
@@ -561,68 +436,7 @@ export default function App() {
           </div>
         </section>
 
-        <section id="statement" className="content-section reveal">
-          <div className="section-head">
-            <p className="kicker">Personal</p>
-            <h2>Personal Statement</h2>
-          </div>
-          <article className="doc-card prose-card tone-purple">
-            <p>
-              I am born with no technological background, only a PC and a game which led me to open a
-              "studio/service" running for 8 years during my childhood. Through it, <strong>I learnt that
-              technology is the key to improve the world in vast ways unimaginable.</strong> On top of that,
-              with my medical/nursing background from my parents, I always strive to take care and be
-              concerned about others over myself.
-            </p>
-            <p>
-              During my Bachelors Years, I got introduced to AI chatbots, the year which OpenAI publicly
-              released their first model. <strong>At that time, I did not have a clue about the topics of
-              artificial intelligence</strong> as I was focusing on how to get my family out of financial
-              pressure and doing the "right" thing. Therefore, I wanted to build a career through software;
-              I wasn't particularly interested in developing websites or front-end related but rather liked
-              working on lower levels such as the source to make a programming language work (Honors Project)
-              or something exciting which could be also seen out of the software spectrum such as robotics
-              or other sorts of engineering tied to SWE (internal tools and much more).
-            </p>
-            <p>
-              Over the years with one of my relatives working in cutting edge tech and after reading and
-              watching the possibilities of where I could reach myself for, <strong>I found out the excitement
-              and imminent advancement of AI aiding the world.</strong> Since my emphasis on my Master's Degree
-              is under Data Analyst and Machine Learning, I view myself as an <strong>engineer-doctor-nurse
-              for AI/Machines</strong> and hope to either take on roles in training (nurturing machines)
-              or AGI robotics.
-            </p>
-            <p>
-              My stance is that I love helping and seeing things work regardless of what they are or who they
-              are. The thrill of success after a long run just excites me a lot. <strong>I hope to see more
-              nurses around the world taking care of people in need; and I want to do my part to leverage
-              machines to be able to take care of people who may seem out of reach to me.</strong>
-            </p>
-          </article>
-        </section>
-
         <ResumeSection />
-
-        <section id="ai-insight" className="content-section reveal">
-          <div className="section-head">
-            <p className="kicker">Perspectives</p>
-            <h2>AI Insight</h2>
-          </div>
-          <div className="card-grid two-up">
-            {insightCards.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <article key={item.title} className={`doc-card tone-${toneCycle[index % toneCycle.length]}`}>
-                  <span className="icon-pill">
-                    <Icon size={18} />
-                  </span>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </article>
-              );
-            })}
-          </div>
-        </section>
 
         <section id="contact" className="content-section reveal">
           <div className="section-head">
