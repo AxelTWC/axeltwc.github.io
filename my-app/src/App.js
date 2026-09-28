@@ -17,13 +17,11 @@ import {
   Moon,
 } from "lucide-react";
 import "./App.css";
-import ResumeSection from "./ResumeSection";
 
 const navItems = [
   ["About", "about"],
   ["Projects", "projects"],
   ["Experience", "experience"],
-  ["Resume", "resume"],
   ["Contact", "contact"],
 ];
 
@@ -44,11 +42,6 @@ const searchIndex = [
     title: "Experience & Timeline",
     keywords:
       "school primary UofT university HKGCC internship Fujifilm APAC internship undergraduate Manitoba Ontario high school",
-  },
-  {
-    id: "resume",
-    title: "Resume",
-    keywords: "download view ML SW resume CV password protected",
   },
   {
     id: "contact",
@@ -435,8 +428,6 @@ export default function App() {
             })}
           </div>
         </section>
-
-        <ResumeSection />
 
         <section id="contact" className="content-section reveal">
           <div className="section-head">

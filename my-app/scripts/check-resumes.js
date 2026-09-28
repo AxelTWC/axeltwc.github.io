@@ -1,20 +1,16 @@
-// Simple predeploy guard: ensure required resume PDFs exist under public/resumes
+// Prevent resume PDFs from being copied into the public site.
 const fs = require('fs');
 const path = require('path');
 
 const resumeDir = path.join(__dirname, '..', 'public', 'resumes');
-const required = ['SW_Intern_Resume.pdf'];
+const publicPdfs = fs.existsSync(resumeDir)
+  ? fs.readdirSync(resumeDir).filter(file => /\.pdf$/i.test(file))
+  : [];
 
-if (!fs.existsSync(resumeDir)) {
-  console.error('[verify:resumes] Missing directory: public/resumes');
+if (publicPdfs.length) {
+  console.error('[verify:resumes] Public resume PDFs found: ' + publicPdfs.join(', '));
+  console.error('Move resume PDFs outside public/resumes before deploying.');
   process.exit(1);
 }
 
-const missing = required.filter(f => !fs.existsSync(path.join(resumeDir, f)));
-if (missing.length) {
-  console.error('[verify:resumes] Missing resume PDFs: ' + missing.join(', '));
-  console.error('Add the files to public/resumes before deploying.');
-  process.exit(1);
-}
-
-console.log('[verify:resumes] All resume PDFs present.');
+console.log('[verify:resumes] No resume PDFs will be published.');

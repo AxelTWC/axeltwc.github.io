@@ -15,4 +15,6 @@ test("renders the requested profile and UMPLE project without removed sections",
   expect(screen.queryByRole("heading", { name: "AI Insight" })).not.toBeInTheDocument();
   expect(screen.queryByRole("heading", { name: /research/i })).not.toBeInTheDocument();
   expect(screen.queryByRole("heading", { name: "HumblexMC" })).not.toBeInTheDocument();
+  expect(screen.queryByRole("link", { name: "Resume" })).not.toBeInTheDocument();
+  expect(screen.queryByRole("heading", { name: "Resume" })).not.toBeInTheDocument();
 });
