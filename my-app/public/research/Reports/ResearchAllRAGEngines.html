@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Axel - Fujifilm" />
+  <title>AllBenchmarks - Project Documentation | Axel - Fujifilm</title>
+  <!-- Updated: added LLMWiki (Andrej Karpathy method) as a fifth aligned adapter. -->
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --ink: #16212b;
+      --muted: #5b6b79;
+      --line: #e6ebf0;
+      --brand: #0a6b7a;
+      --brand-soft: #e7f5f7;
+      --good: #147a43;
+      --bad: #a63434;
+      --warn: #8c5d14;
+      --shadow: 0 12px 34px rgba(15, 33, 46, 0.08);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 450px at 110% -10%, #d7f6fb 0%, transparent 65%),
+        radial-gradient(900px 380px at -10% 0%, #f7ead8 0%, transparent 70%),
+        var(--bg);
+      font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: min(1180px, 93vw);
+      margin: 28px auto 70px;
+    }
+
+    .hero {
+      background: linear-gradient(140deg, #ffffff, #f8fbfd);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.77rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.9rem, 3.9vw, 3.1rem);
+      line-height: 1.06;
+      max-width: 900px;
+      text-wrap: balance;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 880px;
+      margin-top: 12px;
+      font-size: 1rem;
+    }
+
+    .chipbar {
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 0.81rem;
+      color: #344553;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .card::after {
+      content: "Axel - Fujifilm";
+      position: absolute;
+      right: 12px;
+      top: 10px;
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9aa8b5;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    .span-12 { grid-column: span 12; }
+    .span-7 { grid-column: span 7; }
+    .span-5 { grid-column: span 5; }
+    .span-6 { grid-column: span 6; }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.06rem;
+      letter-spacing: 0.01em;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    .kpi {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #fbfdff;
+    }
+
+    .kpi .k {
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      letter-spacing: 0.07em;
+      margin-bottom: 4px;
+    }
+
+    .kpi .v {
+      font-size: 1.12rem;
+      font-weight: 700;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li + li {
+      margin-top: 7px;
+    }
+
+    .status-col p {
+      margin: 0 0 8px;
+    }
+
+    .status {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border: 1px solid;
+    }
+
+    .ok { color: var(--good); background: #e9f8ef; border-color: #b6e6c9; }
+    .bad { color: var(--bad); background: #fdeeee; border-color: #f1c7c7; }
+    .pending { color: var(--warn); background: #fff5e4; border-color: #f0d9a8; }
+
+    .note {
+      border-left: 4px solid var(--warn);
+      background: #fff5e4;
+      color: #5e4212;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.91rem;
+      margin-top: 10px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 900px;
+      font-size: 0.93rem;
+      background: #fff;
+    }
+
+    th, td {
+      border-bottom: 1px solid #edf1f4;
+      padding: 10px 11px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    th {
+      background: #f6f9fb;
+      color: #536472;
+      font-size: 0.77rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      position: sticky;
+      top: 0;
+    }
+
+    tr:nth-child(even) td {
+      background: #fcfeff;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .timeline-item {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: #fcfeff;
+    }
+
+    .charts-main {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(320px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .framework-accordion {
+      display: grid;
+      gap: 10px;
+    }
+
+    details.chart-drop {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    details.chart-drop > summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 12px 14px;
+      font-weight: 700;
+      color: #223644;
+      background: #f7fbfe;
+      border-bottom: 1px solid transparent;
+    }
+
+    details.chart-drop[open] > summary {
+      border-bottom-color: var(--line);
+    }
+
+    details.chart-drop > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .chart-body {
+      padding: 8px;
+    }
+
+    figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 8px;
+    }
+
+    figure img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      background: #fafafa;
+    }
+
+    figcaption {
+      color: var(--muted);
+      font-size: 0.82rem;
+      padding: 6px 4px 2px;
+    }
+
+    code {
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      background: #f4f8fb;
+      border: 1px solid #dfe8ef;
+      border-radius: 6px;
+      padding: 1px 5px;
+      font-size: 0.86em;
+    }
+
+    .footer {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .credit-line {
+      margin-top: 10px;
+      font-size: 0.86rem;
+      color: #2c5360;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .site-badge {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 30;
+      background: #0f2d3b;
+      color: #e9f6fb;
+      border: 1px solid #1e4759;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 800;
+      box-shadow: 0 8px 24px rgba(8, 31, 41, 0.28);
+    }
+
+    @media (max-width: 980px) {
+      .span-7, .span-5, .span-6 { grid-column: span 12; }
+      .kpis { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+      .charts-main { grid-template-columns: 1fr; }
+      .hero { padding: 22px; }
+      .site-badge {
+        right: 10px;
+        bottom: 10px;
+        font-size: 0.67rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-badge">Axel - Fujifilm</div>
+  <main class="wrap">
+    <section class="hero">
+      <span class="eyebrow">AllBenchmarks / Project Documentation</span>
+      <h1>RAG Benchmark Project Report<br />Haystack vs RAGFlow vs LightRAG vs Dify vs LLMWiki</h1>
+      <p class="lead">
+        This benchmark suite compares five RAG systems under the same contract: identical corpus, scoring rules,
+        prompt policy, and export schema. LLMWiki is the deliberately-simple <em>Andrej Karpathy</em> baseline
+        (BM25 over the shared corpus + LLM, no embeddings, no reranker) used as a reference point against the
+        full retrieval stacks. The goal is a fair, reproducible quality and performance comparison.
+      </p>
+      <p class="credit-line">Created and maintained by Axel - Fujifilm.</p>
+      <div class="chipbar">
+        <span class="chip">Author: Axel - Fujifilm</span>
+        <span class="chip">Datasets: TriviaQA RC + DuReader checklist + DocVQA</span>
+        <span class="chip">Sample count: 100</span>
+        <span class="chip">Generation model: qwen/qwen3.5-35b-a3b</span>
+        <span class="chip">Embedding model: text-embedding-qwen3-embedding-0.6b</span>
+        <span class="chip">Reranker: qwen3-reranker-0.6b</span>
+        <span class="chip">Backend: LM Studio (OpenAI-compatible)</span>
+        <span class="chip">Latest DuReader update: 20260603</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card span-12">
+        <h2>Implementation Snapshot</h2>
+        <div class="kpis">
+          <div class="kpi"><div class="k">Notebooks</div><div class="v">5</div></div>
+          <div class="kpi"><div class="k">Samples per run</div><div class="v">100</div></div>
+          <div class="kpi"><div class="k">Exports</div><div class="v">JSON + CSV + PNG</div></div>
+          <div class="kpi"><div class="k">Frameworks</div><div class="v">Haystack, RAGFlow, LightRAG, Dify, LLMWiki</div></div>
+        </div>
+      </article>
+
+      <article class="card span-7">
+        <h2>Shared Benchmark Contract</h2>
+        <ul>
+          <li>All frameworks use the same 100-sample shared corpus file and deterministic benchmark settings.</li>
+          <li>Same answer prompt behavior and same normalization/alias matching logic for EM/F1.</li>
+          <li>Same DeepEval metric schema: Answer Relevancy and Faithfulness.</li>
+          <li>Same output schema for full JSON, simplified JSON, CSV, and dashboard artifacts.</li>
+        </ul>
+      </article>
+
+      <article class="card span-5 status-col">
+        <h2>Run Status</h2>
+        <p><span class="status ok">Haystack: Completed</span></p>
+        <p><span class="status ok">RAGFlow: Completed</span></p>
+        <p><span class="status ok">Dify: Completed</span></p>
+        <p><span class="status ok">LLMWiki: Completed</span></p>
+        <p><span class="status bad">LightRAG: Technically Broken</span></p>
+        <div class="note">
+          LightRAG artifacts exist, but retrieval/evaluation quality is not trustworthy in this run due to instability and timeout behavior.
+        </div>
+      </article>
+
+      <article class="card span-12">
+        <h2>Comparative Metrics (comparison_summary.csv)</h2>
+        <p style="margin:0 0 10px;color:var(--muted);font-size:0.9rem;">
+          TriviaQA RC results for the five primary adapters, followed by the
+          DocVQA suite runs tagged <code>Haystack-DocVQA</code> and
+          <code>RAGFlow-DocVQA</code>. DocVQA rows are a different benchmark
+          (visual document QA) and are not directly comparable to the TriviaQA
+          rows above &mdash; they are listed separately so the comparison CSV
+          shows which row belongs to which suite.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Engine</th>
+                <th>EM</th>
+                <th>F1</th>
+                <th>Answer Relevancy</th>
+                <th>Faithfulness</th>
+                <th>Avg TTFT (s)</th>
+                <th>Avg TPS</th>
+                <th>Total Time (s)</th>
+                <th>Sample Count</th>
+                <th>Timestamp</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Haystack</td>
+                <td>0.62</td>
+                <td>0.7512</td>
+                <td>0.8392</td>
+                <td>0.9067</td>
+                <td>0.5479</td>
+                <td>5504.45</td>
+                <td>57.18</td>
+                <td>100</td>
+                <td>20260514_204417</td>
+              </tr>
+              <tr>
+                <td>LLMWiki</td>
+                <td>0.69</td>
+                <td>0.7856</td>
+                <td>0.8409</td>
+                <td>0.9221</td>
+                <td>0.5785</td>
+                <td>6168.35</td>
+                <td>62.48</td>
+                <td>100</td>
+                <td>20260525_221030</td>
+              </tr>
+              <tr>
+                <td>Dify</td>
+                <td>0.63</td>
+                <td>0.7550</td>
+                <td>0.8200</td>
+                <td>0.9034</td>
+                <td>0.6455</td>
+                <td>6185.01</td>
+                <td>66.42</td>
+                <td>100</td>
+                <td>20260518_232709</td>
+              </tr>
+              <tr>
+                <td>RAGFlow</td>
+                <td>0.66</td>
+                <td>0.7778</td>
+                <td>0.8650</td>
+                <td>0.9091</td>
+                <td>1.3827</td>
+                <td>6718.39</td>
+                <td>139.57</td>
+                <td>100</td>
+                <td>20260514_233428</td>
+              </tr>
+              <tr>
+                <td>LightRAG</td>
+                <td>0.00</td>
+                <td>0.0089</td>
+                <td>0.0000</td>
+                <td>0.3667</td>
+                <td>0.0000</td>
+                <td>0.00</td>
+                <td>169.03</td>
+                <td>100</td>
+                <td>20260515_010140</td>
+              </tr>
+              <tr>
+                <td colspan="10" style="background:#f1f6fa;color:#3a5366;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;font-size:0.78rem;">DocVQA suite (separate benchmark)</td>
+              </tr>
+              <tr>
+                <td>RAGFlow-DocVQA</td>
+                <td>0.22</td>
+                <td>0.2454</td>
+                <td>0.3658</td>
+                <td>0.7045</td>
+                <td>1.9565</td>
+                <td>4048.36</td>
+                <td>198.95</td>
+                <td>100</td>
+                <td>20260521_044836</td>
+              </tr>
+              <tr>
+                <td>Haystack-DocVQA</td>
+                <td>0.22</td>
+                <td>0.2373</td>
+                <td>0.3075</td>
+                <td>0.7011</td>
+                <td>0.5293</td>
+                <td>3803.41</td>
+                <td>54.88</td>
+                <td>100</td>
+                <td>20260519_213401</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card span-12">
+        <h2>New DuReader Findings (Haystack vs LLMWiki vs RAGFlow)</h2>
+        <p style="margin:0 0 10px;color:var(--muted);font-size:0.9rem;">
+          Latest DuReader checklist runs (100 samples each) from
+          <code>haystack_dureader_deepeval_simplified_20260528_044454.json</code>,
+          <code>llmwiki_dureader_deepeval_simplified_20260528_220123.json</code>,
+          and <code>ragflow_dureader_deepeval_simplified_20260603_025340.json</code>.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Engine</th>
+                <th>EM</th>
+                <th>F1</th>
+                <th>Answer Relevancy</th>
+                <th>Faithfulness</th>
+                <th>Avg TTFT (s)</th>
+                <th>Avg TPS</th>
+                <th>Total Time (s)</th>
+                <th>Sample Count</th>
+                <th>Timestamp</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Haystack-DuReader</td>
+                <td>0.19</td>
+                <td>0.5882</td>
+                <td>0.8494</td>
+                <td>0.9119</td>
+                <td>0.6792</td>
+                <td>7161.17</td>
+                <td>77.92</td>
+                <td>100</td>
+                <td>20260528_044454</td>
+              </tr>
+              <tr>
+                <td>LLMWiki-DuReader</td>
+                <td>0.15</td>
+                <td>0.5513</td>
+                <td>0.8067</td>
+                <td>0.8991</td>
+                <td>0.7063</td>
+                <td>7398.31</td>
+                <td>81.69</td>
+                <td>100</td>
+                <td>20260528_220123</td>
+              </tr>
+              <tr>
+                <td>RAGFlow-DuReader</td>
+                <td>0.19</td>
+                <td>0.5889</td>
+                <td>0.8545</td>
+                <td>0.9150</td>
+                <td>1.1462</td>
+                <td>5345.40</td>
+                <td>125.09</td>
+                <td>100</td>
+                <td>20260603_025340</td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;background:#f7fbff;">Delta (Haystack - LLMWiki)</td>
+                <td style="font-weight:700;background:#f7fbff;">+0.04</td>
+                <td style="font-weight:700;background:#f7fbff;">+0.0369</td>
+                <td style="font-weight:700;background:#f7fbff;">+0.0427</td>
+                <td style="font-weight:700;background:#f7fbff;">+0.0128</td>
+                <td style="font-weight:700;background:#f7fbff;">-0.0272</td>
+                <td style="font-weight:700;background:#f7fbff;">-237.14</td>
+                <td style="font-weight:700;background:#f7fbff;">-3.78</td>
+                <td style="font-weight:700;background:#f7fbff;">0</td>
+                <td style="font-weight:700;background:#f7fbff;">Latest pair</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note" style="margin-top:10px;">
+          DuReader takeaway: RAGFlow leads on quality (Relevancy 0.8545, Faithfulness 0.9150, F1 0.5889) but
+          is the slowest runner (125.1s total, TTFT 1.15s). Haystack is the fastest (77.9s) with quality
+          virtually identical to RAGFlow. LLMWiki has the highest TPS (7398) but trails both on all
+          quality metrics.
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h2>Execution Timeline</h2>
+        <div class="timeline">
+          <div class="timeline-item"><b>Phase 1:</b> Four notebooks prepared for Haystack, RAGFlow, LightRAG, and Dify.</div>
+          <div class="timeline-item"><b>Phase 2:</b> Shared corpus generated once and reused across all frameworks.</div>
+          <div class="timeline-item"><b>Phase 3:</b> Full benchmark loops executed with EM/F1, DeepEval, and timing metrics.</div>
+          <div class="timeline-item"><b>Phase 4:</b> JSON/CSV/PNG artifacts generated and comparison dashboard compiled.</div>
+          <div class="timeline-item"><b>Phase 5:</b> Dify integration validated; LightRAG instability documented for follow-up.</div>
+          <div class="timeline-item"><b>Phase 6:</b> LLMWiki (Karpathy method) added as a BM25-only baseline; same prompt, schema, and exports.</div>
+          <div class="timeline-item"><b>Phase 7:</b> DuReader checklist suite executed for Haystack and LLMWiki; findings appended to this report.</div>
+          <div class="timeline-item"><b>Phase 8:</b> RAGFlow DuReader benchmark completed (20260603); RAGFlow-DuReader added as third DuReader runner in the comparison suite.</div>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h2>Produced Artifacts</h2>
+        <ul>
+          <li>Corpus: <code>triviaqa_rc_100_corpus.json</code></li>
+          <li>Haystack: <code>haystack_deepeval_benchmark_*.json</code>, <code>haystack_deepeval_results_*.csv</code></li>
+          <li>RAGFlow: <code>ragflow_deepeval_benchmark_*.json</code>, <code>ragflow_deepeval_results_*.csv</code></li>
+          <li>LightRAG: <code>lightrag_deepeval_benchmark_*.json</code>, <code>lightrag_deepeval_results_*.csv</code>, <code>lightrag_workdir/</code></li>
+          <li>Dify: <code>dify_deepeval_benchmark_*.json</code>, <code>dify_deepeval_results_*.csv</code></li>
+          <li>LLMWiki: <code>llmwiki_deepeval_benchmark_*.json</code>, <code>llmwiki_deepeval_results_*.csv</code></li>
+          <li>DocVQA suite: <code>haystack_docvqa_deepeval_*</code>, <code>ragflow_docvqa_deepeval_*</code> (separate benchmark; tagged <code>Haystack-DocVQA</code> / <code>RAGFlow-DocVQA</code> in the comparison summary)</li>
+          <li>DuReader suite: <code>haystack_dureader_deepeval_*</code>, <code>llmwiki_dureader_deepeval_*</code>, <code>ragflow_dureader_deepeval_*</code> (reported in the new DuReader findings section)</li>
+          <li>Dashboards: <code>charts/comparison_dashboard.png</code>, <code>charts/speed_accuracy_tradeoff.png</code>, framework dashboards</li>
+        </ul>
+      </article>
+
+      <article class="card span-12">
+        <h2>Dashboard Previews</h2>
+        <div class="charts-main">
+          <figure>
+            <img src="charts/comparison_dashboard.png" alt="Comparison Dashboard" />
+            <figcaption>Cross-framework quality/performance/distribution comparison.</figcaption>
+          </figure>
+          <figure>
+            <img src="charts/speed_accuracy_tradeoff.png" alt="Speed Accuracy Tradeoff" />
+            <figcaption>Speed-Accuracy Efficiency chart with Dify included.</figcaption>
+          </figure>
+        </div>
+        <div class="framework-accordion">
+          <details class="chart-drop" open>
+            <summary>Haystack Dashboard</summary>
+            <div class="chart-body">
+              <figure>
+                <img src="charts/haystack_dashboard.png" alt="Haystack Dashboard" />
+                <figcaption>Per-sample and aggregate metrics for Haystack.</figcaption>
+              </figure>
+            </div>
+          </details>
+          <details class="chart-drop">
+            <summary>RAGFlow Dashboard</summary>
+            <div class="chart-body">
+              <figure>
+                <img src="charts/ragflow_dashboard.png" alt="RAGFlow Dashboard" />
+                <figcaption>Per-sample and aggregate metrics for RAGFlow.</figcaption>
+              </figure>
+            </div>
+          </details>
+          <details class="chart-drop">
+            <summary>Dify Dashboard</summary>
+            <div class="chart-body">
+              <figure>
+                <img src="charts/dify_dashboard.png" alt="Dify Dashboard" />
+                <figcaption>Per-sample and aggregate metrics for Dify.</figcaption>
+              </figure>
+            </div>
+          </details>
+          <details class="chart-drop">
+            <summary>LightRAG Dashboard</summary>
+            <div class="chart-body">
+              <figure>
+                <img src="charts/lightrag_dashboard.png" alt="LightRAG Dashboard" />
+                <figcaption>Per-sample and aggregate metrics for LightRAG.</figcaption>
+              </figure>
+            </div>
+          </details>
+          <details class="chart-drop">
+            <summary>LLMWiki Dashboard (Karpathy method)</summary>
+            <div class="chart-body">
+              <figure>
+                <img src="charts/llmwiki_dashboard.png" alt="LLMWiki Dashboard" />
+                <figcaption>Per-sample and aggregate metrics for LLMWiki.</figcaption>
+              </figure>
+            </div>
+          </details>
+          <details class="chart-drop">
+            <summary>Haystack-DocVQA Dashboard</summary>
+            <div class="chart-body">
+              <figure>
+                <img src="charts/haystack_docvqa_dashboard.png" alt="Haystack DocVQA Dashboard" />
+                <figcaption>Per-sample and aggregate metrics for the Haystack run on the DocVQA suite.</figcaption>
+              </figure>
+            </div>
+          </details>
+          <details class="chart-drop">
+            <summary>RAGFlow-DocVQA Dashboard</summary>
+            <div class="chart-body">
+              <figure>
+                <img src="charts/ragflow_docvqa_dashboard.png" alt="RAGFlow DocVQA Dashboard" />
+                <figcaption>Per-sample and aggregate metrics for the RAGFlow run on the DocVQA suite.</figcaption>
+              </figure>
+            </div>
+          </details>
+          <details class="chart-drop">
+            <summary>Haystack-DuReader Dashboard</summary>
+            <div class="chart-body">
+              <figure>
+                <img src="charts/haystack_dureader_dashboard.png" alt="Haystack DuReader Dashboard" />
+                <figcaption>Per-sample and aggregate metrics for the Haystack run on the DuReader checklist suite.</figcaption>
+              </figure>
+            </div>
+          </details>
+          <details class="chart-drop">
+            <summary>LLMWiki-DuReader Dashboard</summary>
+            <div class="chart-body">
+              <figure>
+                <img src="charts/llmwiki_dureader_dashboard.png" alt="LLMWiki DuReader Dashboard" />
+                <figcaption>Per-sample and aggregate metrics for LLMWiki on the DuReader checklist suite.</figcaption>
+              </figure>
+            </div>
+          </details>
+          <details class="chart-drop">
+            <summary>RAGFlow-DuReader Dashboard</summary>
+            <div class="chart-body">
+              <figure>
+                <img src="charts/ragflow_dureader_dashboard.png" alt="RAGFlow DuReader Dashboard" />
+                <figcaption>Per-sample and aggregate metrics for RAGFlow on the DuReader checklist suite.</figcaption>
+              </figure>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="card span-12">
+        <h2>Interpretation Notes</h2>
+        <ul>
+          <li>Dify, Haystack, and RAGFlow all produced usable outcomes under the shared contract.</li>
+          <li>RAGFlow leads on raw quality metrics, while Haystack leads on total-time efficiency; Dify remains competitive.</li>
+          <li>LightRAG currently underperforms in this benchmark context and requires stabilization before decision use.</li>
+          <li>LLMWiki (Karpathy method) — a no-embedding, no-reranker BM25 baseline — actually leads on EM/F1
+              (EM 0.69, F1 0.79) and matches the heavier stacks on Answer Relevancy and Faithfulness, with the
+              lowest total runtime by a wide margin. Strong evidence that on this corpus the heavier retrieval
+              stacks add little quality over a well-built lexical baseline.</li>
+            <li>DuReader update (20260528): Haystack outperforms LLMWiki across EM/F1/Relevancy/Faithfulness
+              (EM +0.04, F1 +0.0369, Relevancy +0.0427, Faithfulness +0.0128), with lower TTFT and total runtime;
+              LLMWiki remains higher in TPS.</li>
+            <li>DuReader update (20260603): RAGFlow-DuReader enters the suite. RAGFlow leads all three on
+              Relevancy (0.8545) and Faithfulness (0.9150) and edges Haystack on F1 (0.5889 vs 0.5882),
+              but has the highest TTFT (1.15s) and total runtime (125.1s). Haystack remains the fastest at
+              77.9s with near-identical quality to RAGFlow. LLMWiki maintains the highest TPS (7398) but
+              trails on every quality metric.</li>
+          <li>The benchmark structure is now reusable and portable across machines.</li>
+        </ul>
+        <p class="footer">
+          File location: <code>benchmark_results/project_documentation.html</code>
+          <br />Prepared by Axel - Fujifilm.
+        </p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
