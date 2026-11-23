@@ -92,7 +92,7 @@ const projectCards = [
   },
   {
     title: "UMPLE Contributions",
-    desc: "Honour Bachelor SWE Level Project. Resolved UML language issues with Java, implemented new features, and maintained CI/CD pipelines.",
+    desc: "Honour Bachelor SWE Level Project funded by the Natural Sciences and Engineering Research Council of Canada and the Digital Research Alliance of Canada. Resolved UML language issues with Java, implemented new features, and maintained CI/CD pipelines.",
     links: [
       [
         "Visit My UMPLE Contributions",
@@ -133,7 +133,6 @@ const timelineItems = [
   {
     icon: Briefcase,
     title: "Fujifilm BI APAC",
-    status: "AI Engineer",
     alongside: "Alongside Graduate School",
     highlightPromotion: true,
     text: "Building practical AI solutions and research-driven workflows at Fujifilm BI.",
@@ -150,7 +149,8 @@ const timelineItems = [
     title: "UMPLE",
     period: "Honors Project",
     status: "Engineering",
-    text: "Worked on honors SWE modeling initiatives with Dr. Lethbridge, improving language and tooling quality.",
+    tags: ["NSERC Funded", "DRAC Hosted"],
+    text: "Worked on honors SWE modeling initiatives with Dr. Lethbridge, improving language and tooling quality. Funded by the Natural Sciences and Engineering Research Council of Canada and the Digital Research Alliance of Canada.",
   },
   {
     icon: GraduationCap,
@@ -235,7 +235,7 @@ function PromotionPath() {
       <span className="promotion-bridge" aria-hidden="true">→</span>
       <span className="promotion-time">4 months</span>
       <span className="promotion-bridge" aria-hidden="true">→</span>
-      <span className="promotion-role is-current">AI Engineer</span>
+      <span className="promotion-role">AI Engineer</span>
     </div>
   );
 }
@@ -581,14 +581,17 @@ export default function App() {
                     </span>
                     <div className="timeline-meta">
                       {item.period && <span>{item.period}</span>}
-                      <span>{item.status}</span>
+                      {item.status && <span>{item.status}</span>}
+                      {item.tags?.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
                       {item.alongside && <span className="timeline-alongside">{item.alongside}</span>}
+                      {item.highlightPromotion && <PromotionPath />}
                       {item.isActive && <span>Active now</span>}
                       {item.isPartiallyActive && <span>In Progress</span>}
                     </div>
                   </div>
                   <h3>{item.title}</h3>
-                  {item.highlightPromotion && <PromotionPath />}
                   <p>{item.text}</p>
                 </article>
               );

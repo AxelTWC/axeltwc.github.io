@@ -535,7 +535,27 @@ input {
 }
 
 .timeline-entry .promotion-path {
-  margin: 12px 0 10px;
+  margin: 0 0 0 4px;
+  gap: 5px;
+  flex-wrap: nowrap;
+}
+
+.timeline-meta .promotion-role,
+.timeline-meta .promotion-time {
+  padding: 3px 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  line-height: 1.2;
+}
+
+.timeline-meta .promotion-bridge {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 0.85rem;
 }
 
 .promotion-role,
@@ -547,22 +567,11 @@ input {
   line-height: 1.2;
 }
 
-.promotion-role {
+.promotion-role,
+.promotion-time {
   color: #c5cbe0;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.promotion-role.is-current {
-  color: #ecfdf5;
-  background: rgba(16, 185, 129, 0.24);
-  border-color: rgba(16, 185, 129, 0.62);
-}
-
-.promotion-time {
-  color: #111827;
-  background: #fbbf24;
-  border: 1px solid #f59e0b;
 }
 
 .promotion-bridge {
@@ -767,6 +776,7 @@ input {
 .timeline-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
 }
 
@@ -1207,20 +1217,17 @@ html.light-mode .update-banner a {
   color: #4f46e5;
 }
 
-html.light-mode .promotion-role {
+html.light-mode .timeline-meta .promotion-role,
+html.light-mode .timeline-meta .promotion-time {
   color: #374151;
   background: rgba(15, 23, 42, 0.04);
   border-color: rgba(15, 23, 42, 0.16);
 }
 
-html.light-mode .promotion-role.is-current {
-  color: #065f46;
-  background: rgba(16, 185, 129, 0.18);
-  border-color: rgba(5, 150, 105, 0.45);
-}
-
-html.light-mode .promotion-bridge {
+html.light-mode .timeline-meta .promotion-bridge {
   color: #b45309;
+  border: 0;
+  background: transparent;
 }
 
 html.light-mode .highlight-card {
