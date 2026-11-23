@@ -519,6 +519,59 @@ input {
   font-weight: 700;
 }
 
+.update-banner .promotion-kicker {
+  margin: 0 0 8px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.promotion-path {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeline-entry .promotion-path {
+  margin: 12px 0 10px;
+}
+
+.promotion-role,
+.promotion-time {
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.promotion-role {
+  color: #c5cbe0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.promotion-role.is-current {
+  color: #ecfdf5;
+  background: rgba(16, 185, 129, 0.24);
+  border-color: rgba(16, 185, 129, 0.62);
+}
+
+.promotion-time {
+  color: #111827;
+  background: #fbbf24;
+  border: 1px solid #f59e0b;
+}
+
+.promotion-bridge {
+  color: #fbbf24;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
 .prose-card p + p {
   margin-top: 12px;
 }
@@ -737,6 +790,12 @@ input {
   border-color: rgba(245, 158, 11, 0.45);
   color: #f5a623;
   background: rgba(245, 158, 11, 0.16);
+}
+
+.timeline-meta .timeline-alongside {
+  border-color: rgba(129, 140, 248, 0.55);
+  color: #c7d2fe;
+  background: rgba(99, 102, 241, 0.18);
 }
 
 .contact-card {
@@ -1148,6 +1207,22 @@ html.light-mode .update-banner a {
   color: #4f46e5;
 }
 
+html.light-mode .promotion-role {
+  color: #374151;
+  background: rgba(15, 23, 42, 0.04);
+  border-color: rgba(15, 23, 42, 0.16);
+}
+
+html.light-mode .promotion-role.is-current {
+  color: #065f46;
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(5, 150, 105, 0.45);
+}
+
+html.light-mode .promotion-bridge {
+  color: #b45309;
+}
+
 html.light-mode .highlight-card {
   background: linear-gradient(160deg, rgba(219, 234, 254, 0.6), rgba(233, 213, 255, 0.42), rgba(255, 255, 255, 0.92));
 }
@@ -1203,6 +1278,12 @@ html.light-mode .timeline-entry.partial {
 html.light-mode .timeline-meta span {
   color: #6b7280;
   border: 1px solid rgba(15, 23, 42, 0.16);
+}
+
+html.light-mode .timeline-meta .timeline-alongside {
+  color: #4338ca;
+  border-color: rgba(67, 56, 202, 0.35);
+  background: rgba(99, 102, 241, 0.12);
 }
 
 html.light-mode .contact-link {

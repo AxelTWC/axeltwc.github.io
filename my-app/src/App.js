@@ -17,7 +17,6 @@ import {
   Shield,
   Sparkles,
   ExternalLink,
-  Zap,
   Sun,
   Moon,
 } from "lucide-react";
@@ -52,7 +51,7 @@ const searchIndex = [
     id: "experience",
     title: "Experience & Timeline",
     keywords:
-      "school primary UofT university HKGCC internship Fujifilm APAC internship undergraduate Manitoba Ontario high school",
+      "school primary UofT university HKGCC internship Fujifilm APAC AI Engineer promoted undergraduate Manitoba Ontario high school",
   },
   {
     id: "statement",
@@ -89,7 +88,7 @@ const projectCards = [
   {
     title: "HumblexMC",
     desc: "Started when I was 14 years old. Serving 25k+ players, developed a community with focus on quality and performance. Learnt business and management along the way.",
-    links: [["Visit HumblexMC", "https://humblex.net"]],
+    links: [["Visit HumblexMC", "https://humblexmc.github.io"]],
   },
   {
     title: "UMPLE Contributions",
@@ -124,11 +123,48 @@ const projectCards = [
 
 const timelineItems = [
   {
+    icon: User,
+    title: "Student at UofT",
+    period: "Current chapter",
+    status: "Graduate School",
+    isPartiallyActive: true,
+    text: "After a long break from graduation, rebuilt momentum and moved forward with clearer goals.",
+  },
+  {
+    icon: Briefcase,
+    title: "Fujifilm BI APAC",
+    status: "AI Engineer",
+    alongside: "Alongside Graduate School",
+    highlightPromotion: true,
+    text: "Building practical AI solutions and research-driven workflows at Fujifilm BI.",
+  },
+  {
+    icon: Laptop,
+    title: "HKGCC",
+    period: "Internship Phase",
+    status: "IT",
+    text: "Supported server-side infrastructure and internal software tooling using Python and OpenCV.",
+  },
+  {
+    icon: Code,
+    title: "UMPLE",
+    period: "Honors Project",
+    status: "Engineering",
+    text: "Worked on honors SWE modeling initiatives with Dr. Lethbridge, improving language and tooling quality.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Undergraduate",
+    period: "Bachelor Phase",
+    status: "Milestone",
+    text: "Admitted to top Canadian universities and chose a path that balanced family priorities and progression.",
+  },
+  {
     icon: BookOpen,
-    title: "Top 5 HK Primary School",
-    period: "Primary Years",
-    status: "Foundation",
-    text: "Met great people, then became very shy. Rankings were back then.",
+    title: "Studying Abroad",
+    period: "2017 onward",
+    status: "Transition",
+    text: "Moved through Manitoba and Ontario, earning provincial merit certificates in high school.",
   },
   {
     icon: Briefcase,
@@ -139,47 +175,10 @@ const timelineItems = [
   },
   {
     icon: BookOpen,
-    title: "Studying Abroad",
-    period: "2017 onward",
-    status: "Transition",
-    text: "Moved through Manitoba and Ontario, earning provincial merit certificates in high school.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Undergraduate",
-    period: "Bachelor Phase",
-    status: "Milestone",
-    text: "Admitted to top Canadian universities and chose a path that balanced family priorities and progression.",
-  },
-  {
-    icon: Code,
-    title: "UMPLE",
-    period: "Honors Project",
-    status: "Engineering",
-    text: "Worked on honors SWE modeling initiatives with Dr. Lethbridge, improving language and tooling quality.",
-  },
-  {
-    icon: Laptop,
-    title: "HKGCC",
-    period: "Internship Phase",
-    status: "IT",
-    text: "Supported server-side infrastructure and internal software tooling using Python and OpenCV.",
-  },
-  {
-    icon: User,
-    title: "Student at UofT",
-    period: "Current chapter",
-    status: "Graduate School",
-    isPartiallyActive: true,
-    text: "After a long break from graduation, rebuilt momentum and moved forward with clearer goals.",
-  },
-  {
-    icon: Briefcase,
-    title: "Fujifilm BI",
-    period: "Current",
-    status: "AI Internship",
-    isActive: true,
-    text: "Currently doing AI Internship at Fujifilm BI, building practical AI solutions and research-driven workflows.",
+    title: "Top 5 HK Primary School",
+    period: "Primary Years",
+    status: "Foundation",
+    text: "Met great people, then became very shy. Rankings were back then.",
   },
 ];
 
@@ -222,12 +221,24 @@ const exploreCards = [
   {
     icon: Briefcase,
     label: "Experience & Timeline",
-    description: "From early school years to UofT and AI internships.",
+    description: "From AI Engineer at Fujifilm back to early school years.",
     href: "#experience",
   },
 ];
 
 const toneCycle = ["blue", "purple", "cyan", "emerald", "amber", "pink"];
+
+function PromotionPath() {
+  return (
+    <div className="promotion-path" aria-label="Promoted from AI Intern to AI Engineer within 4 months">
+      <span className="promotion-role">AI Intern</span>
+      <span className="promotion-bridge" aria-hidden="true">→</span>
+      <span className="promotion-time">4 months</span>
+      <span className="promotion-bridge" aria-hidden="true">→</span>
+      <span className="promotion-role is-current">AI Engineer</span>
+    </div>
+  );
+}
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -485,14 +496,6 @@ export default function App() {
               Needless to say, I foresee myself contributing to the rapid growth of the <strong>next state-of-the-art tech revolution</strong>.
             </p>
           </article>
-
-          <section className="update-banner reveal" aria-label="Current status" style={{ marginTop: '14px' }}>
-            <p>
-              <Zap size={16} /> Current: AI Engineering Intern at Fujifilm APAC.
-              Building the next generation of AI solutions.
-            </p>
-            <a href="#experience">View timeline</a>
-          </section>
         </section>
 
         <section id="research" className="content-section reveal">
@@ -577,13 +580,15 @@ export default function App() {
                       <Icon size={16} />
                     </span>
                     <div className="timeline-meta">
-                      <span>{item.period}</span>
+                      {item.period && <span>{item.period}</span>}
                       <span>{item.status}</span>
+                      {item.alongside && <span className="timeline-alongside">{item.alongside}</span>}
                       {item.isActive && <span>Active now</span>}
                       {item.isPartiallyActive && <span>In Progress</span>}
                     </div>
                   </div>
                   <h3>{item.title}</h3>
+                  {item.highlightPromotion && <PromotionPath />}
                   <p>{item.text}</p>
                 </article>
               );
